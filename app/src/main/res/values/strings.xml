@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">StudentLife</string>
+
+    // Navigation Drawer
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Настройки</string>
+    <string name="newsMenu">Новости</string>
+    <string name="leagueMenu">Лига</string>
+    <string name="storeMenu">Магазин</string>
+    <string name="settingsMenu">Настройки</string>
+    <string name="nickName">Алексей Кузьменко</string>
+    <string name="status">Продаю кванты. Недорого!</string>
+
+    // Navigation drawer fragments
+    <string name="news_fragment">Здесь будут новости</string>
+    <string name="league_fragment">Здесь будет инфа по лигам</string>
+    <string name="store_fragment">Здесь будут продаваться паленые ведомы</string>
+    <string name="settings_fragment">Здесь будут настройки аккаунта</string>
+    <string name="account_fragment">Здесь будет аккаутн пользователя</string>
+    <string name="Description">TODO</string>
+    <string name="userPhotoDescription">userPhoto</string>
+    <string name="userStatus">Все вопросы по телефону +375294587016 (МТС)</string>
+    <string name="newsTitle">Новости</string>
+
+    // CardView
+    <string name="default_username">Никита Быцко</string>
+    <string name="posted_photo_image">posted_photo</string>
+    <string name="icon">icon</string>
+    <string name="postedText">5 февраля в фойе актового зала университета пройдет
+                                Развлекательная программа и флешмоб
+                                "Танцуем вместе с гостями". Начало в 14.00</string>
+    <string name="participants">150</string>
+    <string name="postedLikes">210</string>
+
+    // User profile
+    <string name="userProfileMyCompetitions">Мои мероприятия</string>
+    <string name="userProfileMyRegCompetitions">Ближайшие мероприятия</string>
+    <string name="userProfileStore">Магазин</string>
+    <string name="userProfilep1">Пункт меню</string>
+    <string name="kvants_value">48</string>
+
+</resources>

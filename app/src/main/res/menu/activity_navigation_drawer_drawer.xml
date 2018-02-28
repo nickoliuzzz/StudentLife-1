@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/news_menu"
+            android:icon="@drawable/ic_menu_news"
+            android:title="@string/newsMenu" />
+        <item
+            android:id="@+id/league_menu"
+            android:icon="@drawable/ic_menu_league"
+            android:title="@string/leagueMenu" />
+        <item
+            android:id="@+id/store_menu"
+            android:icon="@drawable/ic_menu_store"
+            android:title="@string/storeMenu" />
+        <item
+            android:id="@+id/settings_menu"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/settingsMenu" />
+    </group>
+
+    <!--<item android:title="Communicate">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_share"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="Share" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Send" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>
