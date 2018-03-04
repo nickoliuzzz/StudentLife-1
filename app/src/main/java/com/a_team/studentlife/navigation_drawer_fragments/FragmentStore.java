@@ -1,6 +1,5 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,11 +10,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.a_team.studentlife.R;
-import com.a_team.studentlife.Server.AddEmailResult;
 import com.a_team.studentlife.Server.Server;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +41,7 @@ public class FragmentStore extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private Button serverWorkButton;
+    private static final String BASEURL = "http://82.209.228.129/";
 
     public FragmentStore() {
         // Required empty public constructor
@@ -86,27 +85,28 @@ public class FragmentStore extends Fragment {
             @Override
             public void onClick(View v) {
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://82.209.228.129") // Адрес сервера
-                        .addConverterFactory(GsonConverterFactory.create()) // говорим ретрофиту что для сериализации необходимо использовать GSON
+                        .baseUrl(BASEURL)
+                        .addConverterFactory(GsonConverterFactory.create())
                         .build();
-                Server service = retrofit.create(Server.class);
-                List<String> stringList = new ArrayList<String>();
-                stringList.add("Test message for server");
-                Call<List<AddEmailResult>> call = service.addEmail(stringList);
-                call.enqueue(new Callback<List<AddEmailResult>>() {
+                Server server = retrofit.create(Server.class);
+                String mes = "Ну привет";
+                Call<String> call = server.sendMessage(mes);
+                call.enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<List<AddEmailResult>> call, Response<List<AddEmailResult>> response) {
+                    public void onResponse(Call<String> call, Response<String> response) {
                         if (response.isSuccessful()) {
                             // запрос выполнился успешно, сервер вернул Status 200
                         } else {
-
+                            Toast.makeText(view.getContext(), "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
                         }
                     }
+
                     @Override
-                    public void onFailure(Call<List<AddEmailResult>> call, Throwable t) {
+                    public void onFailure(Call<String> call, Throwable t) {
                         Toast.makeText(view.getContext(), "Ошибка во время выполнения запроса", Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
         });
         return view;

@@ -1,11 +1,10 @@
 package com.a_team.studentlife.Server;
-import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface Server {
-    @POST("user/addemail")
-    Call<List<AddEmailResult>> addEmail(@Body List<String> emails);
+    @POST("api")
+    Call<String> sendMessage(@Query("message") String message);
 }
