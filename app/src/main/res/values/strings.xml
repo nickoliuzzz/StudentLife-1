@@ -39,5 +39,6 @@
     <string name="userProfileStore">Магазин</string>
     <string name="userProfilep1">Пункт меню</string>
     <string name="kvants_value">48</string>
+    <string name="serverWorkButton">Отправить запрос</string>
 
 </resources>

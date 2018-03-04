@@ -7,8 +7,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.Server.AddEmailResult;
+import com.a_team.studentlife.Server.Server;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +42,7 @@ public class FragmentStore extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private Button serverWorkButton;
 
     public FragmentStore() {
         // Required empty public constructor
@@ -65,7 +79,37 @@ public class FragmentStore extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_store, container, false);
+        final View view = inflater.inflate(R.layout.fragment_store, container, false);
+
+        serverWorkButton = view.findViewById(R.id.serverWork);
+        serverWorkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://82.209.228.129") // Адрес сервера
+                        .addConverterFactory(GsonConverterFactory.create()) // говорим ретрофиту что для сериализации необходимо использовать GSON
+                        .build();
+                Server service = retrofit.create(Server.class);
+                List<String> stringList = new ArrayList<String>();
+                stringList.add("Test message for server");
+                Call<List<AddEmailResult>> call = service.addEmail(stringList);
+                call.enqueue(new Callback<List<AddEmailResult>>() {
+                    @Override
+                    public void onResponse(Call<List<AddEmailResult>> call, Response<List<AddEmailResult>> response) {
+                        if (response.isSuccessful()) {
+                            // запрос выполнился успешно, сервер вернул Status 200
+                        } else {
+
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<List<AddEmailResult>> call, Throwable t) {
+                        Toast.makeText(view.getContext(), "Ошибка во время выполнения запроса", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
