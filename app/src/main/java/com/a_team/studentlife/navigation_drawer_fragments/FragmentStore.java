@@ -136,7 +136,7 @@ public class FragmentStore extends Fragment {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 if(response.isSuccessful()) {
-                    showResponse(response.body().toString());
+                    showResponse(response.body().getMessage());
                     Toast.makeText(getContext(), "Запрос выполнился успешно", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
