@@ -7,19 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a_team.studentlife.R;
-import com.a_team.studentlife.Server.Server;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import com.a_team.studentlife.Server.APIService;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
+import com.a_team.studentlife.Server.TestResponse.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,7 +39,8 @@ public class FragmentStore extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private Button serverWorkButton;
-    private static final String BASEURL = "http://82.209.228.129/";
+    private TextView responseBodyTextView;
+    private APIService mAPIService;
 
     public FragmentStore() {
         // Required empty public constructor
@@ -80,33 +79,14 @@ public class FragmentStore extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_store, container, false);
 
+        mAPIService = ApiUtils.getAPIService();
+
         serverWorkButton = view.findViewById(R.id.serverWork);
+        responseBodyTextView = view.findViewById(R.id.responseBody);
         serverWorkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(BASEURL)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                Server server = retrofit.create(Server.class);
-                String mes = "Ну привет";
-                Call<String> call = server.sendMessage(mes);
-                call.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        if (response.isSuccessful()) {
-                            // запрос выполнился успешно, сервер вернул Status 200
-                        } else {
-                            Toast.makeText(view.getContext(), "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-                        Toast.makeText(view.getContext(), "Ошибка во время выполнения запроса", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
+                sendMessage("Test message");
             }
         });
         return view;
@@ -149,5 +129,28 @@ public class FragmentStore extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void sendMessage(String message) {
+        mAPIService.sendMessage(message).enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                if(response.isSuccessful()) {
+                    showResponse(response.body().toString());
+                    Toast.makeText(getContext(), "Запрос выполнился успешно", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Ошибка во время выполнения запроса", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void showResponse(String responseText) {
+        responseBodyTextView.setText(responseText);
     }
 }
