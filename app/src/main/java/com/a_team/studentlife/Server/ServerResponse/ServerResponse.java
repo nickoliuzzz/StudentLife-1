@@ -1,4 +1,4 @@
-package com.a_team.studentlife.Server.TestResponse;
+package com.a_team.studentlife.Server.ServerResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
