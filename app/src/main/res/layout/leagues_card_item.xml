@@ -37,7 +37,6 @@
             android:layout_marginLeft="10dp"
             android:text="@string/default_username"
             android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_marginStart="10dp" />
 
     </LinearLayout>

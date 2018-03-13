@@ -2,6 +2,8 @@ package com.a_team.studentlife.card_view_filling;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.a_team.studentlife.Server.APIService;
@@ -39,7 +41,7 @@ public class LeagueListElement {
     public static void getLeagueListElements(final Context context,
                                              final LeaguesAdapter leaguesAdapter,
                                              final RecyclerView recyclerView,
-                                             int userId) {
+                                             final ProgressBar progressBarSpinner, int userId) {
 
         APIService mAPIService = ApiUtils.getAPIService();
         mAPIService.getListOfLeagues(userId).enqueue(new Callback<ListLeaguesResponse>() {
@@ -54,11 +56,13 @@ public class LeagueListElement {
                 } else {
                     Toast.makeText(context, "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
                 }
+                progressBarSpinner.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<ListLeaguesResponse> call, Throwable t) {
                 Toast.makeText(context, "Ошибка соединения с сервером", Toast.LENGTH_SHORT).show();
+                progressBarSpinner.setVisibility(View.GONE);
             }
         });
     }

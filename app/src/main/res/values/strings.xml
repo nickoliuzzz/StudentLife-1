@@ -41,5 +41,8 @@
     <string name="kvants_value">48</string>
     <string name="serverWorkButton">Отправить запрос</string>
     <string name="respBody">Ответ от сервера</string>
+    <string name="Leag_name">550502 CИФО</string>
+    <string name="applyButton">Подать заявку</string>
+    <string name="createLeagueButton">Создать лигу</string>
 
 </resources>
