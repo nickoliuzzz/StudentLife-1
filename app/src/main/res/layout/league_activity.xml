@@ -15,44 +15,48 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp">
+            android:layout_height="100dp"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal" >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/leaguePhoto"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_height="50dp"
                 android:layout_width="50dp"
                 android:src="@drawable/user_avatar"
-                app:civ_border_width="3dp"
-                app:civ_border_color="@color/colorPrimaryDark" />
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorWhite"
+                android:layout_marginStart="10dp" />
 
             <TextView
+                android:id="@+id/leagueName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/Leag_name"
                 android:textSize="18sp"
-                android:layout_marginStart="10dp" />
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorWhite"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:orientation="vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp">
 
-
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/applyButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/applyButton" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/createLeagueButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/createLeagueButton" />
@@ -62,7 +66,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_list_posts_leagues"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
@@ -75,11 +79,11 @@
             android:textAppearance="?android:textAppearanceMedium" />
 
         <!--<ProgressBar-->
-            <!--android:id="@+id/loading_spinner"-->
-            <!--style="@style/Widget.AppCompat.ProgressBar"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerInParent="true" />-->
+        <!--android:id="@+id/loading_spinner"-->
+        <!--style="@style/Widget.AppCompat.ProgressBar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true" />-->
 
     </LinearLayout>
 

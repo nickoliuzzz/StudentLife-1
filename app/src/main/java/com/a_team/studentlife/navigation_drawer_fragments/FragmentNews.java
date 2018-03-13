@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.a_team.studentlife.R;
-import com.a_team.studentlife.adapter.NewsAdapter;
+import com.a_team.studentlife.adapter.news.NewsAdapter;
 import com.a_team.studentlife.card_view_filling.NewsPost;
 
 /**

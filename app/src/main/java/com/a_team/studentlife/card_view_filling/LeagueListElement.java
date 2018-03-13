@@ -12,26 +12,23 @@ import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
 import com.a_team.studentlife.adapter.leagues.LeaguesAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LeagueListElement {
-    private Integer leagueImageId;
+    private Integer leagueIndex;
     private String leagueName;
     public static final ArrayList<LeagueListElement> leagueListElements = new ArrayList<>();
 
-    public LeagueListElement() {}
-
-    public LeagueListElement(Integer leagueImageId, String leagueName) {
-        this.leagueImageId = leagueImageId;
+    public LeagueListElement(Integer leagueIndex, String leagueName) {
+        this.leagueIndex = leagueIndex;
         this.leagueName = leagueName;
     }
 
-    public Integer getLeagueImageId() {
-        return leagueImageId;
+    public Integer getLeagueIndex() {
+        return leagueIndex;
     }
 
     public String getLeagueName() {
@@ -72,7 +69,6 @@ public class LeagueListElement {
         for (int i = 0; i < listFromServer.getIndexes().size(); i++) {
             leagueListElements.add(new LeagueListElement(listFromServer.getIndexes().get(i),
                     listFromServer.getNames().get(i)));
-            //leagueListElements.add(new LeagueListElement(15, "dede"));
         }
     }
 

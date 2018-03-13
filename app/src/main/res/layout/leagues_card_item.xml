@@ -4,25 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    android:layout_marginBottom="10dp"
+    android:layout_marginBottom="5dp"
     android:innerRadius="0dp"
     android:orientation="vertical"
     android:shape="ring"
     android:thicknessRatio="1.9">
 
     <LinearLayout
-        android:id="@+id/top_layout"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="wrap_content"
+        android:id="@+id/leagueItem"
+        android:clickable="true"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginStart="10dp">
+        android:orientation="horizontal" >
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/leaguePhoto"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_height="50dp"
             android:layout_width="50dp"
             android:src="@drawable/user_avatar"
