@@ -14,23 +14,18 @@ public class ListLeaguesResponse {
     private List<String> names = null;
 
     public List<Integer> getIndexes() {
-        return indexes;
+        return this.indexes;
+    }
+
+    public List<String> getNames() {
+        return this.names;
     }
 
     public void setIndexes(List<Integer> indexes) {
         this.indexes = indexes;
     }
 
-    public List<String> getNames() {
-        return names;
-    }
-
     public void setNames(List<String> names) {
         this.names = names;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("indexes", indexes).append("names", names).toString();
     }
 }

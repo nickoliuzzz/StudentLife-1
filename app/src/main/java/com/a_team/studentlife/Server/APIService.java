@@ -1,6 +1,7 @@
 package com.a_team.studentlife.Server;
 
-import com.a_team.studentlife.Server.TestResponse.ServerResponse;
+import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
+import com.a_team.studentlife.Server.ServerResponse.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -17,4 +18,8 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/")
     Call<ServerResponse> sendMessagePOST(@Field("message") String message);
+
+    @FormUrlEncoded
+    @POST("api/getLeagues/")
+    Call<ListLeaguesResponse> getListOfLeagues(@Field("userId") Integer userId);
 }

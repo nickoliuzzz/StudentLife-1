@@ -10,11 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.Toolbar;
 
-import com.a_team.studentlife.NavigationDrawerActivity;
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.adapter.NewsAdapter;
 import com.a_team.studentlife.card_view_filling.NewsPost;
@@ -83,7 +79,7 @@ public class FragmentNews extends Fragment {
         verticalLinearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         newsAdapter = new NewsAdapter();
-        newsAdapter.addAll(NewsPost.getPostItems());
+        newsAdapter.addAllNews(NewsPost.getPostItems());
         recyclerView.setAdapter(newsAdapter);
         return view;
     }

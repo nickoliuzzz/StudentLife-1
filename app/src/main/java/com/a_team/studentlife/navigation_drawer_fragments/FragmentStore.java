@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
-import com.a_team.studentlife.Server.TestResponse.ServerResponse;
+import com.a_team.studentlife.Server.ServerResponse.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -132,7 +132,7 @@ public class FragmentStore extends Fragment {
     }
 
     public void sendMessage(String message) {
-        mAPIService.sendMessage(message).enqueue(new Callback<ServerResponse>() {
+        mAPIService.sendMessagePOST(message).enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 if(response.isSuccessful()) {
