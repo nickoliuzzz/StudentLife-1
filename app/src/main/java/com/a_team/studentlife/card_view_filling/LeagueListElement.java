@@ -1,11 +1,13 @@
 package com.a_team.studentlife.card_view_filling;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.a_team.studentlife.ProgressBars.ProgressService;
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
@@ -59,8 +61,11 @@ public class LeagueListElement {
 
             @Override
             public void onFailure(Call<ListLeaguesResponse> call, Throwable t) {
-                Toast.makeText(context, "Ошибка соединения с сервером", Toast.LENGTH_SHORT).show();
-                progressBarSpinner.setVisibility(View.GONE);
+                //Toast.makeText(context, "Проверте соединение с интернетом", Toast.LENGTH_SHORT).show();
+                //progressBarSpinner.setVisibility(View.VISIBLE);
+                ProgressService.showDialogMessage(context, "Ошибка соединения",
+                        "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
+                        2148, true);
             }
         });
     }
