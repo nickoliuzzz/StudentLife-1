@@ -32,7 +32,7 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
     public void bind(NewsPost newsPost) {
         participants.setText(newsPost.getParticipants().toString());
         likes.setText(newsPost.getLikes().toString());
-        leagueName.setText(newsPost.getUserName());
+        leagueName.setText(newsPost.getLeagueName());
         postText.setText(newsPost.getPostText());
         //postedPhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), newsPost.getPostImageId()));
         //leaguePhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), newsPost.getUserImageId()));

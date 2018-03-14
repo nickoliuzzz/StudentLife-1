@@ -16,6 +16,8 @@ public class LeaguesAdapter extends RecyclerView.Adapter<LeaguesRecyclerViewHold
     private ArrayList<LeagueListElement> leagueListElements = new ArrayList<>();
 
     public void addAllLeagues(List<LeagueListElement> items) {
+        if (this.leagueListElements.size() != 0)
+            this.leagueListElements.clear();
         int position = getItemCount();
         this.leagueListElements.addAll(items);
         notifyItemRangeChanged(position, this.leagueListElements.size());

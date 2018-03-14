@@ -16,6 +16,8 @@ public class LeaguesInterfaceAdapter extends RecyclerView.Adapter<LeaguesInterfa
     private ArrayList<NewsPost> postItems = new ArrayList<>();
 
     public void addAllLeagueNews(List<NewsPost> items) {
+        if (this.postItems.size() != 0)
+            this.postItems.clear();
         int position = getItemCount();
         this.postItems.addAll(items);
         notifyItemRangeChanged(position, this.postItems.size());

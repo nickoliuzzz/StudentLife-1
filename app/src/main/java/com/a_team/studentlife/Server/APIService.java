@@ -1,19 +1,16 @@
 package com.a_team.studentlife.Server;
 
+import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
+import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
 import com.a_team.studentlife.Server.ServerResponse.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface APIService {
-
-    @GET("api")
-    Call<ServerResponse> sendMessage(@Query("message") String message);
 
     @FormUrlEncoded
     @POST("api/")
@@ -22,4 +19,12 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/getLeagues/")
     Call<ListLeaguesResponse> getListOfLeagues(@Field("userId") Integer userId);
+
+    @FormUrlEncoded
+    @POST("api/getListOfEvent/")
+    Call<ListLeagueNewsResponse> getListOfLeagueNews(@Field("leagueId") Integer leagueId);
+
+    @FormUrlEncoded
+    @POST("api/userEvents/")
+    Call<ListAllUserNewsResponse> getAllUserNews(@Field("userId") Integer userId);
 }

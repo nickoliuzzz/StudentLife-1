@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -51,12 +51,15 @@
 
                 <Button
                     android:id="@+id/applyButton"
+                    android:backgroundTint="@color/colorWhite"
+                    style="@style/Widget.AppCompat.Button.Small"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/applyButton" />
 
                 <Button
                     android:id="@+id/createLeagueButton"
+                    android:backgroundTint="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/createLeagueButton" />
@@ -78,13 +81,13 @@
             android:layout_centerInParent="true"
             android:textAppearance="?android:textAppearanceMedium" />
 
-        <!--<ProgressBar-->
-        <!--android:id="@+id/loading_spinner"-->
-        <!--style="@style/Widget.AppCompat.ProgressBar"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true" />-->
-
     </LinearLayout>
 
-</FrameLayout>
+    <ProgressBar
+        android:id="@+id/loading_spinner_league"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.adapter.news.NewsAdapter;
@@ -37,6 +38,7 @@ public class FragmentNews extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager verticalLinearLayoutManager;
     private NewsAdapter newsAdapter;
+    private ProgressBar progressBarSpinner;
 
     public FragmentNews() {
         // Required empty public constructor
@@ -74,13 +76,14 @@ public class FragmentNews extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news, container, false);
-
+        progressBarSpinner = view.findViewById(R.id.loading_spinner_news);
+        progressBarSpinner.setVisibility(View.VISIBLE);
         recyclerView = view.findViewById(R.id.recycler_list_posts);
         verticalLinearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         newsAdapter = new NewsAdapter();
-        newsAdapter.addAllNews(NewsPost.getPostItems());
-        recyclerView.setAdapter(newsAdapter);
+        NewsPost.getPostItems(view.getContext(), newsAdapter, null, recyclerView,
+                progressBarSpinner, 6, false, null);
         return view;
     }
 

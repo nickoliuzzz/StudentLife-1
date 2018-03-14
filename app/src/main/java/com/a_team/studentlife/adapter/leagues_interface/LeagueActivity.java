@@ -1,12 +1,14 @@
 package com.a_team.studentlife.adapter.leagues_interface;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ public class LeagueActivity extends AppCompatActivity {
     private LinearLayoutManager verticalLinearLayoutManager;
     private LeaguesInterfaceAdapter leaguesInterfaceAdapter;
     private Button applyButton;
+    private ProgressBar progressBarSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +42,15 @@ public class LeagueActivity extends AppCompatActivity {
         applyButton = (Button) findViewById(R.id.applyButton);
         setApplyButtonListener(applyButton);
 
+        progressBarSpinner = findViewById(R.id.loading_spinner_league);
+        progressBarSpinner.setVisibility(View.VISIBLE);
 
         recyclerView = findViewById(R.id.recycler_list_posts_leagues);
         verticalLinearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         leaguesInterfaceAdapter = new LeaguesInterfaceAdapter();
-        leaguesInterfaceAdapter.addAllLeagueNews(NewsPost.getPostItems());
-        recyclerView.setAdapter(leaguesInterfaceAdapter);
+        NewsPost.getPostItems(this, null, leaguesInterfaceAdapter, recyclerView,
+                progressBarSpinner, leagueListElement.getLeagueIndex(), true, leagueListElement);
     }
 
     private void setApplyButtonListener(final Button applyButton) {
@@ -54,9 +59,11 @@ public class LeagueActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (applyButton.getText().equals("Подать заявку")) {
                     applyButton.setText("Отозвать заявку");
+                    applyButton.setTextColor(Color.RED);
                     Toast.makeText(LeagueActivity.this, "Заявка подана", Toast.LENGTH_SHORT).show();
                 } else {
                     applyButton.setText("Подать заявку");
+                    applyButton.setTextColor(Color.BLACK);
                     Toast.makeText(LeagueActivity.this, "Заявка отозвана", Toast.LENGTH_SHORT).show();
                 }
             }

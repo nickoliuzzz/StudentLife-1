@@ -1,26 +1,39 @@
 package com.a_team.studentlife.card_view_filling;
 
-import android.widget.ImageView;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
-import com.a_team.studentlife.R;
+import com.a_team.studentlife.Server.APIService;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
+import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
+import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
+import com.a_team.studentlife.adapter.leagues_interface.LeaguesInterfaceAdapter;
+import com.a_team.studentlife.adapter.news.NewsAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NewsPost {
     private Integer participants;
     private Integer likes;
     private Integer postImageId;
     private Integer userImageId;
-    private String userName;
+    private String leagueName;
     private String postText;
+    public static ArrayList<NewsPost> newsPosts = new ArrayList<>();
 
-    public NewsPost(Integer participants, Integer likes, Integer postImageId, Integer userImageId, String userName, String postText) {
+    public NewsPost(Integer participants, Integer likes, Integer postImageId, Integer userImageId, String leagueName, String postText) {
         this.participants = participants;
         this.likes = likes;
         this.postImageId = postImageId;
         this.userImageId = userImageId;
-        this.userName = userName;
+        this.leagueName = leagueName;
         this.postText = postText;
     }
 
@@ -40,64 +53,80 @@ public class NewsPost {
         return userImageId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getLeagueName() {
+        return leagueName;
     }
 
     public String getPostText() {
         return postText;
     }
 
-    public static List<NewsPost> getPostItems() {
-        ArrayList<NewsPost> postItems = new ArrayList<>();
-        postItems.add(new NewsPost(50,23, R.drawable.postpicture, R.drawable.user_avatar,
-                "УНИВЕР", "Ректор " +
-                "университета БГУиР рассказал о значимости бога в образовательном процессе. 25.02.2018 (17:00) во 2-м корпусе " +
-                "в актовом зале состоится мероприятие, посвященное данному событию."));
-        postItems.add(new NewsPost(65,11, R.drawable.postpicture1, R.drawable.user_avatar1,
-                "ТРиТПО", "Меропрятие " +
-                "посвящено прекрасному предмету ТРиТПО. Именно на нем вы можете получить дополниельные баллы к лабораторным " +
-                "и кучу положительных эмоций. Ждем вас! Место встречи 5й корпус аудитория - 512."));
-        postItems.add(new NewsPost(70,34, R.drawable.postpicture2, R.drawable.user_avatar2,
-                "ОБЩАГА", "Студенты из " +
-                "общежития №1 жалуются на проведение ремонта в соседних блоках, что влечет за собой большое скопление " +
-                "мусора на коридорах. Обсуждение данного вопроса состоится в комнате отдыха общежития №1 27.02.2018 (18:45)."));
-        postItems.add(new NewsPost(50,23, R.drawable.postpicture, R.drawable.user_avatar,
-                "УНИВЕР", "Ректор " +
-                "университета БГУиР рассказал о значимости бога в образовательном процессе. 25.02.2018 (17:00) во 2-м корпусе " +
-                "в актовом зале состоится мероприятие, посвященное данному событию."));
-        postItems.add(new NewsPost(65,11, R.drawable.postpicture1, R.drawable.user_avatar1,
-                "ТРиТПО", "Меропрятие " +
-                "посвящено прекрасному предмету ТРиТПО. Именно на нем вы можете получить дополниельные баллы к лабораторным " +
-                "и кучу положительных эмоций. Ждем вас! Место встречи 5й корпус аудитория - 512."));
-        postItems.add(new NewsPost(70,34, R.drawable.postpicture2, R.drawable.user_avatar2,
-                "ОБЩАГА", "Студенты из " +
-                "общежития №1 жалуются на проведение ремонта в соседних блоках, что влечет за собой большое скопление " +
-                "мусора на коридорах. Обсуждение данного вопроса состоится в комнате отдыха общежития №1 27.02.2018 (18:45)."));
-        postItems.add(new NewsPost(50,23, R.drawable.postpicture, R.drawable.user_avatar,
-                "УНИВЕР", "Ректор " +
-                "университета БГУиР рассказал о значимости бога в образовательном процессе. 25.02.2018 (17:00) во 2-м корпусе " +
-                "в актовом зале состоится мероприятие, посвященное данному событию."));
-        postItems.add(new NewsPost(65,11, R.drawable.postpicture1, R.drawable.user_avatar1,
-                "ТРиТПО", "Меропрятие " +
-                "посвящено прекрасному предмету ТРиТПО. Именно на нем вы можете получить дополниельные баллы к лабораторным " +
-                "и кучу положительных эмоций. Ждем вас! Место встречи 5й корпус аудитория - 512."));
-        postItems.add(new NewsPost(70,34, R.drawable.postpicture2, R.drawable.user_avatar2,
-                "ОБЩАГА", "Студенты из " +
-                "общежития №1 жалуются на проведение ремонта в соседних блоках, что влечет за собой большое скопление " +
-                "мусора на коридорах. Обсуждение данного вопроса состоится в комнате отдыха общежития №1 27.02.2018 (18:45)."));
-        postItems.add(new NewsPost(50,23, R.drawable.postpicture, R.drawable.user_avatar,
-                "УНИВЕР", "Ректор " +
-                "университета БГУиР рассказал о значимости бога в образовательном процессе. 25.02.2018 (17:00) во 2-м корпусе " +
-                "в актовом зале состоится мероприятие, посвященное данному событию."));
-        postItems.add(new NewsPost(65,11, R.drawable.postpicture1, R.drawable.user_avatar1,
-                "ТРиТПО", "Меропрятие " +
-                "посвящено прекрасному предмету ТРиТПО. Именно на нем вы можете получить дополниельные баллы к лабораторным " +
-                "и кучу положительных эмоций. Ждем вас! Место встречи 5й корпус аудитория - 512."));
-        postItems.add(new NewsPost(70,34, R.drawable.postpicture2, R.drawable.user_avatar2,
-                "ОБЩАГА", "Студенты из " +
-                "общежития №1 жалуются на проведение ремонта в соседних блоках, что влечет за собой большое скопление " +
-                "мусора на коридорах. Обсуждение данного вопроса состоится в комнате отдыха общежития №1 27.02.2018 (18:45)."));
-        return postItems;
+    public static void getPostItems(final Context context, final NewsAdapter newsAdapter,
+                                    final LeaguesInterfaceAdapter leaguesInterfaceAdapter,
+                                    final RecyclerView recyclerView, final ProgressBar progressBarSpinner,
+                                    int id, boolean newsPlace, final LeagueListElement leagueListElement) {
+        if (newsPosts.size() != 0)
+            newsPosts.clear();
+
+        APIService mAPIService = ApiUtils.getAPIService();
+        if (newsPlace) {
+            mAPIService.getListOfLeagueNews(id).enqueue(new Callback<ListLeagueNewsResponse>() {
+                @Override
+                public void onResponse(Call<ListLeagueNewsResponse> call, Response<ListLeagueNewsResponse> response) {
+                    if (response.isSuccessful()) {
+                        ListLeagueNewsResponse listLeagueNews = response.body();
+                        updateLeagueNews(leagueListElement, listLeagueNews, newsPosts);
+                        leaguesInterfaceAdapter.addAllLeagueNews(newsPosts);
+                        recyclerView.setAdapter(leaguesInterfaceAdapter);
+                    } else {
+                        Toast.makeText(context, "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
+                    }
+                    progressBarSpinner.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onFailure(Call<ListLeagueNewsResponse> call, Throwable t) {
+                    Toast.makeText(context, "Ошибка подключения к серверу", Toast.LENGTH_SHORT).show();
+                    progressBarSpinner.setVisibility(View.GONE);
+                }
+            });
+        } else {
+            mAPIService.getAllUserNews(id).enqueue(new Callback<ListAllUserNewsResponse>() {
+                @Override
+                public void onResponse(Call<ListAllUserNewsResponse> call, Response<ListAllUserNewsResponse> response) {
+                    if (response.isSuccessful()) {
+                        ListAllUserNewsResponse listAllUserNews = response.body();
+                        updateAllUserNews(listAllUserNews, newsPosts);
+                        newsAdapter.addAllNews(newsPosts);
+                        recyclerView.setAdapter(newsAdapter);
+                    } else {
+                        Toast.makeText(context, "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
+                    }
+                    progressBarSpinner.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onFailure(Call<ListAllUserNewsResponse> call, Throwable t) {
+                    Toast.makeText(context, "Ошибка подключения к серверу", Toast.LENGTH_SHORT).show();
+                    progressBarSpinner.setVisibility(View.GONE);
+                }
+            });
+        }
+    }
+
+    public static void updateAllUserNews(ListAllUserNewsResponse listAllUserNews,
+                                         ArrayList<NewsPost> newsPosts) {
+        for (int i = 0; i < listAllUserNews.getIndex().size(); i++) {
+            newsPosts.add(new NewsPost(20, 11, 1, 1,
+                    listAllUserNews.getLeague().get(i), listAllUserNews.getDescription().get(i)));
+        }
+    }
+
+    public static void updateLeagueNews(LeagueListElement leagueListElement, ListLeagueNewsResponse listLeagueNews,
+                                        ArrayList<NewsPost> newsPosts) {
+        for (int i = 0; i < listLeagueNews.getIndex().size(); i++) {
+            newsPosts.add(new NewsPost(30, 23, 1, 1,
+                    leagueListElement.getLeagueName(), listLeagueNews.getDescription().get(i)));
+        }
     }
 }

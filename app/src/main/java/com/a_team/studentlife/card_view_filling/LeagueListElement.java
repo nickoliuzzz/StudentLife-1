@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class LeagueListElement {
     private Integer leagueIndex;
     private String leagueName;
-    public static final ArrayList<LeagueListElement> leagueListElements = new ArrayList<>();
+    public static ArrayList<LeagueListElement> leagueListElements = new ArrayList<>();
 
     public LeagueListElement(Integer leagueIndex, String leagueName) {
         this.leagueIndex = leagueIndex;
@@ -39,6 +39,8 @@ public class LeagueListElement {
                                              final LeaguesAdapter leaguesAdapter,
                                              final RecyclerView recyclerView,
                                              final ProgressBar progressBarSpinner, int userId) {
+        if (leagueListElements.size() != 0)
+            leagueListElements.clear();
 
         APIService mAPIService = ApiUtils.getAPIService();
         mAPIService.getListOfLeagues(userId).enqueue(new Callback<ListLeaguesResponse>() {
@@ -49,7 +51,6 @@ public class LeagueListElement {
                     updateLeagueList(listFromServer, leagueListElements);
                     leaguesAdapter.addAllLeagues(leagueListElements);
                     recyclerView.setAdapter(leaguesAdapter);
-                    Toast.makeText(context, "Успешное соединенние с сервером", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context, "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
                 }

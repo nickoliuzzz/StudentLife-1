@@ -33,7 +33,7 @@ public class NewsRecyclerViewHolder extends RecyclerView.ViewHolder {
     public void bind(NewsPost newsPost) {
         participants.setText(newsPost.getParticipants().toString());
         likes.setText(newsPost.getLikes().toString());
-        userName.setText(newsPost.getUserName());
+        userName.setText(newsPost.getLeagueName());
         postText.setText(newsPost.getPostText());
         //postedPhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), newsPost.getPostImageId()));
         //userPhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), newsPost.getUserImageId()));
