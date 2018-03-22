@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationAndAuthentication.registrationActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/animation_list"
+        android:orientation="vertical"
+        android:padding="40dp"
+        tools:layout_editor_absoluteX="219dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/singUpLabel"
+            android:textAlignment="center"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textColor="@android:color/background_light"
+            android:textSize="36sp"
+            android:typeface="monospace" />
+
+        <EditText
+            android:id="@+id/userNameTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/account"
+            android:ems="10"
+            android:hint="@string/userNameTextView"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF" />
+
+        <EditText
+            android:id="@+id/emailTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/envelope"
+            android:ems="10"
+            android:hint="@string/emailTextView"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textAlignment="textStart"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF" />
+
+        <EditText
+            android:id="@+id/firstNameTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/account"
+            android:ems="10"
+            android:hint="@string/firstNameTextView"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF" />
+
+        <EditText
+            android:id="@+id/secondNameTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/account"
+            android:ems="10"
+            android:hint="@string/secondNameTextView"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/maleCheckBox"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:onClick="onCheckboxClicked"
+                android:paddingStart="0dp"
+                android:text="Мужской"
+                android:textAlignment="viewStart"
+                android:textColor="#FFF"
+                android:textColorHint="#FFF" />
+
+            <CheckBox
+                android:id="@+id/femaleCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:onClick="onCheckboxClicked"
+                android:paddingStart="0dp"
+                android:text="Женский"
+                android:textAlignment="viewStart"
+                android:textColor="#FFF"
+                android:textColorHint="#FFF" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/dateTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/calendar"
+            android:ems="10"
+            android:hint="@string/dateTextView"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/white"
+            android:textColorHint="#FFF" />
+
+        <EditText
+            android:id="@+id/passwordTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/lock"
+            android:ems="10"
+            android:hint="@string/passwordTextView"
+            android:inputType="textPassword"
+            android:paddingStart="0dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#FFF" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/signUpBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/selector_xml_btn_yellow"
+                android:elevation="0dp"
+                android:onClick="checkLogin"
+                android:text="@string/singUpButton"
+                tools:ignore="OnClick" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
