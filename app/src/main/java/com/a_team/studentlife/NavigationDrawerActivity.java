@@ -72,6 +72,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
+
+        android.support.v4.app.FragmentTransaction frTransaction = getSupportFragmentManager().beginTransaction();
+        setTitle("Новости");
+        frTransaction.replace(R.id.container, fragmentNews).commit();
     }
 
     @Override

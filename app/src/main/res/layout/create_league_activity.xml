@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.a_team.studentlife.navigation_drawer_fragments.FragmentStore"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/createLeagueHeaderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="@string/createleaguehead"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nameofchildleaguetextview"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/createLeagueNameTextEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/descrofchildleaguetextview"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/createLeagueDescriptionTextEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/photoofchildleaguetextview"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/createLeaguePhotoTextEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="NameOFPHOTO" />
+
+    <Button
+        android:id="@+id/createChildLeagueButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/createChildLeagueButton" />
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.a_team.studentlife.Server;
 
+import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
@@ -27,4 +28,10 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/userEvents/")
     Call<ListAllUserNewsResponse> getAllUserNews(@Field("userId") Integer userId);
+
+    @FormUrlEncoded
+    @POST("api/createChildLeague/")
+    Call<CreateLeagueResponse> createChildLeague(@Field("parentLeagueId") Integer parentLeagueId,
+                                                 @Field("leagueName") String leagueName,
+                                                 @Field("description") String description);
 }

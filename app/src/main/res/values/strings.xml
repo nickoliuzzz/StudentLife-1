@@ -44,5 +44,10 @@
     <string name="Leag_name">550502 CИФО</string>
     <string name="applyButton">Подать заявку</string>
     <string name="createLeagueButton">Создать лигу</string>
+    <string name="createleaguehead">Создание новой лиги для</string>
+    <string name="nameofchildleaguetextview">Введите название лиги</string>
+    <string name="descrofchildleaguetextview">Краткое описание:</string>
+    <string name="photoofchildleaguetextview">Выберите фото</string>
+    <string name="createChildLeagueButton">Создать лигу</string>
 
 </resources>
