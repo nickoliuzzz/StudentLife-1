@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.a_team.studentlife">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,17 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NavigationDrawerActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".RegAndAuth.LogInActivity"
+            tools:ignore="InnerclassSeparator" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".adapter.leagues_interface.LeagueActivity" />
-        <activity android:name=".CreateLeagueActivity"></activity>
+        <activity
+            android:name=".RegAndAuth.RegistrationActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".NavigationDrawerActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".adapter.leagues_interface.LeagueActivity" />
+        <activity
+            android:name=".CreateLeagueActivity" />
     </application>
 
 </manifest>

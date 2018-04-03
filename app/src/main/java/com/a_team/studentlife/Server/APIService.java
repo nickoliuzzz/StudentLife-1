@@ -4,12 +4,15 @@ import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
+import com.a_team.studentlife.Server.ServerResponse.RegAndAuthResponse;
 import com.a_team.studentlife.Server.ServerResponse.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface APIService {
 
@@ -34,4 +37,13 @@ public interface APIService {
     Call<CreateLeagueResponse> createChildLeague(@Field("parentLeagueId") Integer parentLeagueId,
                                                  @Field("leagueName") String leagueName,
                                                  @Field("description") String description);
+
+    @GET("api/register")
+    Call<RegAndAuthResponse> sendFirstName(@Query("firstname") String firstname,
+                                           @Query("lastname") String lastname,
+                                           @Query("username") String username,
+                                           @Query("password") String password,
+                                           @Query("email") String email,
+                                           @Query("sex") Boolean sex,
+                                           @Query("birthday") String birthday);
 }
