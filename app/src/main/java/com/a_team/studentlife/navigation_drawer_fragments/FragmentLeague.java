@@ -82,7 +82,7 @@ public class FragmentLeague extends Fragment {
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         leaguesAdapter = new LeaguesAdapter();
         LeagueListElement.getLeagueListElements(view.getContext(), leaguesAdapter, recyclerView,
-                                                progressBarSpinner, User.getUserInstanse().getId());
+                                                progressBarSpinner, User.getUserInstance().getId());
         return view;
     }
 

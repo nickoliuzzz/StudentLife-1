@@ -82,7 +82,7 @@ public class FragmentNews extends Fragment {
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         newsAdapter = new NewsAdapter();
         NewsPost.getPostItems(view.getContext(), newsAdapter, null, recyclerView,
-                progressBarSpinner, User.getUserInstanse().getId(), false, null);
+                progressBarSpinner, User.getUserInstance().getId(), false, null);
         return view;
     }
 

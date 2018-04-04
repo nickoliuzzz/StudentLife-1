@@ -121,7 +121,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
                 if (response.isSuccessful() && response.body().getError().equals("ok")) {
-                    User.getUserInstanse().setId(response.body().getId());
+                    User.getUserInstance().setId(response.body().getId());
+                    User.getUserInstance().setFirstName(firstNameTextField.getText().toString());
+                    User.getUserInstance().setLastName(secondNameTextField.getText().toString());
                     Toast.makeText(RegistrationActivity.this, "Успешная регистрация",
                             Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(view.getContext(), NavigationDrawerActivity.class);
