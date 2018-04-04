@@ -8,20 +8,35 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.a_team.studentlife.NavigationDrawerActivity;
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.Server.APIService;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
+import com.a_team.studentlife.Server.ServerResponse.LoginResponse;
+import com.a_team.studentlife.UserInformation.User;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LogInActivity extends AppCompatActivity implements View.OnClickListener {
     AnimationDrawable animationDrawable;
     LinearLayout linearLayout;
+    private EditText loginEditText;
+    private EditText passwordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in_activity);
 
+
+        loginEditText = (EditText) findViewById(R.id.loginTextField);
+        passwordEditText = (EditText) findViewById(R.id.passwordTextField);
         linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
         animationDrawable = (AnimationDrawable) linearLayout.getBackground();
         animationDrawable.setEnterFadeDuration(5000);
@@ -41,8 +56,30 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this, RegistrationActivity.class);
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         } else {
-            Intent intent = new Intent(this, NavigationDrawerActivity.class);
-            startActivity(intent);
+            APIService mAPIService = ApiUtils.getAPIService();
+            mAPIService.login(loginEditText.getText().toString(), passwordEditText.getText().toString())
+                    .enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            if (response.isSuccessful() && response.body().getError().equals("ok")) {
+                                User.getUserInstanse().setId(6/*response.body().getId()*/);
+                                Toast.makeText(LogInActivity.this, "Успешная авторизация",
+                                        Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LogInActivity.this,
+                                                            NavigationDrawerActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(LogInActivity.this, "Ошибка",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
+                            Toast.makeText(LogInActivity.this, "Ошибка при авторизации",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
     }
 }

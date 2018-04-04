@@ -19,7 +19,8 @@ import com.a_team.studentlife.NavigationDrawerActivity;
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
-import com.a_team.studentlife.Server.ServerResponse.RegAndAuthResponse;
+import com.a_team.studentlife.Server.ServerResponse.RegistrationResponse;
+import com.a_team.studentlife.UserInformation.User;
 
 import java.util.Calendar;
 
@@ -36,7 +37,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private EditText passwordTextField;
     private CheckBox maleCheckBox, femaleCheckBox;
     private APIService mAPIService;
-    private Boolean sex;
+    private int sex;
     private String error;
     AnimationDrawable animationDrawable;
     LinearLayout linearLayout;
@@ -99,11 +100,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         switch (view.getId()) {
             case R.id.maleCheckBox:
                 femaleCheckBox.setChecked(false);
-                sex = true;
+                sex = 1;
                 break;
             case R.id.femaleCheckBox:
                 maleCheckBox.setChecked(false);
-                sex = false;
+                sex = 0;
                 break;
             default:
                 maleCheckBox.setChecked(false);
@@ -116,22 +117,22 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         mAPIService.sendFirstName(firstNameTextField.getText().toString(), secondNameTextField.getText().toString(),
                 userNameTextField.getText().toString(), passwordTextField.getText()
                 .toString(), emailTextField.getText().toString(), sex, date)
-                .enqueue(new Callback<RegAndAuthResponse>() {
+                .enqueue(new Callback<RegistrationResponse>() {
             @Override
-            public void onResponse(Call<RegAndAuthResponse> call, Response<RegAndAuthResponse> response) {
-                if (response.isSuccessful() && response.body().getError() == "ok") {
+            public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
+                if (response.isSuccessful() && response.body().getError().equals("ok")) {
+                    User.getUserInstanse().setId(response.body().getId());
                     Toast.makeText(RegistrationActivity.this, "Успешная регистрация",
                             Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(view.getContext(), NavigationDrawerActivity.class);
                     startActivity(intent);
                 } else {
                     error = response.body().getError();
-
                 }
             }
 
             @Override
-            public void onFailure(Call<RegAndAuthResponse> call, Throwable t) {
+            public void onFailure(Call<RegistrationResponse> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "Ошибка при регистрации", Toast.LENGTH_SHORT).show();
             }
         });

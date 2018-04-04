@@ -1,6 +1,5 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.adapter.leagues.LeaguesAdapter;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
 
@@ -82,7 +82,7 @@ public class FragmentLeague extends Fragment {
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         leaguesAdapter = new LeaguesAdapter();
         LeagueListElement.getLeagueListElements(view.getContext(), leaguesAdapter, recyclerView,
-                                                progressBarSpinner,6);
+                                                progressBarSpinner, User.getUserInstanse().getId());
         return view;
     }
 

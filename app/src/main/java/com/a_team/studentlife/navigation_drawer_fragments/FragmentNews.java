@@ -1,10 +1,8 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.adapter.news.NewsAdapter;
 import com.a_team.studentlife.card_view_filling.NewsPost;
 
@@ -83,7 +82,7 @@ public class FragmentNews extends Fragment {
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         newsAdapter = new NewsAdapter();
         NewsPost.getPostItems(view.getContext(), newsAdapter, null, recyclerView,
-                progressBarSpinner, 6, false, null);
+                progressBarSpinner, User.getUserInstanse().getId(), false, null);
         return view;
     }
 

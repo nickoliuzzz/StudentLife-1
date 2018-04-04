@@ -4,7 +4,8 @@ import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
-import com.a_team.studentlife.Server.ServerResponse.RegAndAuthResponse;
+import com.a_team.studentlife.Server.ServerResponse.LoginResponse;
+import com.a_team.studentlife.Server.ServerResponse.RegistrationResponse;
 import com.a_team.studentlife.Server.ServerResponse.ServerResponse;
 
 import retrofit2.Call;
@@ -38,12 +39,16 @@ public interface APIService {
                                                  @Field("leagueName") String leagueName,
                                                  @Field("description") String description);
 
+    @GET("api/login")
+    Call<LoginResponse> login(@Query("username") String userName,
+                              @Query("password") String password);
+
     @GET("api/register")
-    Call<RegAndAuthResponse> sendFirstName(@Query("firstname") String firstname,
-                                           @Query("lastname") String lastname,
-                                           @Query("username") String username,
-                                           @Query("password") String password,
-                                           @Query("email") String email,
-                                           @Query("sex") Boolean sex,
-                                           @Query("birthday") String birthday);
+    Call<RegistrationResponse> sendFirstName(@Query("firstname") String firstname,
+                                             @Query("lastname") String lastname,
+                                             @Query("username") String username,
+                                             @Query("password") String password,
+                                             @Query("email") String email,
+                                             @Query("sex") int sex,
+                                             @Query("birthday") String birthday);
 }
