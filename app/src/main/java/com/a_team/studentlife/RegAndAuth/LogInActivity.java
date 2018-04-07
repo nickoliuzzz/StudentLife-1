@@ -62,7 +62,9 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                             if (response.isSuccessful() && response.body().getError().equals("ok")) {
-                                User.getUserInstance().setId(6/*response.body().getId()*/);
+                                User.getUserInstance().setId(response.body().getId());
+                                User.getUserInstance().setFirstName(response.body().getFirstName());
+                                User.getUserInstance().setLastName(response.body().getLastName());
                                 Toast.makeText(LogInActivity.this, "Успешная авторизация",
                                         Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LogInActivity.this,

@@ -51,7 +51,7 @@ public class LeagueListElement {
                 if (response.isSuccessful()) {
                     ListLeaguesResponse listFromServer = response.body();
                     updateLeagueList(listFromServer, leagueListElements);
-                    leaguesAdapter.addAllLeagues(leagueListElements);
+                    leaguesAdapter.addAllLeagues(leagueListElements, false);
                     recyclerView.setAdapter(leaguesAdapter);
                 } else {
                     Toast.makeText(context, "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();

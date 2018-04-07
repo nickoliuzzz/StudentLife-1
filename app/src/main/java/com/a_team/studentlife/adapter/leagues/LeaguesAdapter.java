@@ -14,10 +14,12 @@ import java.util.List;
 
 public class LeaguesAdapter extends RecyclerView.Adapter<LeaguesRecyclerViewHolder>{
     private ArrayList<LeagueListElement> leagueListElements = new ArrayList<>();
+    private boolean shopFlag;
 
-    public void addAllLeagues(List<LeagueListElement> items) {
+    public void addAllLeagues(List<LeagueListElement> items, boolean shopFlag) {
         if (this.leagueListElements.size() != 0)
             this.leagueListElements.clear();
+        this.shopFlag = shopFlag;
         int position = getItemCount();
         this.leagueListElements.addAll(items);
         notifyItemRangeChanged(position, this.leagueListElements.size());
@@ -31,7 +33,7 @@ public class LeaguesAdapter extends RecyclerView.Adapter<LeaguesRecyclerViewHold
 
     @Override
     public void onBindViewHolder(LeaguesRecyclerViewHolder holder, int position) {
-        holder.bind(this.leagueListElements.get(position));
+        holder.bind(this.leagueListElements.get(position), this.shopFlag);
     }
 
     @Override

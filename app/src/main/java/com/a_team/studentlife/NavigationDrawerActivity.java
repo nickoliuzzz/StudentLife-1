@@ -18,7 +18,6 @@ import com.a_team.studentlife.navigation_drawer_fragments.FragmentAccount;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentLeague;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentNews;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentSettings;
-import com.a_team.studentlife.navigation_drawer_fragments.FragmentStore;
 
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,7 +27,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
     FragmentAccount fragmentAccount;
     FragmentNews fragmentNews;
     FragmentLeague fragmentLeague;
-    FragmentStore fragmentStore;
     FragmentSettings fragmentSettings;
 
     @SuppressLint("SetTextI18n")
@@ -60,7 +58,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
         fragmentAccount = new FragmentAccount();
         fragmentNews = new FragmentNews();
         fragmentLeague = new FragmentLeague();
-        fragmentStore = new FragmentStore();
         fragmentSettings = new FragmentSettings();
 
         View headerView = navigationView.getHeaderView(0);
@@ -132,7 +129,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
             frTransaction.replace(R.id.container, fragmentLeague).commit();
         } else if (id == R.id.store_menu) {
             setTitle("Магазин");
-            frTransaction.replace(R.id.container, fragmentStore).commit();
+            frTransaction.replace(R.id.container, fragmentLeague).commit();
         } else if (id == R.id.settings_menu) {
             setTitle("Настройки");
             frTransaction.replace(R.id.container, fragmentSettings).commit();

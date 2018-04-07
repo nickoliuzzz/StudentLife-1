@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.UserInformation.User;
@@ -74,6 +75,7 @@ public class FragmentAccount extends Fragment {
         userProfileName = (TextView) view.findViewById(R.id.user_profile_name);
         userProfileName.setText(User.getUserInstance().getFirstName() + " " +
                                 User.getUserInstance().getLastName());
+        //Toast.makeText(view.getContext(), User.getUserInstance().getFirstName(), Toast.LENGTH_SHORT).show();
         return view;
     }
 

@@ -68,4 +68,10 @@
     <string name="dateTextView">Дата рождения</string>
     <string name="firstNameTextView">Имя</string>
 
+    // Shop
+    <string name="product_name_text">Имя продукта</string>
+    <string name="is_bought_text">Уже куплено</string>
+    <string name="price_text">Цена:</string>
+    <string name="arrow_descr">TODO</string>
+
 </resources>

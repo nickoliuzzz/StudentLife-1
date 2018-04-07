@@ -10,9 +10,40 @@ public class LoginResponse {
     @SerializedName("error")
     @Expose
     private String error;
-//    @SerializedName("id")
-//    @Expose
-//    private int id;
+    @SerializedName("id")
+    @Expose
+    private int id;
+    @SerializedName("firstName")
+    @Expose
+    private String firstName;
+    @SerializedName("lastName")
+    @Expose
+    private String lastName;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 
     public String getType() {
         return type;
@@ -30,11 +61,4 @@ public class LoginResponse {
         this.error = error;
     }
 
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 }

@@ -25,7 +25,9 @@ class LeaguesRecyclerViewHolder extends RecyclerView.ViewHolder{
         this.leagueItem = (LinearLayout) itemView.findViewById(R.id.leagueItem);
     }
 
-    private void setLeagueItemListener(LinearLayout leagueItem, final LeagueListElement leagueListElement) {
+    private void setLeagueItemListener(LinearLayout leagueItem,
+                                       final LeagueListElement leagueListElement,
+                                       boolean shopFlag) {
         leagueItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,9 +39,9 @@ class LeaguesRecyclerViewHolder extends RecyclerView.ViewHolder{
         });
     }
 
-    public void bind(LeagueListElement leagueListElement) {
+    public void bind(LeagueListElement leagueListElement, boolean shopFlag) {
         leagueNameText.setText(leagueListElement.getLeagueName());
-        setLeagueItemListener(leagueItem, leagueListElement);
+        setLeagueItemListener(leagueItem, leagueListElement, shopFlag);
         //leaguePhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), leagueListElement.getLeagueImageId()));
     }
 }
