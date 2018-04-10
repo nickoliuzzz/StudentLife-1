@@ -1,5 +1,22 @@
 package com.a_team.studentlife.adapter.Shop;
 
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.a_team.studentlife.Server.APIService;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
+import com.a_team.studentlife.Server.ServerResponse.ListLeagueProductsResponse;
+import com.a_team.studentlife.UserInformation.User;
+import com.a_team.studentlife.card_view_filling.LeagueListElement;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Product {
     private int productId;
     private int leagueShopId;
@@ -7,6 +24,7 @@ public class Product {
     private String productName;
     private String productDescription;
     private boolean isBought;
+    public static ArrayList<Product> products = new ArrayList<>();
 
     public Product(int productId, int leagueShopId, int productPrice, String productName,
                    String productDescription, boolean isBought) {
@@ -60,5 +78,52 @@ public class Product {
 
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
+    }
+
+    public static void getListOfLeagueShopProducts(final LeagueShopProductsActivity leagueShopProductsActivity,
+                                                   final LeagueShopAdapter leagueShopAdapter,
+                                                   final RecyclerView recyclerView,
+                                                   final ProgressBar progressBarSpinner,
+                                                   final LeagueListElement leagueListElement) {
+        if (products.size() != 0)
+            products.clear();
+
+        APIService mAPIService = ApiUtils.getAPIService();
+        mAPIService.getListOfLeagueShopProducts(User.getUserInstance().getId(),
+                leagueListElement.getLeagueIndex()).enqueue(new Callback<ListLeagueProductsResponse>() {
+            @Override
+            public void onResponse(Call<ListLeagueProductsResponse> call,
+                                   Response<ListLeagueProductsResponse> response) {
+                if (response.isSuccessful()) {
+                    ListLeagueProductsResponse listLeagueProductsResponse = response.body();
+                    updateListOfLeagueShopProduct(listLeagueProductsResponse, products, leagueListElement);
+                    leagueShopAdapter.addAllProducts(products);
+                    recyclerView.setAdapter(leagueShopAdapter);
+                } else {
+                    Toast.makeText(leagueShopProductsActivity,
+                            "Сервер вернул ошибку",
+                            Toast.LENGTH_SHORT).show();
+                }
+                progressBarSpinner.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<ListLeagueProductsResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private static void updateListOfLeagueShopProduct(ListLeagueProductsResponse listLeagueProductsResponse,
+                                                      ArrayList<Product> products,
+                                                      LeagueListElement leagueListElement) {
+        for (int i = 0; i < listLeagueProductsResponse.getIndex().size(); i++) {
+            products.add(new Product(listLeagueProductsResponse.getIndex().get(i),
+                    leagueListElement.getLeagueIndex(),
+                    listLeagueProductsResponse.getPrice().get(i),
+                    listLeagueProductsResponse.getProductName().get(i),
+                    listLeagueProductsResponse.getDescription().get(i),
+                    listLeagueProductsResponse.getIsBought().get(i)));
+        }
     }
 }

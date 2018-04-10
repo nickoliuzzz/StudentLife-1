@@ -1,15 +1,14 @@
 package com.a_team.studentlife.adapter.leagues;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.adapter.Shop.LeagueShopProductsActivity;
 import com.a_team.studentlife.adapter.leagues_interface.LeagueActivity;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
 
@@ -27,16 +26,21 @@ class LeaguesRecyclerViewHolder extends RecyclerView.ViewHolder{
 
     private void setLeagueItemListener(LinearLayout leagueItem,
                                        final LeagueListElement leagueListElement,
-                                       boolean shopFlag) {
-        leagueItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent leagueIntent = new Intent(itemView.getContext(), LeagueActivity.class);
-                leagueIntent.putExtra("leagueIndex", leagueListElement.getLeagueIndex());
-                leagueIntent.putExtra("leagueName", leagueListElement.getLeagueName());
-                itemView.getContext().startActivity(leagueIntent);
-            }
-        });
+                                       final boolean shopFlag) {
+            leagueItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent leagueIntent;
+                    if (shopFlag) {
+                        leagueIntent = new Intent(itemView.getContext(), LeagueShopProductsActivity.class);
+                    } else {
+                        leagueIntent = new Intent(itemView.getContext(), LeagueActivity.class);
+                    }
+                    leagueIntent.putExtra("leagueIndex", leagueListElement.getLeagueIndex());
+                    leagueIntent.putExtra("leagueName", leagueListElement.getLeagueName());
+                    itemView.getContext().startActivity(leagueIntent);
+                }
+            });
     }
 
     public void bind(LeagueListElement leagueListElement, boolean shopFlag) {

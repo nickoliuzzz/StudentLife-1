@@ -3,6 +3,7 @@ package com.a_team.studentlife.Server;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
+import com.a_team.studentlife.Server.ServerResponse.ListLeagueProductsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
 import com.a_team.studentlife.Server.ServerResponse.LoginResponse;
 import com.a_team.studentlife.Server.ServerResponse.RegistrationResponse;
@@ -51,4 +52,9 @@ public interface APIService {
                                              @Query("email") String email,
                                              @Query("sex") int sex,
                                              @Query("birthday") String birthday);
+
+    @GET("api/getListOfLeagueShopProducts")
+    Call<ListLeagueProductsResponse> getListOfLeagueShopProducts (@Query("userId") int userId,
+                                                                  @Query("leagueId") int leagueId);
+
 }

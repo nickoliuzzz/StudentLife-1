@@ -26,7 +26,7 @@ public class LeagueShopRecyclerViewHolder extends RecyclerView.ViewHolder {
         this.productNameTextView.setText(product.getProductName());
         this.productPriceTextView.setText(productPriceTextView.getText() + " " + product.getProductPrice());
         if (product.isBought()) {
-            this.isProductBoughtTextView.setText("Уже купленно");
+            this.isProductBoughtTextView.setText("Уже куплено");
             this.isProductBoughtTextView.setTextColor(Color.GREEN);
         } else {
             this.isProductBoughtTextView.setText("Еще не куплено");
