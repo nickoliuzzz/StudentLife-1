@@ -12,6 +12,7 @@ import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
+import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.adapter.leagues_interface.LeaguesInterfaceAdapter;
 import com.a_team.studentlife.adapter.news.NewsAdapter;
 
@@ -72,7 +73,8 @@ public class NewsPost {
 
         APIService mAPIService = ApiUtils.getAPIService();
         if (newsPlace) {
-            mAPIService.getListOfLeagueNews(id).enqueue(new Callback<ListLeagueNewsResponse>() {
+            mAPIService.getListOfLeagueNews(User.getUserInstance().getId(), id).
+                    enqueue(new Callback<ListLeagueNewsResponse>() {
                 @Override
                 public void onResponse(Call<ListLeagueNewsResponse> call, Response<ListLeagueNewsResponse> response) {
                     if (response.isSuccessful()) {

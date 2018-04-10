@@ -1,6 +1,6 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.UserInformation.User;
@@ -21,12 +20,12 @@ import com.a_team.studentlife.card_view_filling.LeagueListElement;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentLeague.OnFragmentInteractionListener} interface
+ * {@link FragmentStore.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentLeague#newInstance} factory method to
+ * Use the {@link FragmentStore#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentLeague extends Fragment {
+public class FragmentStore extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,7 +41,7 @@ public class FragmentLeague extends Fragment {
     private LeaguesAdapter leaguesAdapter;
     private ProgressBar progressBarSpinner;
 
-    public FragmentLeague() {
+    public FragmentStore() {
         // Required empty public constructor
     }
 
@@ -52,11 +51,11 @@ public class FragmentLeague extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentLeague.
+     * @return A new instance of fragment FragmentStore.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentLeague newInstance(String param1, String param2) {
-        FragmentLeague fragment = new FragmentLeague();
+    public static FragmentStore newInstance(String param1, String param2) {
+        FragmentStore fragment = new FragmentStore();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,11 +72,10 @@ public class FragmentLeague extends Fragment {
         }
     }
 
-    @SuppressLint("NewApi")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragmentgetAccessibilityClassName
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_league, container, false);
         recyclerView = view.findViewById(R.id.recycler_list_posts_leagues);
         progressBarSpinner = view.findViewById(R.id.loading_spinner);
@@ -86,7 +84,7 @@ public class FragmentLeague extends Fragment {
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         leaguesAdapter = new LeaguesAdapter();
         LeagueListElement.getLeagueListElements(view.getContext(), leaguesAdapter, recyclerView,
-                                                progressBarSpinner, User.getUserInstance().getId(), false);
+                progressBarSpinner, User.getUserInstance().getId(), true);
         return view;
     }
 

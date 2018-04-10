@@ -40,7 +40,9 @@ public class LeagueListElement {
     public static void getLeagueListElements(final Context context,
                                              final LeaguesAdapter leaguesAdapter,
                                              final RecyclerView recyclerView,
-                                             final ProgressBar progressBarSpinner, int userId) {
+                                             final ProgressBar progressBarSpinner,
+                                             int userId,
+                                             final boolean shopFlag) {
         if (leagueListElements.size() != 0)
             leagueListElements.clear();
 
@@ -51,7 +53,7 @@ public class LeagueListElement {
                 if (response.isSuccessful()) {
                     ListLeaguesResponse listFromServer = response.body();
                     updateLeagueList(listFromServer, leagueListElements);
-                    leaguesAdapter.addAllLeagues(leagueListElements, false);
+                    leaguesAdapter.addAllLeagues(leagueListElements, shopFlag);
                     recyclerView.setAdapter(leaguesAdapter);
                 } else {
                     Toast.makeText(context, "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();

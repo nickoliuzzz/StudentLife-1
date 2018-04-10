@@ -26,9 +26,9 @@ public interface APIService {
     @POST("api/getLeagues/")
     Call<ListLeaguesResponse> getListOfLeagues(@Field("userId") Integer userId);
 
-    @FormUrlEncoded
-    @POST("api/getListOfEvent/")
-    Call<ListLeagueNewsResponse> getListOfLeagueNews(@Field("leagueId") Integer leagueId);
+    @GET("api/getListOfEvent")
+    Call<ListLeagueNewsResponse> getListOfLeagueNews(@Query("userId") Integer userId,
+                                                     @Query("leagueId") Integer leagueId);
 
     @FormUrlEncoded
     @POST("api/userEvents/")
