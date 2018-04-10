@@ -7,7 +7,9 @@ import android.widget.Toast;
 
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
-import com.a_team.studentlife.Server.ServerResponse.ListLeagueProductsResponse;
+import com.a_team.studentlife.Server.ServerResponse.ShopResponse.BoughtItems;
+import com.a_team.studentlife.Server.ServerResponse.ShopResponse.ListLeagueProductsResponse;
+import com.a_team.studentlife.Server.ServerResponse.ShopResponse.NotBoughtItems;
 import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
 
@@ -117,13 +119,23 @@ public class Product {
     private static void updateListOfLeagueShopProduct(ListLeagueProductsResponse listLeagueProductsResponse,
                                                       ArrayList<Product> products,
                                                       LeagueListElement leagueListElement) {
-        for (int i = 0; i < listLeagueProductsResponse.getIndex().size(); i++) {
-            products.add(new Product(listLeagueProductsResponse.getIndex().get(i),
+        NotBoughtItems notBoughtItems = listLeagueProductsResponse.getNotBought();
+        for (int i = 0; i < notBoughtItems.getIndex().size(); i++) {
+            products.add(new Product(notBoughtItems.getIndex().get(i),
                     leagueListElement.getLeagueIndex(),
-                    listLeagueProductsResponse.getPrice().get(i),
-                    listLeagueProductsResponse.getProductName().get(i),
-                    listLeagueProductsResponse.getDescription().get(i),
-                    listLeagueProductsResponse.getIsBought().get(i)));
+                    notBoughtItems.getPrice().get(i),
+                    notBoughtItems.getName().get(i),
+                    notBoughtItems.getDescription().get(i),
+                    false));
+        }
+        BoughtItems boughtItems = listLeagueProductsResponse.getBoughtItems();
+        for (int i = 0; i < boughtItems.getIndex().size(); i++) {
+            products.add(new Product(boughtItems.getIndex().get(i),
+                    leagueListElement.getLeagueIndex(),
+                    boughtItems.getPrice().get(i),
+                    boughtItems.getName().get(i),
+                    boughtItems.getDescription().get(i),
+                    true));
         }
     }
 }

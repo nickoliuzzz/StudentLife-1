@@ -1,23 +1,20 @@
-package com.a_team.studentlife.Server.ServerResponse;
+package com.a_team.studentlife.Server.ServerResponse.ShopResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ListLeagueProductsResponse {
+public class BoughtItems {
     @SerializedName("index")
     @Expose
     private List<Integer> index = null;
-    @SerializedName("productName")
+    @SerializedName("name")
     @Expose
-    private List<String> productName = null;
+    private List<String> name = null;
     @SerializedName("price")
     @Expose
     private List<Integer> price = null;
-    @SerializedName("isBought")
-    @Expose
-    private List<Boolean> isBought = null;
     @SerializedName("description")
     @Expose
     private List<String> description = null;
@@ -30,12 +27,12 @@ public class ListLeagueProductsResponse {
         this.index = index;
     }
 
-    public List<String> getProductName() {
-        return productName;
+    public List<String> getName() {
+        return name;
     }
 
-    public void setProductName(List<String> productName) {
-        this.productName = productName;
+    public void setName(List<String> name) {
+        this.name = name;
     }
 
     public List<Integer> getPrice() {
@@ -44,14 +41,6 @@ public class ListLeagueProductsResponse {
 
     public void setPrice(List<Integer> price) {
         this.price = price;
-    }
-
-    public List<Boolean> getIsBought() {
-        return isBought;
-    }
-
-    public void setIsBought(List<Boolean> isBought) {
-        this.isBought = isBought;
     }
 
     public List<String> getDescription() {

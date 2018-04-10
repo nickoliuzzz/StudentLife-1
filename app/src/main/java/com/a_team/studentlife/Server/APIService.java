@@ -3,7 +3,7 @@ package com.a_team.studentlife.Server;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
-import com.a_team.studentlife.Server.ServerResponse.ListLeagueProductsResponse;
+import com.a_team.studentlife.Server.ServerResponse.ShopResponse.ListLeagueProductsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
 import com.a_team.studentlife.Server.ServerResponse.LoginResponse;
 import com.a_team.studentlife.Server.ServerResponse.RegistrationResponse;
