@@ -3,11 +3,12 @@ package com.a_team.studentlife.Server;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
-import com.a_team.studentlife.Server.ServerResponse.ShopResponse.ListLeagueProductsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
 import com.a_team.studentlife.Server.ServerResponse.LoginResponse;
 import com.a_team.studentlife.Server.ServerResponse.RegistrationResponse;
 import com.a_team.studentlife.Server.ServerResponse.ServerResponse;
+import com.a_team.studentlife.Server.ServerResponse.ShopResponse.BuyingProductResponse;
+import com.a_team.studentlife.Server.ServerResponse.ShopResponse.ListLeagueProductsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -56,5 +57,10 @@ public interface APIService {
     @GET("api/getListOfLeagueShopProducts")
     Call<ListLeagueProductsResponse> getListOfLeagueShopProducts (@Query("userId") int userId,
                                                                   @Query("leagueId") int leagueId);
+
+    @FormUrlEncoded
+    @POST("api/buyingItem/")
+    Call<BuyingProductResponse> buyProduct(@Field("userId") Integer userId,
+                                           @Field("itemId") Integer productId);
 
 }

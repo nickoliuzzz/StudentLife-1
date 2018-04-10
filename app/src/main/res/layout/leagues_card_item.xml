@@ -36,9 +36,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:text="@string/default_username"
-            android:textSize="18sp"
-            android:layout_marginStart="10dp" />
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

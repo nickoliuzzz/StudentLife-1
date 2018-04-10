@@ -7,12 +7,23 @@ import java.util.List;
 
 public class ListLeagueNewsResponse {
 
+    @SerializedName("role")
+    @Expose
+    private String role;
     @SerializedName("index")
     @Expose
     private List<Integer> index = null;
     @SerializedName("description")
     @Expose
     private List<String> description = null;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public List<Integer> getIndex() {
         return index;

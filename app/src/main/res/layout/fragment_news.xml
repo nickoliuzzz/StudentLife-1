@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/animation_list"
+    android:id="@+id/frame_layout_fragment_news"
     tools:context="com.a_team.studentlife.navigation_drawer_fragments.FragmentNews">
 
     <RelativeLayout

@@ -1,6 +1,7 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.UserInformation.User;
@@ -41,6 +42,8 @@ public class FragmentLeague extends Fragment {
     private LinearLayoutManager verticalLinearLayoutManager;
     private LeaguesAdapter leaguesAdapter;
     private ProgressBar progressBarSpinner;
+    private AnimationDrawable animationDrawable;
+    private FrameLayout frameLayout;
 
     public FragmentLeague() {
         // Required empty public constructor
@@ -79,6 +82,13 @@ public class FragmentLeague extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragmentgetAccessibilityClassName
         View view = inflater.inflate(R.layout.fragment_league, container, false);
+
+        frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_league);
+        animationDrawable = (AnimationDrawable) frameLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
+
         recyclerView = view.findViewById(R.id.recycler_list_posts_leagues);
         progressBarSpinner = view.findViewById(R.id.loading_spinner);
         progressBarSpinner.setVisibility(View.VISIBLE);

@@ -1,12 +1,13 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.a_team.studentlife.R;
 
@@ -29,6 +30,8 @@ public class FragmentSettings extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private AnimationDrawable animationDrawable;
+    private FrameLayout frameLayout;
 
     public FragmentSettings() {
         // Required empty public constructor
@@ -65,7 +68,15 @@ public class FragmentSettings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View view =  inflater.inflate(R.layout.fragment_settings, container, false);
+
+        frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_settings);
+        animationDrawable = (AnimationDrawable) frameLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

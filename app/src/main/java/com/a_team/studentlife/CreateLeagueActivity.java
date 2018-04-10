@@ -4,20 +4,20 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a_team.studentlife.ProgressBars.ProgressService;
-import com.a_team.studentlife.R;
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
-import com.a_team.studentlife.Server.ServerResponse.ServerResponse;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
 
 import retrofit2.Call;
@@ -31,12 +31,21 @@ public class CreateLeagueActivity extends AppCompatActivity {
     private EditText createLeagueDescriptionTextEdit;
     private LeagueListElement leagueListElement;
     private Button createChildLeagueButton;
+    private LinearLayout linearLayout;
+    private AnimationDrawable animationDrawable;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_league_activity);
+        setTitle("Создание лиги");
+
+        linearLayout = (LinearLayout) findViewById(R.id.linear_layout_create_league);
+        animationDrawable = (AnimationDrawable) linearLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
 
         Intent intent = getIntent();
         leagueListElement = new LeagueListElement(

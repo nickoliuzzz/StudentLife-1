@@ -8,6 +8,8 @@
 
 
     <LinearLayout
+        android:id="@+id/linear_layout_buy_product"
+        android:background="@drawable/animation_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,9 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/buy_product_name_text"
-            android:textColor="@android:color/background_dark"
-            android:textSize="24sp"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/buy_product_description"
@@ -29,7 +31,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/buy_product_description_text"
             android:textAlignment="center"
-            android:textColor="@android:color/background_dark"
+            android:textColor="@android:color/background_light"
             android:textSize="24sp"
             android:textStyle="italic" />
 
@@ -38,30 +40,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="16sp"
-            android:textColor="@android:color/background_dark"
-            android:text="@string/buy_product_league_shop_name_text" />
+            android:text="@string/buy_product_league_shop_name_text"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/buy_product_isBought"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="16sp"
-            android:textColor="@android:color/background_dark"
-            android:text="@string/buy_product_isBought_text" />
+            android:text="@string/buy_product_isBought_text"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/buy_product_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="16sp"
-            android:textColor="@android:color/background_dark"
-            android:text="@string/buy_product_price_text" />
+            android:text="@string/buy_product_price_text"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/buy_product_button"
+            android:background="@drawable/selector_xml_btn_yellow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

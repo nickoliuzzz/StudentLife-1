@@ -6,7 +6,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Настройки</string>
     <string name="newsMenu">Новости</string>
-    <string name="leagueMenu">Лига</string>
+    <string name="leagueMenu">Лиги</string>
     <string name="storeMenu">Магазин</string>
     <string name="settingsMenu">Настройки</string>
     <string name="nickName">Алексей Кузьменко</string>
@@ -74,13 +74,13 @@
     <string name="price_text">Цена:</string>
     <string name="arrow_descr">TODO</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    // Buy product
     <string name="buy_product_name_text">Имя продукта</string>
     <string name="buy_product_description_text">Описание продука</string>
     <string name="buy_product_league_shop_name_text">Магазин лиги:</string>
     <string name="buy_product_isBought_text">Состояние:</string>
     <string name="buy_product_price_text">Цена:</string>
     <string name="buy_product_button_text">Купить</string>
+    <string name="hello_blank_fragment">hello</string>
 
 </resources>

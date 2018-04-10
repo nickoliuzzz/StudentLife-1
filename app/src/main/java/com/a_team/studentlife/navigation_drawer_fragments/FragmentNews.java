@@ -1,5 +1,6 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import com.a_team.studentlife.R;
@@ -38,6 +40,8 @@ public class FragmentNews extends Fragment {
     private LinearLayoutManager verticalLinearLayoutManager;
     private NewsAdapter newsAdapter;
     private ProgressBar progressBarSpinner;
+    private FrameLayout frameLayout;
+    private AnimationDrawable animationDrawable;
 
     public FragmentNews() {
         // Required empty public constructor
@@ -75,6 +79,13 @@ public class FragmentNews extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news, container, false);
+
+        frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_news);
+        animationDrawable = (AnimationDrawable) frameLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
+
         progressBarSpinner = view.findViewById(R.id.loading_spinner_news);
         progressBarSpinner.setVisibility(View.VISIBLE);
         recyclerView = view.findViewById(R.id.recycler_list_posts);

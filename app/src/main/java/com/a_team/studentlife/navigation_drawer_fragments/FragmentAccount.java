@@ -1,14 +1,15 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.UserInformation.User;
@@ -33,6 +34,8 @@ public class FragmentAccount extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private TextView userProfileName;
+    private ScrollView scrollView;
+    private AnimationDrawable animationDrawable;
 
     public FragmentAccount() {
         // Required empty public constructor
@@ -71,6 +74,12 @@ public class FragmentAccount extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        scrollView = (ScrollView) view.findViewById(R.id.scroll_view_account);
+        animationDrawable = (AnimationDrawable) scrollView.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
 
         userProfileName = (TextView) view.findViewById(R.id.user_profile_name);
         userProfileName.setText(User.getUserInstance().getFirstName() + " " +
