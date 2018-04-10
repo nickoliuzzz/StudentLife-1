@@ -12,6 +12,7 @@
     android:thicknessRatio="1.9">
 
     <LinearLayout
+        android:id="@+id/product_card_linear_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

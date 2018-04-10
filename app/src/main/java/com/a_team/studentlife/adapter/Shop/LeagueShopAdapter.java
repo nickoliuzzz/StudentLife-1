@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.card_view_filling.Product;
 
 import java.util.ArrayList;
 import java.util.List;

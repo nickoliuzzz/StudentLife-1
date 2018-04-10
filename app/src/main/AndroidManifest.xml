@@ -31,7 +31,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".adapter.leagues_interface.LeagueActivity" />
         <activity android:name=".CreateLeagueActivity" />
-        <activity android:name=".adapter.Shop.LeagueShopProductsActivity"></activity>
+        <activity
+            android:name=".adapter.Shop.LeagueShopProductsActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".adapter.Shop.BuyProductActivity"></activity>
     </application>
 
 </manifest>

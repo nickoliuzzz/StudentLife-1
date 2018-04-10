@@ -76,5 +76,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buy_product_name_text">Имя продукта</string>
+    <string name="buy_product_description_text">Описание продука</string>
+    <string name="buy_product_league_shop_name_text">Магазин лиги:</string>
+    <string name="buy_product_isBought_text">Состояние:</string>
+    <string name="buy_product_price_text">Цена:</string>
+    <string name="buy_product_button_text">Купить</string>
 
 </resources>

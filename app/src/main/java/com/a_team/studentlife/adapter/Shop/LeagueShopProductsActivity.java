@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
+import com.a_team.studentlife.card_view_filling.Product;
 
 public class LeagueShopProductsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
