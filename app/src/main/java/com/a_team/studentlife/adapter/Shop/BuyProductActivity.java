@@ -78,6 +78,8 @@ public class BuyProductActivity extends AppCompatActivity {
         productPrice.setText(String.valueOf(productPrice.getText() + " " + product.getProductPrice()));
         buyProductButton = (Button) findViewById(R.id.buy_product_button);
         setBuyProductButtonOnClickListener();
+        if (product.isBought())
+            buyProductButton.setVisibility(View.GONE);
     }
 
     private void setBuyProductButtonOnClickListener() {
@@ -97,7 +99,7 @@ public class BuyProductActivity extends AppCompatActivity {
                                     finish();
                                 } else {
                                     Toast.makeText(BuyProductActivity.this,
-                                            "Сервер вернул ошибку",
+                                            response.body().getAnswer(),
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
