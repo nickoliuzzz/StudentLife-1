@@ -90,10 +90,17 @@ public class BuyProductActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<BuyingProductResponse> call,
                                                    Response<BuyingProductResponse> response) {
-                                if (response.isSuccessful() && response.body().getAnswer().equals("OK")) {
+                                if (response.isSuccessful() ){
+                                    if(response.body().getAnswer().equals("OK")) {
+                                        Toast.makeText(BuyProductActivity.this,
+                                                "Вы приобрели " + product.getProductName(),
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                    else{
                                     Toast.makeText(BuyProductActivity.this,
-                                            "Вы приобрели " + product.getProductName(),
+                                                response.body().getAnswer(),
                                             Toast.LENGTH_SHORT).show();
+                                    }
                                     finish();
                                 } else {
                                     Toast.makeText(BuyProductActivity.this,
