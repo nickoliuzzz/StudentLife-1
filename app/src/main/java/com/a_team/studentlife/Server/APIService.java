@@ -60,7 +60,7 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("api/buyingItem/")
-    Call<BuyingProductResponse> buyProduct(@Field("userId") Integer userId,
-                                           @Field("itemId") Integer productId);
+    Call<BuyingProductResponse> buyProduct(@Field("userId") int userId,
+                                           @Field("itemId") int productId);
 
 }
