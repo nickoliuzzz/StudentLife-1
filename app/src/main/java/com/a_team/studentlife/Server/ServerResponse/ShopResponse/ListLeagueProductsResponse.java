@@ -12,9 +12,9 @@ public class ListLeagueProductsResponse {
     @Expose
     private BoughtItems boughtItems;
 
-//    @SerializedName("currency")
-//    @Expose
-//    private Integer currency;
+    @SerializedName("currency")
+    @Expose
+    private Integer currency;
 
     public NotBoughtItems getNotBought() {
         return notBought;
@@ -32,11 +32,11 @@ public class ListLeagueProductsResponse {
         this.boughtItems = boughtItems;
     }
 
-//    public Integer getCurrency() {
-//        return currency;
-//    }
-//
-//    public void setCurrency(Integer currency) {
-//        this.currency = currency;
-//    }
+    public Integer getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Integer currency) {
+        this.currency = currency;
+    }
 }

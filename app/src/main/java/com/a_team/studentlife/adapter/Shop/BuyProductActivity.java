@@ -78,8 +78,10 @@ public class BuyProductActivity extends AppCompatActivity {
         productPrice.setText(String.valueOf(productPrice.getText() + " " + product.getProductPrice()));
         buyProductButton = (Button) findViewById(R.id.buy_product_button);
         setBuyProductButtonOnClickListener();
-        if (product.isBought())
-            buyProductButton.setVisibility(View.GONE);
+        if (product.isBought()) {
+            buyProductButton.setEnabled(false);
+            buyProductButton.setText("Продукт уже приобретен");
+        }
     }
 
     private void setBuyProductButtonOnClickListener() {
@@ -92,24 +94,24 @@ public class BuyProductActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<BuyingProductResponse> call,
                                                    Response<BuyingProductResponse> response) {
-                                if (response.isSuccessful() ){
+                                if (response.isSuccessful()){
                                     if(response.body().getAnswer().equals("OK")) {
                                         Toast.makeText(BuyProductActivity.this,
                                                 "Вы приобрели " + product.getProductName(),
                                                 Toast.LENGTH_SHORT).show();
                                     }
-                                    else{
-                                    Toast.makeText(BuyProductActivity.this,
-                                                response.body().getAnswer(),
-                                            Toast.LENGTH_SHORT).show();
+                                    else {
+                                        Toast.makeText(BuyProductActivity.this,
+                                                "Недостаточно средств",
+                                                Toast.LENGTH_SHORT).show();
                                     }
-                                    finish();
-                                } else {
-                                    Toast.makeText(BuyProductActivity.this,
-                                            response.body().getAnswer(),
-                                            Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    } else {
+                                        Toast.makeText(BuyProductActivity.this,
+                                                "Ошибка запроса",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
 
                             @Override
                             public void onFailure(Call<BuyingProductResponse> call, Throwable t) {

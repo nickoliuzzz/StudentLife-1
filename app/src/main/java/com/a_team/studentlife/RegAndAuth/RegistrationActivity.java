@@ -46,6 +46,12 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_activity);

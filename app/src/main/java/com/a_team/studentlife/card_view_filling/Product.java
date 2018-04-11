@@ -1,9 +1,11 @@
 package com.a_team.studentlife.card_view_filling;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a_team.studentlife.ProgressBars.ProgressService;
@@ -99,19 +101,24 @@ public class Product {
                                                    final LeagueShopAdapter leagueShopAdapter,
                                                    final RecyclerView recyclerView,
                                                    final ProgressBar progressBarSpinner,
-                                                   final LeagueListElement leagueListElement) {
+                                                   final LeagueListElement leagueListElement,
+                                                   final TextView headerTextView) {
         if (products.size() != 0)
             products.clear();
 
         APIService mAPIService = ApiUtils.getAPIService();
         mAPIService.getListOfLeagueShopProducts(User.getUserInstance().getId(),
                 leagueListElement.getLeagueIndex()).enqueue(new Callback<ListLeagueProductsResponse>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(Call<ListLeagueProductsResponse> call,
                                    Response<ListLeagueProductsResponse> response) {
                 if (response.isSuccessful()) {
                     ListLeagueProductsResponse listLeagueProductsResponse = response.body();
                     updateListOfLeagueShopProduct(listLeagueProductsResponse, products, leagueListElement);
+                    headerTextView.setText(headerTextView.getText() +
+                            " " + leagueListElement.getLeagueName() + " " +
+                            String.valueOf(User.getUserInstance().getTempLeagueMoney()));
                     leagueShopAdapter.addAllProducts(products);
                     recyclerView.setAdapter(leagueShopAdapter);
                 } else {
@@ -134,6 +141,9 @@ public class Product {
     private static void updateListOfLeagueShopProduct(ListLeagueProductsResponse listLeagueProductsResponse,
                                                       ArrayList<Product> products,
                                                       LeagueListElement leagueListElement) {
+
+        User.getUserInstance().setTempLeagueMoney(listLeagueProductsResponse.getCurrency());
+
         NotBoughtItems notBoughtItems = listLeagueProductsResponse.getNotBought();
         for (int i = 0; i < notBoughtItems.getIndex().size(); i++) {
             products.add(new Product(notBoughtItems.getIndex().get(i),
