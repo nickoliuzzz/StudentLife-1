@@ -1,5 +1,6 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -64,6 +65,7 @@ public class FragmentSettings extends Fragment {
         }
     }
 
+    @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
