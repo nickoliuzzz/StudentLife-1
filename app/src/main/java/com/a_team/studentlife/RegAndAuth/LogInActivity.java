@@ -30,12 +30,6 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private EditText passwordEditText;
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in_activity);
@@ -71,13 +65,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                                 User.getUserInstance().setId(response.body().getId());
                                 User.getUserInstance().setFirstName(response.body().getFirstName());
                                 User.getUserInstance().setLastName(response.body().getLastName());
-//                                Toast.makeText(LogInActivity.this, "Успешная авторизация",
-//                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LogInActivity.this, "Успешная авторизация",
+                                        Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LogInActivity.this,
                                                             NavigationDrawerActivity.class);
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(LogInActivity.this, "Проверьте введенные данные",
+                                Toast.makeText(LogInActivity.this, "Ошибка",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
