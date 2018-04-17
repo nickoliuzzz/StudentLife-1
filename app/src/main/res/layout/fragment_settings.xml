@@ -2,16 +2,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/animation_list"
-    android:id="@+id/frame_layout_fragment_settings"
     tools:context="com.a_team.studentlife.navigation_drawer_fragments.FragmentSettings">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/settings_fragment"
-        android:textAlignment="center"
-        android:textSize="28sp" />
+        android:background="@drawable/animation_list"
+        android:orientation="vertical"
+        android:padding="40dp">
+
+        <Button
+            android:id="@+id/Notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/selector_xml_btn_yellow"
+            android:elevation="0dp"
+            android:text="Уведомления"
+            tools:ignore="OnClick,UnusedAttribute" />
+
+        <Button
+            android:id="@+id/changeUserInformationButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/selector_xml_btn_yellow"
+            android:elevation="0dp"
+            android:text="@string/change_user_profile_text"
+            tools:ignore="OnClick,UnusedAttribute" />
+
+        <Button
+            android:id="@+id/basicSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/selector_xml_btn_yellow"
+            android:elevation="0dp"
+            android:text="Основные"
+            tools:ignore="OnClick,UnusedAttribute" />
+
+        <Button
+            android:id="@+id/aboutUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/selector_xml_btn_yellow"
+            android:elevation="0dp"
+            android:text="О приложении"
+            tools:ignore="OnClick,UnusedAttribute" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            tools:ignore="ObsoleteLayoutParam">
+
+            <Button
+                android:id="@+id/exitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/selector_xml_btn_red"
+                android:elevation="0dp"
+                android:text="Выход из аккаунта"
+                tools:ignore="OnClick,UnusedAttribute" />
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

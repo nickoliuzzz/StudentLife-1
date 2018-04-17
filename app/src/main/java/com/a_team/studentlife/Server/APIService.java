@@ -1,5 +1,6 @@
 package com.a_team.studentlife.Server;
 
+import com.a_team.studentlife.Server.ServerResponse.ChangeUserInformationResponse;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
@@ -60,7 +61,14 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("api/buyingItem/")
-    Call<BuyingProductResponse> buyProduct(@Field("userId") Integer userId,
-                                           @Field("itemId") Integer productId);
+    Call<BuyingProductResponse> buyProduct(@Field("userId") int userId,
+                                           @Field("itemId") int productId);
+
+    @POST("/api/user/edit")
+    Call<ChangeUserInformationResponse> changeUserInformation(@Query("id") String id,
+                                                              @Query("email") String email,
+                                                              @Query("firstname") String firstname,
+                                                              @Query("lastname") String secondname,
+                                                              @Query("password") String newpassword);
 
 }
