@@ -110,4 +110,28 @@
         <string name="price_of_the_product">Цена товара</string>
 >>>>>>> Stashed changes
 
+    <string name="send_invite">Создать мероприятие</string>
+        <string name="cancelInviteButton">Отмена</string>
+        <string name="nameOfTheEvent">Название мероприятия</string>
+        <string name="startOfEventDate">Дата начала</string>
+        <string name="startOfEventTime">Время начала</string>
+        <string name="endOfEventDate">Дата конца</string>
+        <string name="EndOfEventTime">Время конца</string>
+        <string name="DescriptionOfEvent">Описание мероприятия</string>
+        <string name="ChangeEventButton">Изменить мероприятие</string>
+        <string name="eventManager">Организатор</string>
+        <string name="eventDetails">Детали</string>
+        <string name="your_events">Ваши мероприятия</string>
+        <string name="event_template">Тестовый ивент</string>
+        <string name="todo">TODO</string>
+        <string name="soon_events">Ближайшие мероприятия</string>
+        <string name="old_password">Старый пароль</string>
+        <string name="change_user_profile_text">Изменение профиля</string>
+        <string name="change_user_password_new">Новый пароль</string>
+        <string name="change_user_password_new_2">Повторите новый пароль</string>
+        <string name="product_name">Наименование товара</string>
+        <string name="description_of_product">Описание товара</string>
+        <string name="product_create">Создать товар</string>
+        <string name="price_of_the_product">Цена товара</string>
+
 </resources>
