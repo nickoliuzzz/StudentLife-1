@@ -1,6 +1,5 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.a_team.studentlife.R;
-import com.a_team.studentlife.UserInformation.ChangeUserInformation;
+import com.a_team.studentlife.UserInformation.ChangeUserInformationActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,7 +74,7 @@ public class FragmentSettings extends Fragment {
         changeUserInformationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ChangeUserInformation.class);
+                Intent intent = new Intent(getActivity(), ChangeUserInformationActivity.class);
                 startActivity(intent);
             }
         });

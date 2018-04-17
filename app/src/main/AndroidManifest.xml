@@ -36,7 +36,8 @@
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".adapter.Shop.BuyProductActivity"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".UserInformation.ChangeUserInformation"></activity>
+        <activity android:name=".UserInformation.ChangeUserInformationActivity"
+            tools:ignore="InnerclassSeparator" />
     </application>
 
 </manifest>

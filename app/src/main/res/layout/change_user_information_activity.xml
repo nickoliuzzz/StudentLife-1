@@ -1,6 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserInformation.ChangeUserInformationActivity">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/animation_list"
+        android:orientation="vertical"
+        android:padding="40dp"
+        tools:layout_editor_absoluteX="220dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints,ScrollViewSize">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/changeLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/change_user_profile_text"
+            android:textAlignment="center"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textColor="@android:color/background_light"
+            android:textSize="36sp"
+            android:typeface="monospace"
+            tools:ignore="NewApi,UnusedAttribute" />
+
+        <EditText
+            android:id="@+id/emailTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/envelope"
+            android:ems="10"
+            android:hint="@string/emailTextView"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textAlignment="textStart"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF"
+            android:drawableLeft="@mipmap/envelope"
+            tools:ignore="RtlCompat,RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/firstNameTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/account"
+            android:ems="10"
+            android:hint="@string/firstNameTextView"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF"
+            android:drawableLeft="@mipmap/account"
+            android:paddingLeft="0dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/secondNameTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/account"
+            android:ems="10"
+            android:hint="@string/secondNameTextView"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF"
+            android:paddingLeft="0dp"
+            tools:ignore="RtlSymmetry"
+            android:drawableLeft="@mipmap/account" />
+
+
+        <EditText
+            android:id="@+id/passwordTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/lock"
+            android:ems="10"
+            android:hint="@string/old_password"
+            android:inputType="textPassword"
+            android:paddingLeft="0dp"
+            android:paddingStart="0dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#FFF"
+            tools:ignore="RtlCompat,RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/rePasswordTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/lock"
+            android:ems="10"
+            android:hint="@string/change_user_password_new"
+            android:inputType="textPassword"
+            android:paddingLeft="0dp"
+            android:paddingStart="0dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#FFF"
+            tools:ignore="RtlCompat,RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/reRePasswordTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@mipmap/lock"
+            android:ems="10"
+            android:hint="@string/change_user_password_new_2"
+            android:inputType="textPassword"
+            android:paddingLeft="0dp"
+            android:paddingStart="0dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#FFF"
+            tools:ignore="RtlCompat,RtlSymmetry" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/changeInformationBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_xml_btn_yellow"
+                android:elevation="0dp"
+                android:text="@string/change_user_profile_text"
+                tools:ignore="OnClick,UnusedAttribute" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
