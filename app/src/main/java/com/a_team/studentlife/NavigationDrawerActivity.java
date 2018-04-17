@@ -1,6 +1,7 @@
 package com.a_team.studentlife;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.a_team.studentlife.RegAndAuth.LogInActivity;
 import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentAccount;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentLeague;
@@ -110,6 +112,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent exitIntent = new Intent(NavigationDrawerActivity.this, LogInActivity.class);
+            exitIntent.putExtra("exitFlag", true);
+            startActivity(exitIntent);
             return true;
         }
 

@@ -92,8 +92,14 @@ public class FragmentNews extends Fragment {
         verticalLinearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         newsAdapter = new NewsAdapter();
-        NewsPost.getPostItems(view.getContext(), newsAdapter, null, recyclerView,
-                progressBarSpinner, User.getUserInstance().getId(), false, null);
+        NewsPost.getPostItems(view.getContext(),
+                newsAdapter,
+                null,
+                recyclerView,
+                progressBarSpinner,
+                User.getUserInstance().getId(),
+                false,
+                null);
         return view;
     }
 

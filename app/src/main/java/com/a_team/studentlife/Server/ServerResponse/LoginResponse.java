@@ -13,37 +13,21 @@ public class LoginResponse {
     @SerializedName("id")
     @Expose
     private int id;
+    @SerializedName("sex")
+    @Expose
+    private int sex;
+    @SerializedName("login")
+    @Expose
+    private String login;
+    @SerializedName("email")
+    @Expose
+    private String email;
     @SerializedName("firstName")
     @Expose
     private String firstName;
     @SerializedName("lastName")
     @Expose
     private String lastName;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
 
     public String getType() {
         return type;
@@ -61,4 +45,51 @@ public class LoginResponse {
         this.error = error;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

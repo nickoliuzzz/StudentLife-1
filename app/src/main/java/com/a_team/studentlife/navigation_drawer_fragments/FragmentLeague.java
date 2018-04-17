@@ -82,7 +82,6 @@ public class FragmentLeague extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragmentgetAccessibilityClassName
         View view = inflater.inflate(R.layout.fragment_league, container, false);
-
         frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_league);
         animationDrawable = (AnimationDrawable) frameLayout.getBackground();
         animationDrawable.setEnterFadeDuration(5000);

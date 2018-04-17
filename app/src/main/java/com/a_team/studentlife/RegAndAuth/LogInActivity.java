@@ -28,13 +28,20 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     LinearLayout linearLayout;
     private EditText loginEditText;
     private EditText passwordEditText;
+    private boolean exitFlag;
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in_activity);
 
-
+        exitFlag = getIntent().getBooleanExtra("exitFlag", false);
         loginEditText = (EditText) findViewById(R.id.loginTextField);
         passwordEditText = (EditText) findViewById(R.id.passwordTextField);
         linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
@@ -43,6 +50,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         animationDrawable.setExitFadeDuration(2000);
         animationDrawable.start();
 
+        if (!exitFlag) {
+            if (User.getUserInstance().readUserInformation(this))
+                startActivity(new Intent(this, NavigationDrawerActivity.class));
+        } else {
+            loginEditText.setText(User.getUserInstance().getLogin());
+            passwordEditText.setText(User.getUserInstance().getPassword());
+        }
 
         findViewById(R.id.logInButton).setOnClickListener(this);
         findViewById(R.id.signUpBottom).setOnClickListener(this);
@@ -65,6 +79,16 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                                 User.getUserInstance().setId(response.body().getId());
                                 User.getUserInstance().setFirstName(response.body().getFirstName());
                                 User.getUserInstance().setLastName(response.body().getLastName());
+                                User.getUserInstance().setSex(response.body().getSex());
+                                User.getUserInstance().setEmail(/*response.body().getEmail()*/"frfrfrfr@mail.ru");
+                                User.getUserInstance().setLogin(/*response.body().getLogin()*/loginEditText.getText().toString());
+                                User.getUserInstance().setPassword(passwordEditText.getText().toString());
+
+                                if (!User.getUserInstance().saveUserInformation(LogInActivity.this))
+                                    Toast.makeText(LogInActivity.this,
+                                            "Ошибка записи данных пользователя в файл",
+                                            Toast.LENGTH_SHORT).show();
+
                                 Toast.makeText(LogInActivity.this, "Успешная авторизация",
                                         Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LogInActivity.this,

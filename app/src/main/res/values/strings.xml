@@ -4,7 +4,7 @@
     // Navigation Drawer
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Настройки</string>
+    <string name="action_exit">Выход</string>
     <string name="newsMenu">Новости</string>
     <string name="leagueMenu">Лиги</string>
     <string name="storeMenu">Магазин</string>
