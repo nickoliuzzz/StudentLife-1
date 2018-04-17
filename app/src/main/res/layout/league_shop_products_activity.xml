@@ -6,6 +6,18 @@
     android:id="@+id/frame_layout_league_shop_activity"
     tools:context="com.a_team.studentlife.navigation_drawer_fragments.FragmentLeague">
 
+    <TextView
+        android:id="@+id/user_league_money"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/user_league_money_value_text"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp"
+        tools:ignore="SpUsage" />
+
     <RelativeLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"

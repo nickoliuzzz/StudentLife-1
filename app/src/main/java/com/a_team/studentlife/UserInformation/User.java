@@ -5,6 +5,27 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
+    private Integer tempLeagueMoney;
+
+    private User () {}
+
+    public static User getUserInstance() {
+        if (user == null)
+            synchronized (User.class) {
+                if (user == null) {
+                    user = new User();
+                }
+            }
+        return user;
+    }
+
+    public Integer getTempLeagueMoney() {
+        return tempLeagueMoney;
+    }
+
+    public void setTempLeagueMoney(Integer tempLeagueMoney) {
+        this.tempLeagueMoney = tempLeagueMoney;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -20,18 +41,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    private User () {}
-
-    public static User getUserInstance() {
-        if (user == null)
-            synchronized (User.class) {
-                if (user == null) {
-                    user = new User();
-                }
-            }
-        return user;
     }
 
     public int getId() {
