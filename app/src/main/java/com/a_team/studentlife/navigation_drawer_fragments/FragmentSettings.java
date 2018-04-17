@@ -1,16 +1,17 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.annotation.SuppressLint;
-import android.graphics.drawable.AnimationDrawable;
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.Button;
 
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.UserInformation.ChangeUserInformation;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,14 +26,14 @@ public class FragmentSettings extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private Button changeUserInformationButton;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    private AnimationDrawable animationDrawable;
-    private FrameLayout frameLayout;
 
     public FragmentSettings() {
         // Required empty public constructor
@@ -65,19 +66,21 @@ public class FragmentSettings extends Fragment {
         }
     }
 
-    @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        final View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        changeUserInformationButton = view.findViewById(R.id.changeUserInformationButton);
+        changeUserInformationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChangeUserInformation.class);
+                startActivity(intent);
+            }
+        });
+
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_settings, container, false);
-
-        frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_settings);
-        animationDrawable = (AnimationDrawable) frameLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
-
         return view;
     }
 

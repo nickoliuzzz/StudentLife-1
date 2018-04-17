@@ -34,7 +34,9 @@
         <activity
             android:name=".adapter.Shop.LeagueShopProductsActivity"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".adapter.Shop.BuyProductActivity"></activity>
+        <activity android:name=".adapter.Shop.BuyProductActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".UserInformation.ChangeUserInformation"></activity>
     </application>
 
 </manifest>
