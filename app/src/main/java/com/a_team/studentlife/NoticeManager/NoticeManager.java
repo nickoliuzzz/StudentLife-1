@@ -1,4 +1,4 @@
-package com.a_team.studentlife.NotificationManager;
+package com.a_team.studentlife.NoticeManager;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;

@@ -38,6 +38,8 @@
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".UserInformation.ChangeUserInformationActivity"
             tools:ignore="InnerclassSeparator" />
+        <service android:name=".Services.NewsAndSubscriptionService"
+            tools:ignore="InnerclassSeparator" />
     </application>
 
 </manifest>
