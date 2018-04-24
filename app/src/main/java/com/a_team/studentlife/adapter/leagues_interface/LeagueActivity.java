@@ -90,6 +90,7 @@ public class LeagueActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, CreateLeagueActivity.class);
                 intent.putExtra("leagueName", leagueListElement.getLeagueName());
                 intent.putExtra("leagueIndex", leagueListElement.getLeagueIndex());
+                intent.putExtra("subKey", leagueListElement.getSubKey());
                 context.startActivity(intent);
             }
         });

@@ -50,7 +50,8 @@ public class CreateLeagueActivity extends AppCompatActivity {
         Intent intent = getIntent();
         leagueListElement = new LeagueListElement(
                 intent.getIntExtra("leagueIndex", 0),
-                intent.getStringExtra("leagueName")
+                intent.getStringExtra("leagueName"),
+                intent.getIntExtra("subKey", 0)
         );
 
         createLeagueHeaderTextView = (TextView) findViewById(R.id.createLeagueHeaderTextView);
