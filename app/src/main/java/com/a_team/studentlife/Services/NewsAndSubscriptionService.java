@@ -11,10 +11,11 @@ public class NewsAndSubscriptionService extends Service {
     final class CheckServerResponseThread implements Runnable {
 
         int serviceId;
-        int requestPeriod = 5000;
+        int requestPeriod;
 
-        CheckServerResponseThread(int serviceId) {
+        CheckServerResponseThread(int serviceId, int requestPeriod) {
             this.serviceId = serviceId;
+            this.requestPeriod = requestPeriod;
         }
 
         @Override
@@ -40,7 +41,10 @@ public class NewsAndSubscriptionService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Thread thread = new Thread(new CheckServerResponseThread(startId));
+        Thread thread = new Thread(new CheckServerResponseThread(
+                startId,
+                intent.getIntExtra("requestPeriod", 5000))
+        );
         thread.start();
         return START_STICKY;
     }
