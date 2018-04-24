@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.a_team.studentlife.CreateLeagueActivity;
 import com.a_team.studentlife.R;
@@ -48,12 +47,26 @@ public class LeagueActivity extends AppCompatActivity {
         Intent leagueIntent = getIntent();
         leagueListElement = new LeagueListElement(
                 leagueIntent.getIntExtra("leagueIndex", 0),
-                leagueIntent.getStringExtra("leagueName"));
+                leagueIntent.getStringExtra("leagueName"),
+                leagueIntent.getIntExtra("subKey", 0));
 
         leagueName = (TextView) findViewById(R.id.leagueName);
         leagueName.setText(leagueListElement.getLeagueName());
 
         applyButton = (Button) findViewById(R.id.applyButton);
+        if (leagueListElement.getSubKey() == 0) {
+            applyButton.setText("Подписаться");
+            applyButton.setTextColor(Color.GREEN);
+        } else if (leagueListElement.getSubKey() == 1) {
+            applyButton.setText("Отозвать заявку");
+            applyButton.setTextColor(Color.YELLOW);
+        } else if (leagueListElement.getSubKey() == 2) {
+            applyButton.setText("Отписаться");
+            applyButton.setTextColor(Color.RED);
+        } else {
+            applyButton.setText("Лист заявок");
+            applyButton.setTextColor(Color.BLACK);
+        }
         setApplyButtonListener(applyButton);
 
         createLeagueButton = (Button) findViewById(R.id.createLeagueButton);
@@ -87,14 +100,17 @@ public class LeagueActivity extends AppCompatActivity {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (applyButton.getText().equals("Подать заявку")) {
+                if (applyButton.getText().equals("Подписаться")) {
                     applyButton.setText("Отозвать заявку");
-                    applyButton.setTextColor(Color.RED);
-                    Toast.makeText(LeagueActivity.this, "Заявка подана", Toast.LENGTH_SHORT).show();
+                    applyButton.setTextColor(Color.YELLOW);
+                } else if (applyButton.getText().equals("Отозвать заявку")) {
+                    applyButton.setText("Подписаться");
+                    applyButton.setTextColor(Color.GREEN);
+                } else if (applyButton.getText().equals("Отписаться")) {
+                    applyButton.setText("Подписаться");
+                    applyButton.setTextColor(Color.GREEN);
                 } else {
-                    applyButton.setText("Подать заявку");
-                    applyButton.setTextColor(Color.BLACK);
-                    Toast.makeText(LeagueActivity.this, "Заявка отозвана", Toast.LENGTH_SHORT).show();
+                    // open list for admin
                 }
             }
         });

@@ -22,11 +22,21 @@ import retrofit2.Response;
 public class LeagueListElement {
     private Integer leagueIndex;
     private String leagueName;
+    private Integer subKey;
     public static ArrayList<LeagueListElement> leagueListElements = new ArrayList<>();
 
-    public LeagueListElement(Integer leagueIndex, String leagueName) {
+    public LeagueListElement(Integer leagueIndex, String leagueName, Integer subKey) {
         this.leagueIndex = leagueIndex;
         this.leagueName = leagueName;
+        this.subKey = subKey;
+    }
+
+    public Integer getSubKey() {
+        return subKey;
+    }
+
+    public void setSubKey(Integer subKey) {
+        this.subKey = subKey;
     }
 
     public Integer getLeagueIndex() {
@@ -76,7 +86,7 @@ public class LeagueListElement {
                                          ArrayList<LeagueListElement> leagueListElements) {
         for (int i = 0; i < listFromServer.getIndexes().size(); i++) {
             leagueListElements.add(new LeagueListElement(listFromServer.getIndexes().get(i),
-                    listFromServer.getNames().get(i)));
+                    listFromServer.getNames().get(i), listFromServer.getSubKey().get(i)));
         }
     }
 

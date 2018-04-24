@@ -38,6 +38,7 @@ class LeaguesRecyclerViewHolder extends RecyclerView.ViewHolder{
                     }
                     leagueIntent.putExtra("leagueIndex", leagueListElement.getLeagueIndex());
                     leagueIntent.putExtra("leagueName", leagueListElement.getLeagueName());
+                    leagueIntent.putExtra("subKey", leagueListElement.getSubKey());
                     itemView.getContext().startActivity(leagueIntent);
                 }
             });

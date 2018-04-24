@@ -40,7 +40,8 @@ public class LeagueShopProductsActivity extends AppCompatActivity {
         Intent leagueIntent = getIntent();
         leagueListElement = new LeagueListElement(
                 leagueIntent.getIntExtra("leagueIndex", 0),
-                leagueIntent.getStringExtra("leagueName"));
+                leagueIntent.getStringExtra("leagueName"),
+                leagueIntent.getIntExtra("subKey", 0));
 
         userMoneyValue = (TextView) findViewById(R.id.user_league_money);
         recyclerView = findViewById(R.id.recycler_list_products_leagues_shop);

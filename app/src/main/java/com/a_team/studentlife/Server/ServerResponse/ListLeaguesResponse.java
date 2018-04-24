@@ -12,6 +12,17 @@ public class ListLeaguesResponse {
     @SerializedName("names")
     @Expose
     private List<String> names = null;
+    @SerializedName("subKey")
+    @Expose
+    private List<Integer> subKey = null;
+
+    public List<Integer> getSubKey() {
+        return subKey;
+    }
+
+    public void setSubKey(List<Integer> subKey) {
+        this.subKey = subKey;
+    }
 
     public List<Integer> getIndexes() {
         return this.indexes;
