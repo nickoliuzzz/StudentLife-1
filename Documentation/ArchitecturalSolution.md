@@ -29,8 +29,7 @@
 ## 6. To be architecture:
 #### Диаграмма классов.
 
-![Ссылка на изоражение]
-(https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Pictures/ClassDiagramExpected.png)
+![Ссылка на изоражение] (https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Pictures/ClassDiagramExpected.png)
 
 
 Подробная развертка каждого класса находится в папке:
@@ -41,8 +40,7 @@
 #### Диаграмма классов.  
 
 
-![Ссылка на изображение]
-(https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Pictures/ClassDiagramReal.png)
+![Ссылка на изображение] (https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Pictures/ClassDiagramReal.png)
 
 Подробная развертка каждого класса находится в папке:
 [ссылка на папку с подробным описанием классов](https://github.com/5ALEKSEY/StudentLife/tree/master/Documentation/Pictures/ClassesReal)
