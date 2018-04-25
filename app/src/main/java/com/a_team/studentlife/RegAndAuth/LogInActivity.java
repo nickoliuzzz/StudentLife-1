@@ -54,6 +54,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             if (User.getUserInstance().readUserInformation(this))
                 startActivity(new Intent(this, NavigationDrawerActivity.class));
         } else {
+            User.getUserInstance().cleanUserInformation(this);
             loginEditText.setText(User.getUserInstance().getLogin());
             passwordEditText.setText(User.getUserInstance().getPassword());
         }

@@ -82,7 +82,7 @@
     <string name="buy_product_price_text">Цена:</string>
     <string name="buy_product_button_text">Купить</string>
     <string name="hello_blank_fragment">hello</string>
-    <string name="user_league_money_value_text">Количество валюты в лиге</string>
+    <string name="user_league_money_value_text">Валюты в лиге</string>
 
     <string name="send_invite">Создать мероприятие</string>
     <string name="cancelInviteButton">Отмена</string>

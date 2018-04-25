@@ -79,7 +79,7 @@ public class BuyProductActivity extends AppCompatActivity {
         buyProductButton = (Button) findViewById(R.id.buy_product_button);
         setBuyProductButtonOnClickListener();
         if (product.isBought())
-            buyProductButton.setVisibility(View.GONE);
+            buyProductButton.setEnabled(false);
     }
 
     private void setBuyProductButtonOnClickListener() {

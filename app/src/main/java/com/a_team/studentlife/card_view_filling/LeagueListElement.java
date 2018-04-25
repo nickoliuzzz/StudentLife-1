@@ -86,7 +86,7 @@ public class LeagueListElement {
                                          ArrayList<LeagueListElement> leagueListElements) {
         for (int i = 0; i < listFromServer.getIndexes().size(); i++) {
             leagueListElements.add(new LeagueListElement(listFromServer.getIndexes().get(i),
-                    listFromServer.getNames().get(i), listFromServer.getSubKey().get(i)));
+                    listFromServer.getNames().get(i), 2/*listFromServer.getSubKey().get(i)*/));
         }
     }
 
