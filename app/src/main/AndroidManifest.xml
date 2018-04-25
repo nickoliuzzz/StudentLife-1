@@ -34,12 +34,18 @@
         <activity
             android:name=".adapter.Shop.LeagueShopProductsActivity"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".adapter.Shop.BuyProductActivity"
+        <activity
+            android:name=".adapter.Shop.BuyProductActivity"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".UserInformation.ChangeUserInformationActivity"
+        <activity
+            android:name=".UserInformation.ChangeUserInformationActivity"
             tools:ignore="InnerclassSeparator" />
-        <service android:name=".Services.NewsAndSubscriptionService"
+
+        <service
+            android:name=".Services.NewsAndSubscriptionService"
             tools:ignore="InnerclassSeparator" />
+
+        <activity android:name=".AboutAsActivity"></activity>
     </application>
 
 </manifest>

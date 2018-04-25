@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.a_team.studentlife.AboutAsActivity;
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.RegAndAuth.LogInActivity;
 import com.a_team.studentlife.UserInformation.ChangeUserInformationActivity;
 
 /**
@@ -26,6 +28,8 @@ public class FragmentSettings extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Button changeUserInformationButton;
+    private Button exitAccountButton;
+    private Button aboutAsButton;
 
 
     // TODO: Rename and change types of parameters
@@ -76,6 +80,22 @@ public class FragmentSettings extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ChangeUserInformationActivity.class);
                 startActivity(intent);
+            }
+        });
+        exitAccountButton = view.findViewById(R.id.exitAccountButton);
+        exitAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent exitIntent = new Intent(getActivity(), LogInActivity.class);
+                exitIntent.putExtra("exitFlag", true);
+                startActivity(exitIntent);
+            }
+        });
+        aboutAsButton = view.findViewById(R.id.aboutUs);
+        aboutAsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), AboutAsActivity.class));
             }
         });
 

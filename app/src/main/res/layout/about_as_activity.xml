@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutAsActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/aboutAsHeaderText"
+        android:textColor="@android:color/background_dark"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/first_member_about_as"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/second_member_about_as"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/third_member_about_as"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/fourth_member_about_as"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/fifth_member_about_as"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+
+</LinearLayout>

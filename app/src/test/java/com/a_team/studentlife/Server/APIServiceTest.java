@@ -107,12 +107,14 @@ public class APIServiceTest {
             @Override
             public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
                 if (response.isSuccessful()) {
+                    System.out.println(response.body().getError());
                     assertEquals("Негативный тест на регистрацию пользователя", "error", response.body().getError());
                 }
             }
 
             @Override
             public void onFailure(Call<RegistrationResponse> call, Throwable t) {
+                assertEquals(123,235);
             }
         });
     }
