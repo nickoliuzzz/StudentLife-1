@@ -29,21 +29,23 @@
 ## 6. To be architecture:
 #### Диаграмма классов.
 
-![Ссылка на изоражение](https://github.com/550502daryachyruk/StudentLife/tree/master/Documentation/pictures/ClassDiagramExpected.png)
+![Ссылка на изоражение]
+(https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Pictures/ClassDiagramExpected.png)
 
 
 Подробная развертка каждого класса находится в папке:
-[ссылка на папку с подробным описанием классов](https://github.com/550502daryachyruk/StudentLife/tree/master/Documentation/pictures/classesEcpected)
+[ссылка на папку с подробным описанием классов](https://github.com/5ALEKSEY/StudentLife/tree/master/Documentation/Pictures/ClassesEcpected)
 
 # Часть 2
 ## As is architecture:
 #### Диаграмма классов.  
 
 
-![Ссылка на изображение](https://github.com/550502daryachyruk/StudentLife/tree/master/Documentation/pictures/ClassDiagramReal.png)
+![Ссылка на изображение]
+(https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Pictures/ClassDiagramReal.png)
 
 Подробная развертка каждого класса находится в папке:
-[ссылка на папку с подробным описанием классов](https://github.com/550502daryachyruk/StudentLife/tree/master/Documentation/pictures/ClassesReal)
+[ссылка на папку с подробным описанием классов](https://github.com/5ALEKSEY/StudentLife/tree/master/Documentation/Pictures/ClassesReal)
   
 # Часть 3
 
