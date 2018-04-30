@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 
+import com.a_team.studentlife.Services.NewsAndSubscriptionService;
+import com.a_team.studentlife.Services.ServiceManager;
+
 public class NotificationsActivity extends AppCompatActivity {
 
     private Switch allNotificationsSwitch;
@@ -69,5 +72,14 @@ public class NotificationsActivity extends AppCompatActivity {
 
     private void setTrueSwitchCheckedState() {
         // Проверить работу служб и установить switches в корректное состояние
+        if (ServiceManager.isServiceRunning(NewsAndSubscriptionService.class, this))
+            subAndNewsNotificationsSwitch.setChecked(true);
+        else
+            subAndNewsNotificationsSwitch.setChecked(false);
+
+        // Проверить состояние службы для опросов
+
+
+
     }
 }
