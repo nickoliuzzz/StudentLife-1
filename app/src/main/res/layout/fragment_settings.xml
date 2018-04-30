@@ -41,19 +41,6 @@
             tools:ignore="OnClick,UnusedAttribute" />
 
         <Button
-            android:id="@+id/basicSettings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/selector_xml_btn_yellow"
-            android:elevation="0dp"
-            android:text="Основные"
-            tools:ignore="OnClick,UnusedAttribute" />
-
-        <Button
             android:id="@+id/aboutUs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

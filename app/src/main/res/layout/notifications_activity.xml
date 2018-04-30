@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    tools:context=".NotificationsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notifications_header_text"
+        android:textColor="@android:color/background_dark"
+        android:textAlignment="center"
+        android:padding="25dp"
+        android:textSize="25sp" />
+
+    <Switch
+        android:id="@+id/all_notifications_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:layout_marginTop="5dp"
+        android:textSize="25sp"
+        android:text="@string/all_notifications_switch_text"/>
+
+    <Switch
+        android:id="@+id/questions_notifications_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:layout_marginTop="15dp"
+        android:textSize="25sp"
+        android:text="@string/questions_notifications_switch_text"/>
+
+    <Switch
+        android:id="@+id/sub_and_news_notifications_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:layout_marginTop="15dp"
+        android:textSize="25sp"
+        android:text="@string/sub_and_news_notifications_switch_text"/>
+
+    <Button
+        android:id="@+id/save_notifications_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/selector_xml_btn_yellow"
+        android:text="@string/save_notifications_settings_text"
+        tools:ignore="ObsoleteLayoutParam,OnClick,UnusedAttribute" />
+
+
+</LinearLayout>

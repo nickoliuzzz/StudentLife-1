@@ -45,7 +45,8 @@
             android:name=".Services.NewsAndSubscriptionService"
             tools:ignore="InnerclassSeparator" />
 
-        <activity android:name=".AboutAsActivity"></activity>
+        <activity android:name=".AboutAsActivity" />
+        <activity android:name=".NotificationsActivity"></activity>
     </application>
 
 </manifest>
