@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.a_team.studentlife.AboutAsActivity;
+import com.a_team.studentlife.NotificationsActivity;
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.RegAndAuth.LogInActivity;
 import com.a_team.studentlife.UserInformation.ChangeUserInformationActivity;
@@ -30,6 +31,7 @@ public class FragmentSettings extends Fragment {
     private Button changeUserInformationButton;
     private Button exitAccountButton;
     private Button aboutAsButton;
+    private Button notificationSettingsButton;
 
 
     // TODO: Rename and change types of parameters
@@ -74,6 +76,13 @@ public class FragmentSettings extends Fragment {
                              Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        notificationSettingsButton = view.findViewById(R.id.Notifications);
+        notificationSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), NotificationsActivity.class));
+            }
+        });
         changeUserInformationButton = view.findViewById(R.id.changeUserInformationButton);
         changeUserInformationButton.setOnClickListener(new View.OnClickListener() {
             @Override

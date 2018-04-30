@@ -118,7 +118,7 @@
     <string name="fifth_member_about_as">Чирук Дарья</string>
 
     // Notifications
-    <string name="all_notifications_switch_text">Все уведомления</string>
+    <string name="all_notifications_switch_text">Включить уведомления</string>
     <string name="questions_notifications_switch_text">Опросы</string>
     <string name="sub_and_news_notifications_switch_text">Новости и подписка</string>
     <string name="notifications_header_text">Настройка уведомлений</string>
