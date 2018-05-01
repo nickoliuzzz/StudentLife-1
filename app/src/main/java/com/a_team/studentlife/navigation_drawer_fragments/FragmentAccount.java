@@ -8,11 +8,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.UserInformation.User;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +40,7 @@ public class FragmentAccount extends Fragment {
     private AnimationDrawable animationDrawable;
     private TextView showNewsTextView;
     private TextView showShopTextView;
+    private ImageView userProfilePhoto;
 
     public FragmentAccount() {
         // Required empty public constructor
@@ -105,6 +108,11 @@ public class FragmentAccount extends Fragment {
         userProfileName = (TextView) view.findViewById(R.id.user_profile_name);
         userProfileName.setText(User.getUserInstance().getFirstName() + " " +
                                 User.getUserInstance().getLastName());
+
+        userProfilePhoto = (ImageView) view.findViewById(R.id.user_profile_photo);
+        Picasso.get().load(
+                "http://82.209.228.129/api/user/viewimage?id=" +
+                        User.getUserInstance().getId()).into(userProfilePhoto);
         //Toast.makeText(view.getContext(), User.getUserInstance().getFirstName(), Toast.LENGTH_SHORT).show();
         return view;
     }

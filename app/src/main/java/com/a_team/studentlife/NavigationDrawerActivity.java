@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a_team.studentlife.RegAndAuth.LogInActivity;
@@ -21,11 +22,13 @@ import com.a_team.studentlife.navigation_drawer_fragments.FragmentLeague;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentNews;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentSettings;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentStore;
+import com.squareup.picasso.Picasso;
 
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView userNameNavigationDrawer;
+    private ImageView userIconNavigationDrawer;
     DrawerLayout drawer;
     FragmentAccount fragmentAccount;
     FragmentNews fragmentNews;
@@ -80,6 +83,11 @@ public class NavigationDrawerActivity extends AppCompatActivity
         userNameNavigationDrawer = (TextView) headerView.findViewById(R.id.user_name_navigation_drawer);
         userNameNavigationDrawer.setText(User.getUserInstance().getFirstName() + " " +
                 User.getUserInstance().getLastName());
+
+        userIconNavigationDrawer = (ImageView) headerView.findViewById(R.id.userMainImageIcon);
+        Picasso.get().load(
+                "http://82.209.228.129/api/user/viewimage?id=" +
+                        User.getUserInstance().getId()).into(userIconNavigationDrawer);
 
         android.support.v4.app.FragmentTransaction frTransaction = getSupportFragmentManager().beginTransaction();
         setTitle("Новости");
