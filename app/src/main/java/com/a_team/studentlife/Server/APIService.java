@@ -12,6 +12,8 @@ import com.a_team.studentlife.Server.ServerResponse.RegistrationResponse;
 import com.a_team.studentlife.Server.ServerResponse.SendReviewResponse;
 import com.a_team.studentlife.Server.ServerResponse.ShopResponse.BuyingProductResponse;
 import com.a_team.studentlife.Server.ServerResponse.ShopResponse.ListLeagueProductsResponse;
+import com.a_team.studentlife.Server.ServerResponse.SubscribeLeagueResponse;
+import com.a_team.studentlife.Server.ServerResponse.UnsubscribeLeagueResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -83,5 +85,13 @@ public interface APIService {
                                         @Field("organizationLevel") String organizationLevel,
                                         @Field("doingAgain") String doingAgain,
                                         @Field("PSReview") String PSReview);
+    @FormUrlEncoded
+    @POST("/api/subscribeLeague")
+    Call<SubscribeLeagueResponse> subscribeLeague(@Field("userId") Integer userId,
+                                                  @Field("leagueId") Integer leagueId);
+    @FormUrlEncoded
+    @POST("/api/unsubscribeLeague")
+    Call<UnsubscribeLeagueResponse> unsubscribeLeague(@Field("userId") Integer userId,
+                                                      @Field("leagueId") Integer leagueId);
 
 }

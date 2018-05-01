@@ -13,11 +13,21 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.a_team.studentlife.CreateLeagueActivity;
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.Server.APIService;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
+import com.a_team.studentlife.Server.ServerResponse.SubscribeLeagueResponse;
+import com.a_team.studentlife.Server.ServerResponse.UnsubscribeLeagueResponse;
+import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
 import com.a_team.studentlife.card_view_filling.NewsPost;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LeagueActivity extends AppCompatActivity {
 
@@ -104,15 +114,65 @@ public class LeagueActivity extends AppCompatActivity {
                 if (applyButton.getText().equals("Подписаться")) {
                     applyButton.setText("Отозвать заявку");
                     applyButton.setTextColor(Color.YELLOW);
+                    subscribe();
                 } else if (applyButton.getText().equals("Отозвать заявку")) {
                     applyButton.setText("Подписаться");
                     applyButton.setTextColor(Color.GREEN);
                 } else if (applyButton.getText().equals("Отписаться")) {
                     applyButton.setText("Подписаться");
                     applyButton.setTextColor(Color.GREEN);
+                    unSubscribe();
                 } else {
                     // open list for admin
                 }
+            }
+        });
+    }
+
+    private void unSubscribe() {
+        APIService mAPIService = ApiUtils.getAPIService();
+        mAPIService.unsubscribeLeague(
+                User.getUserInstance().getId(),
+                leagueListElement.getLeagueIndex()).enqueue(new Callback<UnsubscribeLeagueResponse>() {
+            @Override
+            public void onResponse(Call<UnsubscribeLeagueResponse> call, Response<UnsubscribeLeagueResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getAnswer().equals("ok")) {
+                        Toast.makeText(
+                                LeagueActivity.this,
+                                "Вы отписаны от группы " + leagueListElement.getLeagueName(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UnsubscribeLeagueResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void subscribe() {
+        APIService mAPIService = ApiUtils.getAPIService();
+        mAPIService.subscribeLeague(
+                User.getUserInstance().getId(),
+                leagueListElement.getLeagueIndex()).enqueue(new Callback<SubscribeLeagueResponse>() {
+            @Override
+            public void onResponse(Call<SubscribeLeagueResponse> call, Response<SubscribeLeagueResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getAnswer().equals("ok")) {
+                        Toast.makeText(
+                                LeagueActivity.this,
+                                "Заявка отправлена",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SubscribeLeagueResponse> call, Throwable t) {
+
             }
         });
     }
