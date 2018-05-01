@@ -46,11 +46,13 @@
             tools:ignore="InnerclassSeparator" />
 
         <activity android:name=".AboutAsActivity" />
-
         <activity android:name=".NotificationsActivity" />
 
-        <service android:name=".Services.QuizService"
+        <service
+            android:name=".Services.QuizService"
             tools:ignore="InnerclassSeparator" />
+
+        <activity android:name=".InterviewActivity"></activity>
     </application>
 
 </manifest>

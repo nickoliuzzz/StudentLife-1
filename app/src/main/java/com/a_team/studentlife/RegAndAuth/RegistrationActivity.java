@@ -120,7 +120,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(final View view) {
-        mAPIService.sendFirstName(firstNameTextField.getText().toString(), secondNameTextField.getText().toString(),
+        mAPIService.register(firstNameTextField.getText().toString(), secondNameTextField.getText().toString(),
                 userNameTextField.getText().toString(), passwordTextField.getText()
                 .toString(), emailTextField.getText().toString(), sex, date)
                 .enqueue(new Callback<RegistrationResponse>() {

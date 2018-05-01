@@ -1,13 +1,15 @@
 package com.a_team.studentlife.Server;
 
 import com.a_team.studentlife.Server.ServerResponse.ChangeUserInformationResponse;
+import com.a_team.studentlife.Server.ServerResponse.CheckQuizResponse;
+import com.a_team.studentlife.Server.ServerResponse.CheckSubAndNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
 import com.a_team.studentlife.Server.ServerResponse.LoginResponse;
 import com.a_team.studentlife.Server.ServerResponse.RegistrationResponse;
-import com.a_team.studentlife.Server.ServerResponse.ServerResponse;
+import com.a_team.studentlife.Server.ServerResponse.SendReviewResponse;
 import com.a_team.studentlife.Server.ServerResponse.ShopResponse.BuyingProductResponse;
 import com.a_team.studentlife.Server.ServerResponse.ShopResponse.ListLeagueProductsResponse;
 
@@ -19,10 +21,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface APIService {
-
-    @FormUrlEncoded
-    @POST("api/")
-    Call<ServerResponse> sendMessagePOST(@Field("message") String message);
 
     @FormUrlEncoded
     @POST("api/getLeagues/")
@@ -47,16 +45,16 @@ public interface APIService {
                               @Query("password") String password);
 
     @GET("api/register")
-    Call<RegistrationResponse> sendFirstName(@Query("firstname") String firstname,
-                                             @Query("lastname") String lastname,
-                                             @Query("username") String username,
-                                             @Query("password") String password,
-                                             @Query("email") String email,
-                                             @Query("sex") int sex,
-                                             @Query("birthday") String birthday);
+    Call<RegistrationResponse> register(@Query("firstname") String firstname,
+                                        @Query("lastname") String lastname,
+                                        @Query("username") String username,
+                                        @Query("password") String password,
+                                        @Query("email") String email,
+                                        @Query("sex") int sex,
+                                        @Query("birthday") String birthday);
 
     @GET("api/getListOfLeagueShopProducts")
-    Call<ListLeagueProductsResponse> getListOfLeagueShopProducts (@Query("userId") int userId,
+    Call<ListLeagueProductsResponse> getListOfLeagueShopProducts(@Query("userId") int userId,
                                                                   @Query("leagueId") int leagueId);
 
     @FormUrlEncoded
@@ -70,5 +68,20 @@ public interface APIService {
                                                               @Query("firstname") String firstname,
                                                               @Query("lastname") String secondname,
                                                               @Query("password") String newpassword);
+
+    @GET("api/checkQuiz")
+    Call<CheckQuizResponse> checkQuiz(@Query("userId") int userId);
+
+    @GET("api/checkSubAndNews")
+    Call<CheckSubAndNewsResponse> checkSubAndNews(@Query("userId") int userId);
+
+    @FormUrlEncoded
+    @POST("api/sendReview/")
+    Call<SendReviewResponse> sendReview(@Field("userId") int userId,
+                                        @Field("likeEvent") String likeEvent,
+                                        @Field("connectionWithLearning") String connectionWithLearning,
+                                        @Field("organizationLevel") String organizationLevel,
+                                        @Field("doingAgain") String doingAgain,
+                                        @Field("PSReview") String PSReview);
 
 }

@@ -29,15 +29,41 @@ public class NewsPost {
     private Integer userImageId;
     private String leagueName;
     private String postText;
+    private String postDate;
+    private String postTime;
+    private boolean isLikedByMe;
     public static ArrayList<NewsPost> newsPosts = new ArrayList<>();
 
-    public NewsPost(Integer participants, Integer likes, Integer postImageId, Integer userImageId, String leagueName, String postText) {
+    public NewsPost(Integer participants,
+                    Integer likes,
+                    Integer postImageId,
+                    Integer userImageId,
+                    String leagueName,
+                    String postText,
+                    String postDate,
+                    String postTime,
+                    boolean isLikedByMe) {
         this.participants = participants;
         this.likes = likes;
         this.postImageId = postImageId;
         this.userImageId = userImageId;
         this.leagueName = leagueName;
         this.postText = postText;
+        this.postDate = postDate;
+        this.postTime = postTime;
+        this.isLikedByMe = isLikedByMe;
+    }
+
+    public boolean isLikedByMe() {
+        return isLikedByMe;
+    }
+
+    public String getPostDate() {
+        return postDate;
+    }
+
+    public String getPostTime() {
+        return postTime;
     }
 
     public Integer getParticipants() {
@@ -92,8 +118,6 @@ public class NewsPost {
 
                 @Override
                 public void onFailure(Call<ListLeagueNewsResponse> call, Throwable t) {
-//                    Toast.makeText(context, "Проверьте соединение с интернетом", Toast.LENGTH_SHORT).show();
-//                    progressBarSpinner.setVisibility(View.VISIBLE);
                     ProgressService.showDialogMessage(context, "Ошибка соединения",
                             "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
                             2148, true);
@@ -118,8 +142,6 @@ public class NewsPost {
 
                 @Override
                 public void onFailure(Call<ListAllUserNewsResponse> call, Throwable t) {
-//                    Toast.makeText(context, "Проверьте соединение с интернетом", Toast.LENGTH_SHORT).show();
-//                    progressBarSpinner.setVisibility(View.VISIBLE);
                     ProgressService.showDialogMessage(context, "Ошибка соединения",
                             "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
                             2148, true);
@@ -131,16 +153,33 @@ public class NewsPost {
     public static void updateAllUserNews(ListAllUserNewsResponse listAllUserNews,
                                          ArrayList<NewsPost> newsPosts) {
         for (int i = 0; i < listAllUserNews.getIndex().size(); i++) {
-            newsPosts.add(new NewsPost(20, 11, 1, 1,
-                    listAllUserNews.getLeague().get(i), listAllUserNews.getDescription().get(i)));
+            newsPosts.add(new NewsPost(
+                    listAllUserNews.getPeopleNumber().get(i),
+                    listAllUserNews.getLikeNumber().get(i),
+                    1,
+                    1,
+                    listAllUserNews.getLeague().get(i),
+                    listAllUserNews.getDescription().get(i),
+                    listAllUserNews.getEventDate().get(i),
+                    listAllUserNews.getEventTime().get(i),
+                    listAllUserNews.getIsLikedByMe().get(i)));
         }
     }
 
-    public static void updateLeagueNews(LeagueListElement leagueListElement, ListLeagueNewsResponse listLeagueNews,
+    public static void updateLeagueNews(LeagueListElement leagueListElement,
+                                        ListLeagueNewsResponse listLeagueNews,
                                         ArrayList<NewsPost> newsPosts) {
         for (int i = 0; i < listLeagueNews.getIndex().size(); i++) {
-            newsPosts.add(new NewsPost(30, 23, 1, 1,
-                    leagueListElement.getLeagueName(), listLeagueNews.getDescription().get(i)));
+            newsPosts.add(new NewsPost(
+                    listLeagueNews.getPeopleNumber().get(i),
+                    listLeagueNews.getLikeNumber().get(i),
+                    1,
+                    1,
+                    leagueListElement.getLeagueName(),
+                    listLeagueNews.getDescription().get(i),
+                    listLeagueNews.getEventDate().get(i),
+                    listLeagueNews.getEventTime().get(i),
+                    listLeagueNews.getIsLikedByMe().get(i)));
         }
     }
 }

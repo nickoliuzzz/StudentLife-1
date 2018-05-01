@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/interview_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Отзыв о мероприятии"
+            android:textColor="@android:color/background_dark"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:padding="25dp"/>
+
+        <TextView
+            android:id="@+id/like_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Вам понравилось мероприятие?"
+            android:paddingLeft="15dp"
+            android:textColor="@android:color/background_dark"
+            />
+
+        <RadioGroup
+            android:id="@+id/like_event_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp">
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/no_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Нет" />
+
+                <RadioButton
+                    android:id="@+id/yes_but_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Да, но есть замечания" />
+
+                <RadioButton
+                    android:id="@+id/yes_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Да" />
+
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/connection_with_learning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Данное мероприятие было связано с учебой?"
+            android:paddingLeft="15dp"
+            android:paddingVertical="7dp"
+            android:textColor="@android:color/background_dark"/>
+
+        <RadioGroup
+            android:id="@+id/connection_with_learning_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp">
+
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/no_learn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Нет" />
+
+                <RadioButton
+                    android:id="@+id/yes_learn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Да" />
+
+            </LinearLayout>
+
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/level_of_organization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Оцените уровень организации мероприятия (1 - плохо, 5 - хорошо)"
+            android:paddingLeft="15dp"
+            android:paddingVertical="7dp"
+            android:textColor="@android:color/background_dark"/>
+
+        <RadioGroup
+            android:id="@+id/organization_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp">
+
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/mark1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <RadioButton
+                    android:id="@+id/mark2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2" />
+
+                <RadioButton
+                    android:id="@+id/mark3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3" />
+
+                <RadioButton
+                    android:id="@+id/mark4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4" />
+
+                <RadioButton
+                    android:id="@+id/mark5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5" />
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/doing_again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Стоит ли проводить такого рода мероприятия еще?"
+            android:paddingLeft="15dp"
+            android:paddingVertical="7dp"
+            android:textColor="@android:color/background_dark"/>
+
+        <RadioGroup
+            android:id="@+id/doing_again_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp">
+
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/no_doing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Нет" />
+
+                <RadioButton
+                    android:id="@+id/yes_doing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Да" />
+
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/general_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ваш отзыв о мероприятии в целом (не обязательно):"
+            android:paddingLeft="15dp"
+            android:paddingVertical="7dp"
+            android:textColor="@android:color/background_dark"/>
+
+        <EditText
+            android:id="@+id/PS_review_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Введите ваш отзыв"
+            android:textColor="@android:color/darker_gray"/>
+
+        <Button
+            android:id="@+id/send_review_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_xml_btn_yellow"
+            android:text="Отправиль отзыв"/>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

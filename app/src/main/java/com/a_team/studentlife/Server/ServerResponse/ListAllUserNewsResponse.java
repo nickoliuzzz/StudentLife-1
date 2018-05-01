@@ -16,6 +16,61 @@ public class ListAllUserNewsResponse {
     @SerializedName("league")
     @Expose
     private List<String> league = null;
+    @SerializedName("peopleNumber")
+    @Expose
+    private List<Integer> peopleNumber = null;
+    @SerializedName("likeNumber")
+    @Expose
+    private List<Integer> likeNumber = null;
+    @SerializedName("eventDate")
+    @Expose
+    private List<String> eventDate = null;
+    @SerializedName("eventTime")
+    @Expose
+    private List<String> eventTime = null;
+    @SerializedName("isLikedByMe")
+    @Expose
+    private List<Boolean> isLikedByMe = null;
+
+    public List<Boolean> getIsLikedByMe() {
+        return isLikedByMe;
+    }
+
+    public void setIsLikedByMe(List<Boolean> isLikedByMe) {
+        this.isLikedByMe = isLikedByMe;
+    }
+
+    public List<Integer> getPeopleNumber() {
+        return peopleNumber;
+    }
+
+    public void setPeopleNumber(List<Integer> peopleNumber) {
+        this.peopleNumber = peopleNumber;
+    }
+
+    public List<Integer> getLikeNumber() {
+        return likeNumber;
+    }
+
+    public void setLikeNumber(List<Integer> likeNumber) {
+        this.likeNumber = likeNumber;
+    }
+
+    public List<String> getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(List<String> eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public List<String> getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(List<String> eventTime) {
+        this.eventTime = eventTime;
+    }
 
     public List<Integer> getIndex() {
         return index;
