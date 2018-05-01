@@ -46,6 +46,27 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/date_of_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/date_of_event_text"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:id="@+id/time_of_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/time_of_event_text"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp" />
+
         <!--<ProgressBar-->
             <!--android:id="@+id/loading_spinner"-->
             <!--style="@style/Widget.AppCompat.ProgressBar"-->
@@ -107,8 +128,6 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/participants"
                     android:textSize="18sp" />
-
-
 
             </LinearLayout>
 
