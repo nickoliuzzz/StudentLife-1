@@ -36,6 +36,8 @@ public class FragmentAccount extends Fragment {
     private TextView userProfileName;
     private ScrollView scrollView;
     private AnimationDrawable animationDrawable;
+    private TextView showNewsTextView;
+    private TextView showShopTextView;
 
     public FragmentAccount() {
         // Required empty public constructor
@@ -74,7 +76,26 @@ public class FragmentAccount extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
-
+        showShopTextView = (TextView) view.findViewById(R.id.shop_account_button);
+        showShopTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction frTransaction =
+                        getActivity().getSupportFragmentManager().beginTransaction();
+                getActivity().setTitle("Магазин");
+                frTransaction.replace(R.id.container, new FragmentStore()).commit();
+            }
+        });
+        showNewsTextView = (TextView) view.findViewById(R.id.news_account_button);
+        showNewsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction frTransaction =
+                        getActivity().getSupportFragmentManager().beginTransaction();
+                getActivity().setTitle("Новости");
+                frTransaction.replace(R.id.container, new FragmentNews()).commit();
+            }
+        });
         scrollView = (ScrollView) view.findViewById(R.id.scroll_view_account);
         animationDrawable = (AnimationDrawable) scrollView.getBackground();
         animationDrawable.setEnterFadeDuration(5000);
