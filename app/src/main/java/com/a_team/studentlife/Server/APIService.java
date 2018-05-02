@@ -4,6 +4,7 @@ import com.a_team.studentlife.Server.ServerResponse.ChangeUserInformationRespons
 import com.a_team.studentlife.Server.ServerResponse.CheckQuizResponse;
 import com.a_team.studentlife.Server.ServerResponse.CheckSubAndNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
+import com.a_team.studentlife.Server.ServerResponse.LikeMonipulationResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
@@ -93,5 +94,15 @@ public interface APIService {
     @POST("/api/unsubscribeLeague")
     Call<UnsubscribeLeagueResponse> unsubscribeLeague(@Field("userId") Integer userId,
                                                       @Field("leagueId") Integer leagueId);
+
+    @FormUrlEncoded
+    @POST("/api/likeIncrement")
+    Call<LikeMonipulationResponse> likeIncrement(@Field("userId") Integer userId,
+                                                 @Field("eventId") Integer eventId);
+
+    @FormUrlEncoded
+    @POST("/api/likeDecrement")
+    Call<LikeMonipulationResponse> likeDecrement(@Field("userId") Integer userId,
+                                                 @Field("eventId") Integer eventId);
 
 }

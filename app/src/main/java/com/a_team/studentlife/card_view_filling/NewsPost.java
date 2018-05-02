@@ -23,6 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewsPost {
+    private Integer postIndex;
     private Integer participants;
     private Integer likes;
     private Integer postImageId;
@@ -34,7 +35,8 @@ public class NewsPost {
     private boolean isLikedByMe;
     public static ArrayList<NewsPost> newsPosts = new ArrayList<>();
 
-    public NewsPost(Integer participants,
+    public NewsPost(Integer postIndex,
+                    Integer participants,
                     Integer likes,
                     Integer postImageId,
                     Integer userImageId,
@@ -43,6 +45,7 @@ public class NewsPost {
                     String postDate,
                     String postTime,
                     boolean isLikedByMe) {
+        this.postIndex = postIndex;
         this.participants = participants;
         this.likes = likes;
         this.postImageId = postImageId;
@@ -52,6 +55,10 @@ public class NewsPost {
         this.postDate = postDate;
         this.postTime = postTime;
         this.isLikedByMe = isLikedByMe;
+    }
+
+    public Integer getPostIndex() {
+        return postIndex;
     }
 
     public boolean isLikedByMe() {
@@ -72,6 +79,10 @@ public class NewsPost {
 
     public Integer getLikes() {
         return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
     }
 
     public Integer getPostImageId() {
@@ -154,6 +165,7 @@ public class NewsPost {
                                          ArrayList<NewsPost> newsPosts) {
         for (int i = 0; i < listAllUserNews.getIndex().size(); i++) {
             newsPosts.add(new NewsPost(
+                    listAllUserNews.getIndex().get(i),
                     listAllUserNews.getPeopleNumber().get(i),
                     listAllUserNews.getLikeNumber().get(i),
                     1,
@@ -171,6 +183,7 @@ public class NewsPost {
                                         ArrayList<NewsPost> newsPosts) {
         for (int i = 0; i < listLeagueNews.getIndex().size(); i++) {
             newsPosts.add(new NewsPost(
+                    listLeagueNews.getIndex().get(i),
                     listLeagueNews.getPeopleNumber().get(i),
                     listLeagueNews.getLikeNumber().get(i),
                     1,
