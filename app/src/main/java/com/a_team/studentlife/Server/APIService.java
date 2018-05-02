@@ -9,6 +9,7 @@ import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
 import com.a_team.studentlife.Server.ServerResponse.LoginResponse;
+import com.a_team.studentlife.Server.ServerResponse.OwnEventsResponse;
 import com.a_team.studentlife.Server.ServerResponse.RegistrationResponse;
 import com.a_team.studentlife.Server.ServerResponse.SendReviewResponse;
 import com.a_team.studentlife.Server.ServerResponse.ShopResponse.BuyingProductResponse;
@@ -104,5 +105,8 @@ public interface APIService {
     @POST("/api/likeDecrement")
     Call<LikeMonipulationResponse> likeDecrement(@Field("userId") Integer userId,
                                                  @Field("eventId") Integer eventId);
+
+    @GET("api/getOwnEvents")
+    Call<OwnEventsResponse> getOwnEvents(@Query("userId") int userId);
 
 }

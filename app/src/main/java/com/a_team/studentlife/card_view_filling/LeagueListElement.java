@@ -73,8 +73,6 @@ public class LeagueListElement {
 
             @Override
             public void onFailure(Call<ListLeaguesResponse> call, Throwable t) {
-                //Toast.makeText(context, "Проверте соединение с интернетом", Toast.LENGTH_SHORT).show();
-                //progressBarSpinner.setVisibility(View.VISIBLE);
                 ProgressService.showDialogMessage(context, "Ошибка соединения",
                         "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
                         2148, true);

@@ -9,7 +9,7 @@ public class ListLeagueNewsResponse {
 
     @SerializedName("role")
     @Expose
-    private String role;
+    private Integer role;
     @SerializedName("index")
     @Expose
     private List<Integer> index = null;
@@ -72,11 +72,11 @@ public class ListLeagueNewsResponse {
         this.eventTime = eventTime;
     }
 
-    public String getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 

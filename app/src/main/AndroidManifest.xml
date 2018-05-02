@@ -52,7 +52,9 @@
             android:name=".Services.QuizService"
             tools:ignore="InnerclassSeparator" />
 
-        <activity android:name=".InterviewActivity"></activity>
+        <activity android:name=".InterviewActivity" />
+        <activity android:name=".OwnEventsActivity" />
+        <activity android:name=".CreateEventActivity"></activity>
     </application>
 
 </manifest>
