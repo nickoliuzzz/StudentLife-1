@@ -25,8 +25,13 @@ public class OwnEventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.own_events_activity);
 
-        setCreateNewOwnEventButtonListener(this);
-
+        createNewOwnEventButton = (FloatingActionButton) findViewById(R.id.fab_create_own_event);
+        createNewOwnEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OwnEventsActivity.this, CreateEventActivity.class));
+            }
+        });
         progressBarSpinner = findViewById(R.id.loading_spinner_events);
         progressBarSpinner.setVisibility(View.VISIBLE);
         recyclerView = findViewById(R.id.recycler_list_events);
@@ -34,14 +39,5 @@ public class OwnEventsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         ownEventsAdapter = new OwnEventsAdapter();
         OwnEvent.getEventItems(this, ownEventsAdapter, recyclerView, progressBarSpinner);
-    }
-
-    private void setCreateNewOwnEventButtonListener(final OwnEventsActivity ownEventsActivity) {
-        createNewOwnEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ownEventsActivity.startActivity(new Intent(ownEventsActivity, CreateEventActivity.class));
-            }
-        });
     }
 }

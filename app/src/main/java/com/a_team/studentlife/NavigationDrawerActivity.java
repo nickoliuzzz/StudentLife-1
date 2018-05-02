@@ -86,7 +86,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         userIconNavigationDrawer = (ImageView) headerView.findViewById(R.id.userMainImageIcon);
         Picasso.get().load(
-                "http://82.209.228.129/api/user/viewimage?id=" +
+                "http://172.20.10.3/api/user/viewimage?id=" +
                         User.getUserInstance().getId().toString()).into(userIconNavigationDrawer);
 
         android.support.v4.app.FragmentTransaction frTransaction = getSupportFragmentManager().beginTransaction();

@@ -57,6 +57,10 @@ public class NewsPost {
         this.isLikedByMe = isLikedByMe;
     }
 
+    public void setLikedByMe(boolean likedByMe) {
+        isLikedByMe = likedByMe;
+    }
+
     public Integer getPostIndex() {
         return postIndex;
     }

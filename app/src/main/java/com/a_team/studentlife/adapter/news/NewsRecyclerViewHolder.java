@@ -71,11 +71,13 @@ public class NewsRecyclerViewHolder extends RecyclerView.ViewHolder {
                     newsPost.setLikes(newsPost.getLikes() - 1);
                     likes.setText(newsPost.getLikes().toString());
                     decrementLikes(newsPost);
+                    newsPost.setLikedByMe(false);
                 } else {
                     Picasso.get().load(R.drawable.ic_pos_likes_pressed).into(likesImage);
                     newsPost.setLikes(newsPost.getLikes() + 1);
                     likes.setText(newsPost.getLikes().toString());
                     incrementLikes(newsPost);
+                    newsPost.setLikedByMe(true);
                 }
             }
         });

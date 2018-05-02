@@ -1,6 +1,7 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.a_team.studentlife.OwnEventsActivity;
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.UserInformation.User;
 import com.squareup.picasso.Picasso;
@@ -40,6 +42,7 @@ public class FragmentAccount extends Fragment {
     private AnimationDrawable animationDrawable;
     private TextView showNewsTextView;
     private TextView showShopTextView;
+    private TextView showOwnEventsTextView;
     private ImageView userProfilePhoto;
 
     public FragmentAccount() {
@@ -79,6 +82,13 @@ public class FragmentAccount extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
+        showOwnEventsTextView = (TextView) view.findViewById(R.id.own_events_button);
+        showOwnEventsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().startActivity(new Intent(getActivity(), OwnEventsActivity.class));
+            }
+        });
         showShopTextView = (TextView) view.findViewById(R.id.shop_account_button);
         showShopTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +121,7 @@ public class FragmentAccount extends Fragment {
 
         userProfilePhoto = (ImageView) view.findViewById(R.id.user_profile_photo);
         Picasso.get().load(
-                "http://82.209.228.129/api/user/viewimage?id=" +
+                "http://172.20.10.3/api/user/viewimage?id=" +
                         User.getUserInstance().getId()).into(userProfilePhoto);
         //Toast.makeText(view.getContext(), User.getUserInstance().getFirstName(), Toast.LENGTH_SHORT).show();
         return view;

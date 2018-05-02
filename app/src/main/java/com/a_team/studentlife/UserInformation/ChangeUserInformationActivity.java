@@ -1,12 +1,10 @@
 package com.a_team.studentlife.UserInformation;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.a_team.studentlife.R;
@@ -20,8 +18,6 @@ import retrofit2.Response;
 
 public class ChangeUserInformationActivity extends AppCompatActivity implements View.OnClickListener {
 
-    AnimationDrawable animationDrawable;
-    LinearLayout linearLayout;
     private String firstName, lastName;
     private Integer id;
     private EditText emailTextField;
@@ -42,12 +38,6 @@ public class ChangeUserInformationActivity extends AppCompatActivity implements 
         passwordTextField = (EditText) findViewById(R.id.passwordTextField);
         rePasswordTextField = (EditText) findViewById(R.id.rePasswordTextField);
         reRePasswordTextField = (EditText) findViewById(R.id.reRePasswordTextField);
-
-        linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
-        animationDrawable = (AnimationDrawable) linearLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
 
         findViewById(R.id.changeInformationBottom).setOnClickListener(this);
     }

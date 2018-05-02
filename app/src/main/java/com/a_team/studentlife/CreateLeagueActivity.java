@@ -18,6 +18,7 @@ import com.a_team.studentlife.ProgressBars.ProgressService;
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
+import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
 
 import retrofit2.Call;
@@ -69,9 +70,10 @@ public class CreateLeagueActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 APIService mAPIService = ApiUtils.getAPIService();
-                mAPIService.createChildLeague(leagueListElement.getLeagueIndex(),
+                mAPIService.createChildLeague(User.getUserInstance().getId(),
+                                                leagueListElement.getLeagueIndex(),
                                                 createLeagueNameTextEdit.getText().toString(),
-                                                createLeagueDescriptionTextEdit.getText().toString())
+                                                createLeagueDescriptionTextEdit.getText().toString(), "dedded")
                         .enqueue(new Callback<CreateLeagueResponse>() {
                     @Override
                     public void onResponse(Call<CreateLeagueResponse> call, Response<CreateLeagueResponse> response) {

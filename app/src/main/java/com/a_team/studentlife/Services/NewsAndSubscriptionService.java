@@ -75,7 +75,7 @@ public class NewsAndSubscriptionService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
             Thread thread = new Thread(new CheckServerResponseThread(
                     startId,
-                    intent.getIntExtra("requestPeriod", 5000))
+                    intent.getIntExtra("requestPeriod", 120000))
             );
             thread.start();
         return START_STICKY;

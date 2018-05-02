@@ -118,6 +118,8 @@
     <string name="third_member_about_as">Шляхтович Николай</string>
     <string name="fourth_member_about_as">Кудрявец Илья</string>
     <string name="fifth_member_about_as">Чирук Дарья</string>
+    <string name="create_league_name">Название лиги</string>
+    <string name="create_league_description">Краткое описание лиги</string>
 
     // Notifications
     <string name="all_notifications_switch_text">Включить уведомления</string>

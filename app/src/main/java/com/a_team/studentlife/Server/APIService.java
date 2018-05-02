@@ -39,10 +39,12 @@ public interface APIService {
     Call<ListAllUserNewsResponse> getAllUserNews(@Field("userId") Integer userId);
 
     @FormUrlEncoded
-    @POST("api/createChildLeague/")
-    Call<CreateLeagueResponse> createChildLeague(@Field("parentLeagueId") Integer parentLeagueId,
+    @POST("api/createChildLeague")
+    Call<CreateLeagueResponse> createChildLeague(@Field("userId") Integer userId,
+                                                 @Field("parentLeagueId") Integer parentLeagueId,
                                                  @Field("leagueName") String leagueName,
-                                                 @Field("description") String description);
+                                                 @Field("description") String description,
+                                                 @Field("nameOfCurrency") String moneyName);
 
     @GET("api/login")
     Call<LoginResponse> login(@Query("username") String userName,

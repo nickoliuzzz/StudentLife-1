@@ -2,67 +2,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/news"
+    android:orientation="vertical"
+    android:padding="40dp"
     tools:context=".AboutAsActivity"
-    android:orientation="vertical">
+    tools:layout_editor_absoluteX="220dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/aboutAsHeaderText"
-        android:textColor="@android:color/background_dark"
         android:textAlignment="center"
+        android:textColor="#e70000"
         android:textSize="25sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
         android:text="@string/first_member_about_as"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textColor="#ff8c00"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:text="@string/second_member_about_as"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textColor="#ffef00"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:text="@string/third_member_about_as"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textColor="#00811f"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:text="@string/fourth_member_about_as"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textColor="#0044ff"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:text="@string/fifth_member_about_as"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textColor="#760089"
+        android:textSize="20sp" />
 
 </LinearLayout>
