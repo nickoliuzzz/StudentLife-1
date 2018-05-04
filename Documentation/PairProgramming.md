@@ -73,3 +73,20 @@
 В данном проекте, как и в целом в проектах такого масштаба, использование парного программирования
 вполне оправдано. Скорее даже нужно. И в разработке нашего приложения это помогло найти оптимальные решения
 многих проблем, а также сэкономило время. Поэтому для себя мы считаем эту методологию полезной.
+
+
+### Прохождение тестов
+
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/AuthRequestTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/AuthenticationRightTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/AuthenticationTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/AuthorizationRequestTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/AuthorizationTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/ChangeUserInfoEmailTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/ChangeUserInfoRequestTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/ChangeUserInfoTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/GetUserInfoIDTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/GetUserInfoRequest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/GetUserInfoRequestPassedTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/GetUserInfoRequestTest.jpg)
+![Ссылка на изображение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Testing/GetUserInfoTest.jpg)
