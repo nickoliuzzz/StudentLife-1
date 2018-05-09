@@ -7,6 +7,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.a_team.studentlife.navigation_drawer_fragments.FragmentLeague">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/leagueActivitySwipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/activity_main"
         android:orientation="vertical"
@@ -88,5 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

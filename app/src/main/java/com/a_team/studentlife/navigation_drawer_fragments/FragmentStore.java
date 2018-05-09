@@ -1,10 +1,11 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ public class FragmentStore extends Fragment {
     private LinearLayoutManager verticalLinearLayoutManager;
     private LeaguesAdapter leaguesAdapter;
     private ProgressBar progressBarSpinner;
+    private SwipeRefreshLayout swipe;
 
     public FragmentStore() {
         // Required empty public constructor
@@ -76,7 +78,24 @@ public class FragmentStore extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_league, container, false);
+        final View view = inflater.inflate(R.layout.fragment_league, container, false);
+        swipe = (SwipeRefreshLayout) view.findViewById(R.id.leagueSwipeRefresh);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                createStoreScreen(view);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
+        return view;
+    }
+
+    private void createStoreScreen(View view) {
         recyclerView = view.findViewById(R.id.recycler_list_posts_leagues);
         progressBarSpinner = view.findViewById(R.id.loading_spinner);
         progressBarSpinner.setVisibility(View.VISIBLE);
@@ -85,7 +104,6 @@ public class FragmentStore extends Fragment {
         leaguesAdapter = new LeaguesAdapter();
         LeagueListElement.getLeagueListElements(view.getContext(), leaguesAdapter, recyclerView,
                 progressBarSpinner, User.getUserInstance().getId(), true);
-        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

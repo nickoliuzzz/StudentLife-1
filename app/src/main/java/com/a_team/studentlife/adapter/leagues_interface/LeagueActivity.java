@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,13 +49,29 @@ public class LeagueActivity extends AppCompatActivity {
     private AnimationDrawable animationDrawable;
     private RelativeLayout relativeLayout;
     private ImageView leagueActivityPhoto;
+    private SwipeRefreshLayout swipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.league_activity);
         setTitle("Новости лиги");
+        swipe = (SwipeRefreshLayout) findViewById(R.id.leagueActivitySwipeRefresh);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                createLeagueActivityScreen();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
+    }
 
+    private void createLeagueActivityScreen() {
         relativeLayout = (RelativeLayout) findViewById(R.id.relative_layout_league_activity);
         animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
         animationDrawable.setEnterFadeDuration(5000);

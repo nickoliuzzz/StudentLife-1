@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -48,6 +50,7 @@ public class FragmentLeague extends Fragment {
     private ProgressBar progressBarSpinner;
     private AnimationDrawable animationDrawable;
     private FrameLayout frameLayout;
+    private SwipeRefreshLayout swipe;
 
     public FragmentLeague() {
         // Required empty public constructor
@@ -86,7 +89,24 @@ public class FragmentLeague extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragmentgetAccessibilityClassName
-        View view = inflater.inflate(R.layout.fragment_league, container, false);
+        final View view = inflater.inflate(R.layout.fragment_league, container, false);
+        swipe = (SwipeRefreshLayout) view.findViewById(R.id.leagueSwipeRefresh);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                createLeagueScreen(view);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
+        return view;
+    }
+
+    private void createLeagueScreen(View view) {
         frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_league);
         animationDrawable = (AnimationDrawable) frameLayout.getBackground();
         animationDrawable.setEnterFadeDuration(5000);
@@ -100,8 +120,7 @@ public class FragmentLeague extends Fragment {
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         leaguesAdapter = new LeaguesAdapter();
         LeagueListElement.getLeagueListElements(view.getContext(), leaguesAdapter, recyclerView,
-                                                progressBarSpinner, User.getUserInstance().getId(), false);
-        return view;
+                progressBarSpinner, User.getUserInstance().getId(), false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

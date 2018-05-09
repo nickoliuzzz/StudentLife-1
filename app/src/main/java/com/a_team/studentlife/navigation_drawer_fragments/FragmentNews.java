@@ -3,7 +3,9 @@ package com.a_team.studentlife.navigation_drawer_fragments;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -42,6 +44,7 @@ public class FragmentNews extends Fragment {
     private ProgressBar progressBarSpinner;
     private FrameLayout frameLayout;
     private AnimationDrawable animationDrawable;
+    private SwipeRefreshLayout swipe;
 
     public FragmentNews() {
         // Required empty public constructor
@@ -78,8 +81,24 @@ public class FragmentNews extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_news, container, false);
+        final View view = inflater.inflate(R.layout.fragment_news, container, false);
+        swipe = (SwipeRefreshLayout) view.findViewById(R.id.newsSwipeRefresh);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                createNewsScreen(view);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
+        return view;
+    }
 
+    private void createNewsScreen(View view) {
         frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_news);
         animationDrawable = (AnimationDrawable) frameLayout.getBackground();
         animationDrawable.setEnterFadeDuration(5000);
@@ -100,7 +119,6 @@ public class FragmentNews extends Fragment {
                 User.getUserInstance().getId(),
                 false,
                 null);
-        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

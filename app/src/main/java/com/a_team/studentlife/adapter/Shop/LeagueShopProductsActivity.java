@@ -3,6 +3,8 @@ package com.a_team.studentlife.adapter.Shop;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +26,7 @@ public class LeagueShopProductsActivity extends AppCompatActivity {
     private FrameLayout frameLayout;
     private AnimationDrawable animationDrawable;
     private TextView userMoneyValue;
+    private SwipeRefreshLayout swipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,22 @@ public class LeagueShopProductsActivity extends AppCompatActivity {
         setContentView(R.layout.league_shop_products_activity);
         setTitle("Магазин лиги");
 
+        swipe = (SwipeRefreshLayout) findViewById(R.id.leagueShopSwipeRefresh);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                createLeagueShopScreen();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
+    }
+
+    private void createLeagueShopScreen() {
         frameLayout = (FrameLayout) findViewById(R.id.frame_layout_league_shop_activity);
         animationDrawable = (AnimationDrawable) frameLayout.getBackground();
         animationDrawable.setEnterFadeDuration(5000);

@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +47,7 @@ public class FragmentAccount extends Fragment {
     private TextView showShopTextView;
     private TextView showOwnEventsTextView;
     private ImageView userProfilePhoto;
+    private SwipeRefreshLayout swipe;
 
     public FragmentAccount() {
         // Required empty public constructor
@@ -77,12 +80,30 @@ public class FragmentAccount extends Fragment {
         }
     }
 
-    @SuppressLint("SetTextI18n")
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        final View view = inflater.inflate(R.layout.fragment_account, container, false);
+        swipe = (SwipeRefreshLayout) view.findViewById(R.id.accountSwipeRefresh);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                createAccountScreen(view);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
+        return view;
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void createAccountScreen(View view) {
         showOwnEventsTextView = (TextView) view.findViewById(R.id.own_events_button);
         showOwnEventsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,14 +139,12 @@ public class FragmentAccount extends Fragment {
 
         userProfileName = (TextView) view.findViewById(R.id.user_profile_name);
         userProfileName.setText(User.getUserInstance().getFirstName() + " " +
-                                User.getUserInstance().getLastName());
+                User.getUserInstance().getLastName());
 
         userProfilePhoto = (ImageView) view.findViewById(R.id.user_profile_photo);
         Picasso.get().load(
                 ApiUtils.getBaseUrl() + "/api/user/viewimage?id=" +
                         User.getUserInstance().getId()).into(userProfilePhoto);
-        //Toast.makeText(view.getContext(), User.getUserInstance().getFirstName(), Toast.LENGTH_SHORT).show();
-        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
