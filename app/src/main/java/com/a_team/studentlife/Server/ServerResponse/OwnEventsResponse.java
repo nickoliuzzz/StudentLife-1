@@ -9,6 +9,9 @@ public class OwnEventsResponse {
     @SerializedName("index")
     @Expose
     private List<Integer> index = null;
+    @SerializedName("leagueIndex")
+    @Expose
+    private List<Integer> leagueIndex = null;
     @SerializedName("eventName")
     @Expose
     private List<String> eventName = null;
@@ -21,6 +24,14 @@ public class OwnEventsResponse {
     @SerializedName("leagueName")
     @Expose
     private List<String> leagueName = null;
+
+    public List<Integer> getLeagueIndex() {
+        return leagueIndex;
+    }
+
+    public void setLeagueIndex(List<Integer> leagueIndex) {
+        this.leagueIndex = leagueIndex;
+    }
 
     public List<Integer> getIndex() {
         return index;

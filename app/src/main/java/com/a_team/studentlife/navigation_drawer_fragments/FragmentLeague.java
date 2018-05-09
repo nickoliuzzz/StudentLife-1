@@ -157,8 +157,8 @@ public class FragmentLeague extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                LeagueListElement.getLeagueListElements(getActivity(), leaguesAdapter, recyclerView,
-                        progressBarSpinner, User.getUserInstance().getId(), false);
+                LeagueListElement.getLeagueListElementsBySearch(getActivity(), leaguesAdapter, recyclerView,
+                        progressBarSpinner, User.getUserInstance().getId(), newText);
                 return false;
             }
         });

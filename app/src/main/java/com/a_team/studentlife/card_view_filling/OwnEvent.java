@@ -23,6 +23,7 @@ import retrofit2.Response;
 public class OwnEvent {
     private Integer eventImageId;
     private int eventId;
+    private Integer leagueIndex;
     private String leagueName;
     private String postDate;
     private String postTime;
@@ -32,16 +33,22 @@ public class OwnEvent {
     public OwnEvent(
             Integer eventImageId,
             int eventId,
+            Integer leagueIndex,
             String leagueName,
             String postDate,
             String postTime,
             String eventName) {
         this.eventImageId = eventImageId;
         this.eventId = eventId;
+        this.leagueIndex = leagueIndex;
         this.leagueName = leagueName;
         this.postDate = postDate;
         this.postTime = postTime;
         this.eventName = eventName;
+    }
+
+    public Integer getLeagueIndex() {
+        return leagueIndex;
     }
 
     public String getEventName() {
@@ -105,6 +112,7 @@ public class OwnEvent {
             ownEvents.add(new OwnEvent(
                     1,
                     listFromServer.getIndex().get(i),
+                    listFromServer.getLeagueIndex().get(i),
                     listFromServer.getLeagueName().get(i),
                     listFromServer.getEventDate().get(i),
                     listFromServer.getEventTime().get(i),

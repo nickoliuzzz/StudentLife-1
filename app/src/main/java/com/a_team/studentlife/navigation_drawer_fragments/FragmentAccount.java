@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.a_team.studentlife.OwnEventsActivity;
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.UserInformation.User;
 import com.squareup.picasso.Picasso;
 
@@ -121,7 +122,7 @@ public class FragmentAccount extends Fragment {
 
         userProfilePhoto = (ImageView) view.findViewById(R.id.user_profile_photo);
         Picasso.get().load(
-                "http://172.20.10.3/api/user/viewimage?id=" +
+                ApiUtils.getBaseUrl() + "/api/user/viewimage?id=" +
                         User.getUserInstance().getId()).into(userProfilePhoto);
         //Toast.makeText(view.getContext(), User.getUserInstance().getFirstName(), Toast.LENGTH_SHORT).show();
         return view;

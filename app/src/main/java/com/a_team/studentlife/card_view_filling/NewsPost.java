@@ -29,6 +29,7 @@ public class NewsPost {
     private Integer postImageId;
     private Integer userImageId;
     private String leagueName;
+    private Integer leagueIndex;
     private String postText;
     private String postDate;
     private String postTime;
@@ -41,6 +42,7 @@ public class NewsPost {
                     Integer postImageId,
                     Integer userImageId,
                     String leagueName,
+                    Integer leagueIndex,
                     String postText,
                     String postDate,
                     String postTime,
@@ -51,10 +53,15 @@ public class NewsPost {
         this.postImageId = postImageId;
         this.userImageId = userImageId;
         this.leagueName = leagueName;
+        this.leagueIndex = leagueIndex;
         this.postText = postText;
         this.postDate = postDate;
         this.postTime = postTime;
         this.isLikedByMe = isLikedByMe;
+    }
+
+    public Integer getLeagueIndex() {
+        return leagueIndex;
     }
 
     public void setLikedByMe(boolean likedByMe) {
@@ -175,6 +182,7 @@ public class NewsPost {
                     1,
                     1,
                     listAllUserNews.getLeague().get(i),
+                    listAllUserNews.getLeagueIndex().get(i),
                     listAllUserNews.getDescription().get(i),
                     listAllUserNews.getEventDate().get(i),
                     listAllUserNews.getEventTime().get(i),
@@ -193,6 +201,7 @@ public class NewsPost {
                     1,
                     1,
                     leagueListElement.getLeagueName(),
+                    leagueListElement.getLeagueIndex(),
                     listLeagueNews.getDescription().get(i),
                     listLeagueNews.getEventDate().get(i),
                     listLeagueNews.getEventTime().get(i),

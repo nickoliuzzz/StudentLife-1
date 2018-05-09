@@ -47,6 +47,9 @@ class LeaguesRecyclerViewHolder extends RecyclerView.ViewHolder{
     public void bind(LeagueListElement leagueListElement, boolean shopFlag) {
         leagueNameText.setText(leagueListElement.getLeagueName());
         setLeagueItemListener(leagueItem, leagueListElement, shopFlag);
-        //leaguePhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), leagueListElement.getLeagueImageId()));
+//        Picasso.get().load(
+//                ApiUtils.getBaseUrl() +
+//                "/api/leaguePhoto/viewimage?leaguePhotoId=" +
+//                leagueListElement.getLeagueIndex()).into(leaguePhoto);
     }
 }

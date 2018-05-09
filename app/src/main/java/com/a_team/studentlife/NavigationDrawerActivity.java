@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a_team.studentlife.RegAndAuth.LogInActivity;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentAccount;
 import com.a_team.studentlife.navigation_drawer_fragments.FragmentLeague;
@@ -86,7 +87,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         userIconNavigationDrawer = (ImageView) headerView.findViewById(R.id.userMainImageIcon);
         Picasso.get().load(
-                "http://172.20.10.3/api/user/viewimage?id=" +
+                ApiUtils.getBaseUrl() + "api/user/viewimage?id=" +
                         User.getUserInstance().getId().toString()).into(userIconNavigationDrawer);
 
         android.support.v4.app.FragmentTransaction frTransaction = getSupportFragmentManager().beginTransaction();

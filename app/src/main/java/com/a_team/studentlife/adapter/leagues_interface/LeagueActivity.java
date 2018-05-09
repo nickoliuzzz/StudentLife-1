@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class LeagueActivity extends AppCompatActivity {
     private ProgressBar progressBarSpinner;
     private AnimationDrawable animationDrawable;
     private RelativeLayout relativeLayout;
+    private ImageView leagueActivityPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,7 @@ public class LeagueActivity extends AppCompatActivity {
             applyButton.setTextColor(Color.GREEN);
         } else if (leagueListElement.getSubKey() == 1) {
             applyButton.setText("Отозвать заявку");
-            applyButton.setTextColor(Color.YELLOW);
+            applyButton.setTextColor(Color.BLUE);
         } else if (leagueListElement.getSubKey() == 2) {
             applyButton.setText("Отписаться");
             applyButton.setTextColor(Color.RED);
@@ -78,6 +80,12 @@ public class LeagueActivity extends AppCompatActivity {
             applyButton.setTextColor(Color.BLACK);
         }
         setApplyButtonListener(applyButton);
+
+//        leagueActivityPhoto = (ImageView) findViewById(R.id.leagueActivityPhoto);
+//        Picasso.get().load(
+//                ApiUtils.getBaseUrl() +
+//                        "/api/leaguePhoto/viewimage?leaguePhotoId=" +
+//                        leagueListElement.getLeagueIndex()).into(leagueActivityPhoto);
 
         createLeagueButton = (Button) findViewById(R.id.createLeagueButton);
         setCreateLeagueButtonListener(createLeagueButton, this);

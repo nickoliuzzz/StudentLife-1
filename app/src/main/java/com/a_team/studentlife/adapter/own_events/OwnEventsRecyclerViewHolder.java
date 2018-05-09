@@ -7,7 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.card_view_filling.OwnEvent;
+import com.squareup.picasso.Picasso;
 
 public class OwnEventsRecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -32,6 +34,9 @@ public class OwnEventsRecyclerViewHolder extends RecyclerView.ViewHolder {
         eventTime.setText(eventTime.getText() + " " + ownEvent.getPostTime());
         eventDate.setText(eventDate.getText() + " " + ownEvent.getPostDate());
         eventName.setText(eventName.getText() + " " + ownEvent.getEventName());
-        // Еще фото установить
+        Picasso.get().load(
+                ApiUtils.getBaseUrl() +
+                        "/api/leaguePhoto/viewimage?leaguePhotoId=" +
+                        ownEvent.getLeagueIndex()).into(leagueImage);
     }
 }

@@ -27,7 +27,7 @@ public class NewsRecyclerViewHolder extends RecyclerView.ViewHolder {
     private TextView postDate;
     private TextView postTime;
     private ImageView postedPhoto;
-    private ImageView userPhoto;
+    private ImageView leaguePhoto;
     private ImageView likesImage;
 
     public NewsRecyclerViewHolder(View itemView) {
@@ -37,7 +37,7 @@ public class NewsRecyclerViewHolder extends RecyclerView.ViewHolder {
         userName = (TextView) itemView.findViewById(R.id.userNewsNickname);
         postText = (TextView) itemView.findViewById(R.id.postedText);
         postedPhoto = (ImageView) itemView.findViewById(R.id.posted_photo_image_view);
-        userPhoto = (ImageView) itemView.findViewById(R.id.news_profile_photo);
+        leaguePhoto = (ImageView) itemView.findViewById(R.id.news_profile_photo);
         postDate = (TextView) itemView.findViewById(R.id.date_of_event);
         postTime = (TextView) itemView.findViewById(R.id.time_of_event);
         likesImage = (ImageView) itemView.findViewById(R.id.likes_image_news);
@@ -57,8 +57,14 @@ public class NewsRecyclerViewHolder extends RecyclerView.ViewHolder {
             Picasso.get().load(R.drawable.ic_post_likes).into(likesImage);
         }
         setLikesImageListener(newsPost);
-        //postedPhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), newsPost.getPostImageId()));
-        //userPhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), newsPost.getUserImageId()));
+//        Picasso.get().load(
+//                ApiUtils.getBaseUrl() +
+//                        "/api/postedPhoto/viewimage?postedPhotoId=" +
+//                        newsPost.getPostIndex()).into(postedPhoto);
+//        Picasso.get().load(
+//                ApiUtils.getBaseUrl() +
+//                        "/api/leaguePhoto/viewimage?leaguePhotoId=" +
+//                        newsPost.getLeagueIndex()).into(leaguePhoto);
     }
 
     @SuppressLint("SetTextI18n")

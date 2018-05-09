@@ -10,6 +10,9 @@ public class ListAllUserNewsResponse {
     @SerializedName("index")
     @Expose
     private List<Integer> index = null;
+    @SerializedName("leagueIndex")
+    @Expose
+    private List<Integer> leagueIndex = null;
     @SerializedName("description")
     @Expose
     private List<String> description = null;
@@ -31,6 +34,14 @@ public class ListAllUserNewsResponse {
     @SerializedName("isLikedByMe")
     @Expose
     private List<Boolean> isLikedByMe = null;
+
+    public List<Integer> getLeagueIndex() {
+        return leagueIndex;
+    }
+
+    public void setLeagueIndex(List<Integer> leagueIndex) {
+        this.leagueIndex = leagueIndex;
+    }
 
     public List<Boolean> getIsLikedByMe() {
         return isLikedByMe;

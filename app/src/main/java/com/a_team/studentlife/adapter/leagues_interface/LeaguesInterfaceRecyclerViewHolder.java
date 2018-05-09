@@ -58,8 +58,14 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
             Picasso.get().load(R.drawable.ic_post_likes).into(likesImage);
         }
         setLikesImageListener(newsPost);
-        //postedPhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), newsPost.getPostImageId()));
-        //leaguePhoto.setImageBitmap(BitmapFactory.decodeResource(itemView.getResources(), newsPost.getUserImageId()));
+//        Picasso.get().load(
+//                ApiUtils.getBaseUrl() +
+//                        "/api/postedPhoto/viewimage?postedPhotoId=" +
+//                        newsPost.getPostIndex()).into(postedPhoto);
+//        Picasso.get().load(
+//                ApiUtils.getBaseUrl() +
+//                        "/api/leaguePhoto/viewimage?leaguePhotoId=" +
+//                        newsPost.getLeagueIndex()).into(leaguePhoto);
     }
 
     @SuppressLint("SetTextI18n")
@@ -82,7 +88,7 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
         });
     }
 
-    private void decrementLikes(NewsPost newsPost) {
+    private void decrementLikes(final NewsPost newsPost) {
         APIService mAPIService = ApiUtils.getAPIService();
         mAPIService.likeDecrement(User.getUserInstance().getId(), newsPost.getPostIndex()).enqueue(new Callback<LikeMonipulationResponse>() {
             @Override
@@ -93,6 +99,7 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
                                 itemView.getContext(),
                                 "Ваш голос учтен",
                                 Toast.LENGTH_SHORT).show();
+                        newsPost.setLikedByMe(false);
                     }
                 }
             }
@@ -104,7 +111,7 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
         });
     }
 
-    private void incrementLikes(NewsPost newsPost) {
+    private void incrementLikes(final NewsPost newsPost) {
         APIService mAPIService = ApiUtils.getAPIService();
         mAPIService.likeIncrement(User.getUserInstance().getId(), newsPost.getPostIndex()).enqueue(new Callback<LikeMonipulationResponse>() {
             @Override
@@ -115,6 +122,7 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
                                 itemView.getContext(),
                                 "Ваш голос учтен",
                                 Toast.LENGTH_SHORT).show();
+                        newsPost.setLikedByMe(true);
                     }
                 }
             }
