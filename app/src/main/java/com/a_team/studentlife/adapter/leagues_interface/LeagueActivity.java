@@ -1,5 +1,6 @@
 package com.a_team.studentlife.adapter.leagues_interface;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,9 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a_team.studentlife.CreateLeagueActivity;
+import com.a_team.studentlife.ProgressBars.ProgressService;
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
+import com.a_team.studentlife.Server.ServerResponse.DeleteLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.SubscribeLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.UnsubscribeLeagueResponse;
 import com.a_team.studentlife.UserInformation.User;
@@ -76,8 +79,8 @@ public class LeagueActivity extends AppCompatActivity {
             applyButton.setText("Отписаться");
             applyButton.setTextColor(Color.RED);
         } else {
-            applyButton.setText("Лист заявок");
-            applyButton.setTextColor(Color.BLACK);
+            applyButton.setText("Удалить лигу");
+            applyButton.setTextColor(Color.RED);
         }
         setApplyButtonListener(applyButton);
 
@@ -131,8 +134,37 @@ public class LeagueActivity extends AppCompatActivity {
                     applyButton.setTextColor(Color.GREEN);
                     unSubscribe();
                 } else {
-                    // open list for admin
+                    deleteLeague();
                 }
+            }
+        });
+    }
+
+    private void deleteLeague() {
+        APIService mAPIService = ApiUtils.getAPIService();
+        mAPIService.deleteLeague(leagueListElement.getLeagueIndex()).enqueue(new Callback<DeleteLeagueResponse>() {
+            @Override
+            public void onResponse(Call<DeleteLeagueResponse> call, Response<DeleteLeagueResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getAnswer().equals("ok")) {
+                        Toast.makeText(
+                                LeagueActivity.this,
+                                "Лига " + leagueListElement.getLeagueName() + " удалена",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(
+                                LeagueActivity.this,
+                                response.body().getAnswer(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DeleteLeagueResponse> call, Throwable t) {
+                ProgressService.showDialogMessage(LeagueActivity.this, "Ошибка соединения",
+                        "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
+                        2148, true);
             }
         });
     }
@@ -156,7 +188,9 @@ public class LeagueActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UnsubscribeLeagueResponse> call, Throwable t) {
-
+                ProgressService.showDialogMessage(LeagueActivity.this, "Ошибка соединения",
+                        "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
+                        2148, true);
             }
         });
     }
@@ -180,7 +214,9 @@ public class LeagueActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SubscribeLeagueResponse> call, Throwable t) {
-
+                ProgressService.showDialogMessage(LeagueActivity.this, "Ошибка соединения",
+                        "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
+                        2148, true);
             }
         });
     }

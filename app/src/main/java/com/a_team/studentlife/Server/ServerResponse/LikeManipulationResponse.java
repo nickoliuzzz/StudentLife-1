@@ -3,7 +3,7 @@ package com.a_team.studentlife.Server.ServerResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LikeMonipulationResponse {
+public class LikeManipulationResponse {
     @SerializedName("answer")
     @Expose
     private String answer;

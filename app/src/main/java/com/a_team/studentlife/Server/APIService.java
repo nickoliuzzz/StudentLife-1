@@ -4,7 +4,8 @@ import com.a_team.studentlife.Server.ServerResponse.ChangeUserInformationRespons
 import com.a_team.studentlife.Server.ServerResponse.CheckQuizResponse;
 import com.a_team.studentlife.Server.ServerResponse.CheckSubAndNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.CreateLeagueResponse;
-import com.a_team.studentlife.Server.ServerResponse.LikeMonipulationResponse;
+import com.a_team.studentlife.Server.ServerResponse.DeleteLeagueResponse;
+import com.a_team.studentlife.Server.ServerResponse.LikeManipulationResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListAllUserNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeagueNewsResponse;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
@@ -18,10 +19,12 @@ import com.a_team.studentlife.Server.ServerResponse.SubscribeLeagueResponse;
 import com.a_team.studentlife.Server.ServerResponse.UnsubscribeLeagueResponse;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
@@ -104,15 +107,17 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("/api/likeIncrement")
-    Call<LikeMonipulationResponse> likeIncrement(@Field("userId") Integer userId,
+    Call<LikeManipulationResponse> likeIncrement(@Field("userId") Integer userId,
                                                  @Field("eventId") Integer eventId);
 
     @FormUrlEncoded
     @POST("/api/likeDecrement")
-    Call<LikeMonipulationResponse> likeDecrement(@Field("userId") Integer userId,
+    Call<LikeManipulationResponse> likeDecrement(@Field("userId") Integer userId,
                                                  @Field("eventId") Integer eventId);
 
     @GET("api/getOwnEvents")
     Call<OwnEventsResponse> getOwnEvents(@Query("userId") int userId);
 
+    @DELETE("/api/deleteLeague/{leagueId}")
+    Call<DeleteLeagueResponse> deleteLeague(@Path("leagueId") Integer leagueId);
 }

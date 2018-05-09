@@ -1,16 +1,18 @@
 package com.a_team.studentlife.adapter.news;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.a_team.studentlife.ProgressBars.ProgressService;
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
-import com.a_team.studentlife.Server.ServerResponse.LikeMonipulationResponse;
+import com.a_team.studentlife.Server.ServerResponse.LikeManipulationResponse;
 import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.card_view_filling.NewsPost;
 import com.squareup.picasso.Picasso;
@@ -91,9 +93,9 @@ public class NewsRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     private void decrementLikes(NewsPost newsPost) {
         APIService mAPIService = ApiUtils.getAPIService();
-        mAPIService.likeDecrement(User.getUserInstance().getId(), newsPost.getPostIndex()).enqueue(new Callback<LikeMonipulationResponse>() {
+        mAPIService.likeDecrement(User.getUserInstance().getId(), newsPost.getPostIndex()).enqueue(new Callback<LikeManipulationResponse>() {
             @Override
-            public void onResponse(Call<LikeMonipulationResponse> call, Response<LikeMonipulationResponse> response) {
+            public void onResponse(Call<LikeManipulationResponse> call, Response<LikeManipulationResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getAnswer().equals("ok")) {
                         Toast.makeText(
@@ -105,17 +107,19 @@ public class NewsRecyclerViewHolder extends RecyclerView.ViewHolder {
             }
 
             @Override
-            public void onFailure(Call<LikeMonipulationResponse> call, Throwable t) {
-
+            public void onFailure(Call<LikeManipulationResponse> call, Throwable t) {
+                ProgressService.showDialogMessage(itemView.getContext(), "Ошибка соединения",
+                        "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
+                        2148, true);
             }
         });
     }
 
     private void incrementLikes(NewsPost newsPost) {
         APIService mAPIService = ApiUtils.getAPIService();
-        mAPIService.likeIncrement(User.getUserInstance().getId(), newsPost.getPostIndex()).enqueue(new Callback<LikeMonipulationResponse>() {
+        mAPIService.likeIncrement(User.getUserInstance().getId(), newsPost.getPostIndex()).enqueue(new Callback<LikeManipulationResponse>() {
             @Override
-            public void onResponse(Call<LikeMonipulationResponse> call, Response<LikeMonipulationResponse> response) {
+            public void onResponse(Call<LikeManipulationResponse> call, Response<LikeManipulationResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getAnswer().equals("ok")) {
                         Toast.makeText(
@@ -127,8 +131,10 @@ public class NewsRecyclerViewHolder extends RecyclerView.ViewHolder {
             }
 
             @Override
-            public void onFailure(Call<LikeMonipulationResponse> call, Throwable t) {
-
+            public void onFailure(Call<LikeManipulationResponse> call, Throwable t) {
+                ProgressService.showDialogMessage(itemView.getContext(), "Ошибка соединения",
+                        "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
+                        2148, true);
             }
         });
     }
