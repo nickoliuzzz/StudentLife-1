@@ -3,7 +3,9 @@ package com.a_team.studentlife.navigation_drawer_fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,7 @@ public class FragmentSettings extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private SwipeRefreshLayout swipe;
 
     public FragmentSettings() {
         // Required empty public constructor
@@ -76,6 +79,24 @@ public class FragmentSettings extends Fragment {
                              Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        swipe = (SwipeRefreshLayout) view.findViewById(R.id.settingSwipeRefresh);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                createSettingScreen(view);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe.setRefreshing(false);
+                    }
+                }, 1000);
+            }
+        });
+        // Inflate the layout for this fragment
+        return view;
+    }
+
+    private void createSettingScreen(View view) {
         notificationSettingsButton = view.findViewById(R.id.Notifications);
         notificationSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +128,6 @@ public class FragmentSettings extends Fragment {
                 startActivity(new Intent(getActivity(), AboutAsActivity.class));
             }
         });
-
-        // Inflate the layout for this fragment
-        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

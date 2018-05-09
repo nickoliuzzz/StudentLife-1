@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.a_team.studentlife.navigation_drawer_fragments.FragmentSettings">
 
-    <!-- TODO: Update blank fragment layout -->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/settingSwipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -73,5 +76,7 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>
