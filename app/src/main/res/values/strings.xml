@@ -127,5 +127,6 @@
     <string name="sub_and_news_notifications_switch_text">Новости и подписка</string>
     <string name="notifications_header_text">Настройка уведомлений</string>
     <string name="save_notifications_settings_text">Сохранить настройки</string>
+    <string name="delete_league_dialog_text">Вы уверены, что хотите удалить данную лигу?</string>
 
 </resources>

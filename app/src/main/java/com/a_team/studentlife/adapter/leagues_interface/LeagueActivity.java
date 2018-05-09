@@ -1,5 +1,6 @@
 package com.a_team.studentlife.adapter.leagues_interface;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -134,7 +135,27 @@ public class LeagueActivity extends AppCompatActivity {
                     applyButton.setTextColor(Color.GREEN);
                     unSubscribe();
                 } else {
-                    deleteLeague();
+                    final Dialog dialog = new Dialog(LeagueActivity.this);
+                    dialog.setContentView(R.layout.delete_league_dialog_layout);
+
+                    Button deleteButton = (Button) dialog.findViewById(R.id.yesDeleteButton);
+                    deleteButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            deleteLeague();
+                        }
+                    });
+                    Button dontDeleteButton = (Button) dialog.findViewById(R.id.noDeleteButton);
+                    deleteButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.setTitle("Внимание");
+                    dialog.setCancelable(false);
+                    dialog.show();
                 }
             }
         });
@@ -157,6 +178,7 @@ public class LeagueActivity extends AppCompatActivity {
                                 response.body().getAnswer(),
                                 Toast.LENGTH_SHORT).show();
                     }
+                    finish();
                 }
             }
 
