@@ -9,10 +9,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 import com.a_team.studentlife.R;
 import com.a_team.studentlife.UserInformation.User;
@@ -70,6 +74,7 @@ public class FragmentLeague extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -136,5 +141,27 @@ public class FragmentLeague extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.menuSearch);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Название лиги");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                LeagueListElement.getLeagueListElements(getActivity(), leaguesAdapter, recyclerView,
+                        progressBarSpinner, User.getUserInstance().getId(), false);
+                return false;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

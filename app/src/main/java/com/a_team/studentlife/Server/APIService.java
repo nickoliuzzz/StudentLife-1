@@ -30,6 +30,10 @@ public interface APIService {
     @POST("api/getLeagues/")
     Call<ListLeaguesResponse> getListOfLeagues(@Field("userId") Integer userId);
 
+    @GET("api/getLeaguesBySearch")
+    Call<ListLeaguesResponse> getListOfLeaguesBySearch(@Query("userId") Integer userId,
+                                                       @Query("leagueSearchString") String leagueSearchString);
+
     @GET("api/getListOfEvent")
     Call<ListLeagueNewsResponse> getListOfLeagueNews(@Query("userId") Integer userId,
                                                      @Query("leagueId") Integer leagueId);

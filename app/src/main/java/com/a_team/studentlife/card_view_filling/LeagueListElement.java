@@ -11,6 +11,7 @@ import com.a_team.studentlife.ProgressBars.ProgressService;
 import com.a_team.studentlife.Server.APIService;
 import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.Server.ServerResponse.ListLeaguesResponse;
+import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.adapter.leagues.LeaguesAdapter;
 
 import java.util.ArrayList;
@@ -64,6 +65,40 @@ public class LeagueListElement {
                     ListLeaguesResponse listFromServer = response.body();
                     updateLeagueList(listFromServer, leagueListElements);
                     leaguesAdapter.addAllLeagues(leagueListElements, shopFlag);
+                    recyclerView.setAdapter(leaguesAdapter);
+                } else {
+                    Toast.makeText(context, "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
+                }
+                progressBarSpinner.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<ListLeaguesResponse> call, Throwable t) {
+                ProgressService.showDialogMessage(context, "Ошибка соединения",
+                        "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
+                        2148, true);
+            }
+        });
+    }
+
+    public static void getLeagueListElementsBySearch(final Context context,
+                                                     final LeaguesAdapter leaguesAdapter,
+                                                     final RecyclerView recyclerView,
+                                                     final ProgressBar progressBarSpinner,
+                                                     int userId,
+                                                     String leagueSearchName) {
+        if (leagueListElements.size() != 0)
+            leagueListElements.clear();
+        APIService mAPIService = ApiUtils.getAPIService();
+        mAPIService.getListOfLeaguesBySearch(
+                User.getUserInstance().getId(),
+                leagueSearchName).enqueue(new Callback<ListLeaguesResponse>() {
+            @Override
+            public void onResponse(Call<ListLeaguesResponse> call, Response<ListLeaguesResponse> response) {
+                if (response.isSuccessful()) {
+                    ListLeaguesResponse listFromServer = response.body();
+                    updateLeagueList(listFromServer, leagueListElements);
+                    leaguesAdapter.addAllLeagues(leagueListElements, false);
                     recyclerView.setAdapter(leaguesAdapter);
                 } else {
                     Toast.makeText(context, "Сервер вернул ошибку", Toast.LENGTH_SHORT).show();
