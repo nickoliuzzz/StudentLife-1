@@ -147,7 +147,7 @@ public class LeagueActivity extends AppCompatActivity {
                         }
                     });
                     Button dontDeleteButton = (Button) dialog.findViewById(R.id.noDeleteButton);
-                    deleteButton.setOnClickListener(new View.OnClickListener() {
+                    dontDeleteButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             dialog.dismiss();
