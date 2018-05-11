@@ -29,7 +29,7 @@
 ## 6. To be architecture:
 #### Диаграмма классов.
 
-![Ссылка на изоражение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Pictures/ClassDiagramExpected.png)
+![Ссылка на изоражение](https://github.com/5ALEKSEY/StudentLife/blob/master/Documentation/Pictures/MVP_expected.jpg)
 
 
 Подробная развертка каждого класса находится в папке:
