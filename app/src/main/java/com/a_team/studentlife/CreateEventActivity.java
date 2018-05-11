@@ -9,5 +9,6 @@ public class CreateEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_event_activity);
+        setTitle("Создание события");
     }
 }
