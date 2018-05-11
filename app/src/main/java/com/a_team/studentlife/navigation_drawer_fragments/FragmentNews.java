@@ -82,7 +82,6 @@ public class FragmentNews extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_news, container, false);
-        swipe = (SwipeRefreshLayout) view.findViewById(R.id.newsSwipeRefresh);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -95,6 +94,7 @@ public class FragmentNews extends Fragment {
                 }, 2000);
             }
         });
+        createNewsScreen(view);
         return view;
     }
 
@@ -104,6 +104,8 @@ public class FragmentNews extends Fragment {
         animationDrawable.setEnterFadeDuration(5000);
         animationDrawable.setExitFadeDuration(2000);
         animationDrawable.start();
+
+        swipe = (SwipeRefreshLayout) view.findViewById(R.id.newsSwipeRefresh);
 
         progressBarSpinner = view.findViewById(R.id.loading_spinner_news);
         progressBarSpinner.setVisibility(View.VISIBLE);

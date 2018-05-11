@@ -143,6 +143,7 @@ public class NewsPost {
                     ProgressService.showDialogMessage(context, "Ошибка соединения",
                             "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
                             2148, true);
+                    progressBarSpinner.setVisibility(View.GONE);
                 }
             });
         } else {
@@ -167,6 +168,7 @@ public class NewsPost {
                     ProgressService.showDialogMessage(context, "Ошибка соединения",
                             "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
                             2148, true);
+                    progressBarSpinner.setVisibility(View.GONE);
                 }
             });
         }

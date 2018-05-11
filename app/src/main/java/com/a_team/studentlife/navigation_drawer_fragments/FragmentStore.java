@@ -92,6 +92,7 @@ public class FragmentStore extends Fragment {
                 }, 2000);
             }
         });
+        createStoreScreen(view);
         return view;
     }
 

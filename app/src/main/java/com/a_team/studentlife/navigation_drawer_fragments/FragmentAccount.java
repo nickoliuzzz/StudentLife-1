@@ -99,6 +99,7 @@ public class FragmentAccount extends Fragment {
                 }, 2000);
             }
         });
+        createAccountScreen(view);
         return view;
     }
 

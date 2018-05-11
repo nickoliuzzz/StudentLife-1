@@ -134,6 +134,7 @@ public class Product {
                 ProgressService.showDialogMessage(leagueShopProductsActivity, "Ошибка соединения",
                         "Проверьте соединение с интернетом", ProgressDialog.STYLE_SPINNER,
                         2148, true);
+                progressBarSpinner.setVisibility(View.GONE);
             }
         });
     }

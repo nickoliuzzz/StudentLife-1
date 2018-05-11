@@ -92,6 +92,7 @@ public class FragmentSettings extends Fragment {
                 }, 1000);
             }
         });
+        createSettingScreen(view);
         // Inflate the layout for this fragment
         return view;
     }

@@ -28,6 +28,7 @@ public class OwnEventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.own_events_activity);
         setTitle("Мои события");
+        createOwnEventsActivityScreen();
         swipe = (SwipeRefreshLayout) findViewById(R.id.ownEventsSwipeRefresh);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

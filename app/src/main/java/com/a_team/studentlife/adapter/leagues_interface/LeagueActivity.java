@@ -69,6 +69,7 @@ public class LeagueActivity extends AppCompatActivity {
                 }, 2000);
             }
         });
+        createLeagueActivityScreen();
     }
 
     private void createLeagueActivityScreen() {

@@ -33,7 +33,6 @@ public class LeagueShopProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.league_shop_products_activity);
         setTitle("Магазин лиги");
-
         swipe = (SwipeRefreshLayout) findViewById(R.id.leagueShopSwipeRefresh);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -47,6 +46,7 @@ public class LeagueShopProductsActivity extends AppCompatActivity {
                 }, 2000);
             }
         });
+        createLeagueShopScreen();
     }
 
     private void createLeagueShopScreen() {

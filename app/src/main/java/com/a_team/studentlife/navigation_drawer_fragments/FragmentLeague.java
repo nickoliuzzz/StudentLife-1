@@ -103,6 +103,7 @@ public class FragmentLeague extends Fragment {
                 }, 2000);
             }
         });
+        createLeagueScreen(view);
         return view;
     }
 
