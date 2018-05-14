@@ -79,6 +79,8 @@ public class FragmentStore extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_league, container, false);
+        progressBarSpinner = view.findViewById(R.id.loading_spinner);
+        progressBarSpinner.setVisibility(View.VISIBLE);
         swipe = (SwipeRefreshLayout) view.findViewById(R.id.leagueSwipeRefresh);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -98,8 +100,6 @@ public class FragmentStore extends Fragment {
 
     private void createStoreScreen(View view) {
         recyclerView = view.findViewById(R.id.recycler_list_posts_leagues);
-        progressBarSpinner = view.findViewById(R.id.loading_spinner);
-        progressBarSpinner.setVisibility(View.VISIBLE);
         verticalLinearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         leaguesAdapter = new LeaguesAdapter();

@@ -10,13 +10,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 
@@ -49,7 +49,6 @@ public class FragmentLeague extends Fragment {
     private LeaguesAdapter leaguesAdapter;
     private ProgressBar progressBarSpinner;
     private AnimationDrawable animationDrawable;
-    private FrameLayout frameLayout;
     private SwipeRefreshLayout swipe;
 
     public FragmentLeague() {
@@ -90,6 +89,8 @@ public class FragmentLeague extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragmentgetAccessibilityClassName
         final View view = inflater.inflate(R.layout.fragment_league, container, false);
+        progressBarSpinner = view.findViewById(R.id.loading_spinner);
+        progressBarSpinner.setVisibility(View.VISIBLE);
         swipe = (SwipeRefreshLayout) view.findViewById(R.id.leagueSwipeRefresh);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -108,15 +109,7 @@ public class FragmentLeague extends Fragment {
     }
 
     private void createLeagueScreen(View view) {
-        frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_league);
-        animationDrawable = (AnimationDrawable) frameLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
-
         recyclerView = view.findViewById(R.id.recycler_list_posts_leagues);
-        progressBarSpinner = view.findViewById(R.id.loading_spinner);
-        progressBarSpinner.setVisibility(View.VISIBLE);
         verticalLinearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         leaguesAdapter = new LeaguesAdapter();
@@ -177,8 +170,12 @@ public class FragmentLeague extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                LeagueListElement.getLeagueListElementsBySearch(getActivity(), leaguesAdapter, recyclerView,
+                if (!TextUtils.isEmpty(newText))
+                    LeagueListElement.getLeagueListElementsBySearch(getActivity(), leaguesAdapter, recyclerView,
                         progressBarSpinner, User.getUserInstance().getId(), newText);
+                else
+                    LeagueListElement.getLeagueListElements(getActivity(), leaguesAdapter, recyclerView,
+                            progressBarSpinner, User.getUserInstance().getId(), false);
                 return false;
             }
         });

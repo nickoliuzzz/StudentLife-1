@@ -1,7 +1,6 @@
 package com.a_team.studentlife.adapter.Shop;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -9,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -23,8 +21,6 @@ public class LeagueShopProductsActivity extends AppCompatActivity {
     private LeagueShopAdapter leagueShopAdapter;
     private ProgressBar progressBarSpinner;
     private LeagueListElement leagueListElement;
-    private FrameLayout frameLayout;
-    private AnimationDrawable animationDrawable;
     private TextView userMoneyValue;
     private SwipeRefreshLayout swipe;
 
@@ -50,12 +46,6 @@ public class LeagueShopProductsActivity extends AppCompatActivity {
     }
 
     private void createLeagueShopScreen() {
-        frameLayout = (FrameLayout) findViewById(R.id.frame_layout_league_shop_activity);
-        animationDrawable = (AnimationDrawable) frameLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
-
         Intent leagueIntent = getIntent();
         leagueListElement = new LeagueListElement(
                 leagueIntent.getIntExtra("leagueIndex", 0),

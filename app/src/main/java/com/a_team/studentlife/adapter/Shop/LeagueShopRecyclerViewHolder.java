@@ -28,7 +28,12 @@ public class LeagueShopRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     @SuppressLint("SetTextI18n")
     public void bind(Product product) {
-        this.productNameTextView.setText(product.getProductName());
+        if (product.getProductName().length() > 18) {
+            String productName = new StringBuilder(product.getProductName()).substring(0,18);
+            String newProductName = productName + "...";
+            this.productNameTextView.setText(newProductName);
+        } else
+            this.productNameTextView.setText(product.getProductName());
         this.productPriceTextView.setText(productPriceTextView.getText() + " " + product.getProductPrice());
         if (product.isBought()) {
             this.isProductBoughtTextView.setText("Уже куплено");

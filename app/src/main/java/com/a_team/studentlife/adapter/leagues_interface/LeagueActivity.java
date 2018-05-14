@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +28,7 @@ import com.a_team.studentlife.Server.ServerResponse.UnsubscribeLeagueResponse;
 import com.a_team.studentlife.UserInformation.User;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
 import com.a_team.studentlife.card_view_filling.NewsPost;
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,37 +45,13 @@ public class LeagueActivity extends AppCompatActivity {
     private Button createLeagueButton;
     private ProgressBar progressBarSpinner;
     private AnimationDrawable animationDrawable;
-    private RelativeLayout relativeLayout;
     private ImageView leagueActivityPhoto;
-    private SwipeRefreshLayout swipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.league_activity);
         setTitle("Новости лиги");
-        swipe = (SwipeRefreshLayout) findViewById(R.id.leagueActivitySwipeRefresh);
-        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                createLeagueActivityScreen();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipe.setRefreshing(false);
-                    }
-                }, 2000);
-            }
-        });
-        createLeagueActivityScreen();
-    }
-
-    private void createLeagueActivityScreen() {
-        relativeLayout = (RelativeLayout) findViewById(R.id.relative_layout_league_activity);
-        animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
 
         Intent leagueIntent = getIntent();
         leagueListElement = new LeagueListElement(
@@ -104,11 +78,11 @@ public class LeagueActivity extends AppCompatActivity {
         }
         setApplyButtonListener(applyButton);
 
-//        leagueActivityPhoto = (ImageView) findViewById(R.id.leagueActivityPhoto);
-//        Picasso.get().load(
-//                ApiUtils.getBaseUrl() +
-//                        "/api/leaguePhoto/viewimage?leaguePhotoId=" +
-//                        leagueListElement.getLeagueIndex()).into(leagueActivityPhoto);
+        leagueActivityPhoto = (ImageView) findViewById(R.id.leagueActivityPhoto);
+        Picasso.get().load(
+                ApiUtils.getBaseUrl() +
+                        "api/leaguePhoto/viewimage?leaguePhotoId=" +
+                        leagueListElement.getLeagueIndex()).into(leagueActivityPhoto);
 
         createLeagueButton = (Button) findViewById(R.id.createLeagueButton);
         setCreateLeagueButtonListener(createLeagueButton, this);

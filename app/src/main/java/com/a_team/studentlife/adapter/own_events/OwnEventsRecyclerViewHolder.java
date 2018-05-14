@@ -36,7 +36,7 @@ public class OwnEventsRecyclerViewHolder extends RecyclerView.ViewHolder {
         eventName.setText(eventName.getText() + " " + ownEvent.getEventName());
         Picasso.get().load(
                 ApiUtils.getBaseUrl() +
-                        "/api/leaguePhoto/viewimage?leaguePhotoId=" +
+                        "api/leaguePhoto/viewimage?leaguePhotoId=" +
                         ownEvent.getLeagueIndex()).into(leagueImage);
     }
 }

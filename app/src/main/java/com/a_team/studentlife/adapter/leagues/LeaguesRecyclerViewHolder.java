@@ -8,9 +8,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.a_team.studentlife.R;
+import com.a_team.studentlife.Server.Retrofit.ApiUtils;
 import com.a_team.studentlife.adapter.Shop.LeagueShopProductsActivity;
 import com.a_team.studentlife.adapter.leagues_interface.LeagueActivity;
 import com.a_team.studentlife.card_view_filling.LeagueListElement;
+import com.squareup.picasso.Picasso;
 
 class LeaguesRecyclerViewHolder extends RecyclerView.ViewHolder{
     private TextView leagueNameText;
@@ -47,9 +49,9 @@ class LeaguesRecyclerViewHolder extends RecyclerView.ViewHolder{
     public void bind(LeagueListElement leagueListElement, boolean shopFlag) {
         leagueNameText.setText(leagueListElement.getLeagueName());
         setLeagueItemListener(leagueItem, leagueListElement, shopFlag);
-//        Picasso.get().load(
-//                ApiUtils.getBaseUrl() +
-//                "/api/leaguePhoto/viewimage?leaguePhotoId=" +
-//                leagueListElement.getLeagueIndex()).into(leaguePhoto);
+        Picasso.get().load(
+                ApiUtils.getBaseUrl() +
+                "api/leaguePhoto/viewimage?leaguePhotoId=" +
+                leagueListElement.getLeagueIndex()).into(leaguePhoto);
     }
 }

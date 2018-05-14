@@ -116,8 +116,8 @@ public class Product {
                 if (response.isSuccessful()) {
                     ListLeagueProductsResponse listLeagueProductsResponse = response.body();
                     updateListOfLeagueShopProduct(listLeagueProductsResponse, products, leagueListElement);
-                    headerTextView.setText(headerTextView.getText() +
-                            " " + leagueListElement.getLeagueName() + " " +
+                    headerTextView.setText("Валюты в лиге "
+                            + leagueListElement.getLeagueName() + " " +
                             String.valueOf(User.getUserInstance().getTempLeagueMoney()));
                     leagueShopAdapter.addAllProducts(products);
                     recyclerView.setAdapter(leagueShopAdapter);

@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/news"
     android:orientation="vertical"
-    android:padding="40dp"
     tools:context=".AboutAsActivity"
     tools:layout_editor_absoluteX="220dp"
     tools:layout_editor_absoluteY="0dp">
@@ -17,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="@string/aboutAsHeaderText"
         android:textAlignment="center"
-        android:textColor="#e70000"
+        android:textColor="@android:color/black"
         android:textSize="25sp" />
 
     <TextView
@@ -27,8 +26,31 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:text="@string/first_member_about_as"
-        android:textColor="#ff8c00"
-        android:textSize="20sp" />
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/aleksey_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vk_picture"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:text=" - Страница Алексея в ВКонтакте"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -37,8 +59,31 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="@string/second_member_about_as"
-        android:textColor="#ffef00"
-        android:textSize="20sp" />
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/nikita_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vk_picture"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:text=" - Страница Никиты в ВКонтакте"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -47,8 +92,31 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="@string/third_member_about_as"
-        android:textColor="#00811f"
-        android:textSize="20sp" />
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/nikolay_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vk_picture"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:text=" - Страница Николая в ВКонтакте"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -57,8 +125,31 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="@string/fourth_member_about_as"
-        android:textColor="#0044ff"
-        android:textSize="20sp" />
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/illya_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vk_picture"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:text=" - Страница Ильи в ВКонтакте"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -67,7 +158,30 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="@string/fifth_member_about_as"
-        android:textColor="#760089"
-        android:textSize="20sp" />
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/darya_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vk_picture"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:text=" - Страница Дарьи в ВКонтакте"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

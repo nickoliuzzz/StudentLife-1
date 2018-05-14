@@ -2,17 +2,13 @@ package com.a_team.studentlife.navigation_drawer_fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.a_team.studentlife.OwnEventsActivity;
@@ -41,13 +37,10 @@ public class FragmentAccount extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private TextView userProfileName;
-    private ScrollView scrollView;
-    private AnimationDrawable animationDrawable;
     private TextView showNewsTextView;
     private TextView showShopTextView;
     private TextView showOwnEventsTextView;
     private ImageView userProfilePhoto;
-    private SwipeRefreshLayout swipe;
 
     public FragmentAccount() {
         // Required empty public constructor
@@ -81,30 +74,12 @@ public class FragmentAccount extends Fragment {
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_account, container, false);
-        swipe = (SwipeRefreshLayout) view.findViewById(R.id.accountSwipeRefresh);
-        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                createAccountScreen(view);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipe.setRefreshing(false);
-                    }
-                }, 2000);
-            }
-        });
-        createAccountScreen(view);
-        return view;
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void createAccountScreen(View view) {
         showOwnEventsTextView = (TextView) view.findViewById(R.id.own_events_button);
         showOwnEventsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,11 +107,6 @@ public class FragmentAccount extends Fragment {
                 frTransaction.replace(R.id.container, new FragmentNews()).commit();
             }
         });
-        scrollView = (ScrollView) view.findViewById(R.id.scroll_view_account);
-        animationDrawable = (AnimationDrawable) scrollView.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
 
         userProfileName = (TextView) view.findViewById(R.id.user_profile_name);
         userProfileName.setText(User.getUserInstance().getFirstName() + " " +
@@ -144,8 +114,9 @@ public class FragmentAccount extends Fragment {
 
         userProfilePhoto = (ImageView) view.findViewById(R.id.user_profile_photo);
         Picasso.get().load(
-                ApiUtils.getBaseUrl() + "/api/user/viewimage?id=" +
+                ApiUtils.getBaseUrl() + "api/user/viewimage?id=" +
                         User.getUserInstance().getId()).into(userProfilePhoto);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

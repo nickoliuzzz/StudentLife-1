@@ -1,6 +1,5 @@
 package com.a_team.studentlife.navigation_drawer_fragments;
 
-import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import com.a_team.studentlife.R;
@@ -42,8 +40,6 @@ public class FragmentNews extends Fragment {
     private LinearLayoutManager verticalLinearLayoutManager;
     private NewsAdapter newsAdapter;
     private ProgressBar progressBarSpinner;
-    private FrameLayout frameLayout;
-    private AnimationDrawable animationDrawable;
     private SwipeRefreshLayout swipe;
 
     public FragmentNews() {
@@ -82,6 +78,9 @@ public class FragmentNews extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_news, container, false);
+        progressBarSpinner = view.findViewById(R.id.loading_spinner_news);
+        progressBarSpinner.setVisibility(View.VISIBLE);
+        swipe = (SwipeRefreshLayout) view.findViewById(R.id.newsSwipeRefresh);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -99,16 +98,7 @@ public class FragmentNews extends Fragment {
     }
 
     private void createNewsScreen(View view) {
-        frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout_fragment_news);
-        animationDrawable = (AnimationDrawable) frameLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
-
         swipe = (SwipeRefreshLayout) view.findViewById(R.id.newsSwipeRefresh);
-
-        progressBarSpinner = view.findViewById(R.id.loading_spinner_news);
-        progressBarSpinner.setVisibility(View.VISIBLE);
         recyclerView = view.findViewById(R.id.recycler_list_posts);
         verticalLinearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(verticalLinearLayoutManager);

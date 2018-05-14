@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.a_team.studentlife.ProgressBars.ProgressService;
 import com.a_team.studentlife.R;
@@ -52,22 +51,22 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
         likes.setText(newsPost.getLikes().toString());
         leagueName.setText(newsPost.getLeagueName());
         postText.setText(newsPost.getPostText());
-        postTime.setText(postTime.getText() + " " + newsPost.getPostTime());
-        postDate.setText(postDate.getText() + " " + newsPost.getPostDate());
+        postTime.setText("Время: " + newsPost.getPostTime());
+        postDate.setText("Дата: " + newsPost.getPostDate());
         if (newsPost.isLikedByMe()) {
             Picasso.get().load(R.drawable.ic_pos_likes_pressed).into(likesImage);
         } else {
             Picasso.get().load(R.drawable.ic_post_likes).into(likesImage);
         }
         setLikesImageListener(newsPost);
-//        Picasso.get().load(
-//                ApiUtils.getBaseUrl() +
-//                        "/api/postedPhoto/viewimage?postedPhotoId=" +
-//                        newsPost.getPostIndex()).into(postedPhoto);
-//        Picasso.get().load(
-//                ApiUtils.getBaseUrl() +
-//                        "/api/leaguePhoto/viewimage?leaguePhotoId=" +
-//                        newsPost.getLeagueIndex()).into(leaguePhoto);
+        Picasso.get().load(
+                ApiUtils.getBaseUrl() +
+                        "api/postedPhoto/viewimage?postedPhotoId=" +
+                        newsPost.getPostIndex()).into(postedPhoto);
+        Picasso.get().load(
+                ApiUtils.getBaseUrl() +
+                        "api/leaguePhoto/viewimage?leaguePhotoId=" +
+                        newsPost.getLeagueIndex()).into(leaguePhoto);
     }
 
     @SuppressLint("SetTextI18n")
@@ -97,10 +96,10 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
             public void onResponse(Call<LikeManipulationResponse> call, Response<LikeManipulationResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getAnswer().equals("ok")) {
-                        Toast.makeText(
-                                itemView.getContext(),
-                                "Ваш голос учтен",
-                                Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(
+//                                itemView.getContext(),
+//                                "Ваш голос учтен",
+//                                Toast.LENGTH_SHORT).show();
                         newsPost.setLikedByMe(false);
                     }
                 }
@@ -122,10 +121,10 @@ public class LeaguesInterfaceRecyclerViewHolder extends RecyclerView.ViewHolder 
             public void onResponse(Call<LikeManipulationResponse> call, Response<LikeManipulationResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getAnswer().equals("ok")) {
-                        Toast.makeText(
-                                itemView.getContext(),
-                                "Ваш голос учтен",
-                                Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(
+//                                itemView.getContext(),
+//                                "Ваш голос учтен",
+//                                Toast.LENGTH_SHORT).show();
                         newsPost.setLikedByMe(true);
                     }
                 }
